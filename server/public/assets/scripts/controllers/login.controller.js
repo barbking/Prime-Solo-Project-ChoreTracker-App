@@ -15,7 +15,12 @@ myApp.controller('LoginController', ['$http', '$location', function($http, $loca
       } else {
         console.log('sending to server...', vm.user);
         $http.post('/', vm.user).then(function(response) {
-          if(response.data.username) {
+          if(response.data.username && response.data.admin === true) {
+            console.log('success: ', response.data);
+            // location works with SPA (ng-route)
+            console.log('redirecting to user page');
+            $location.path('/admin');
+          } else if(response.data.username) {
             console.log('success: ', response.data);
             // location works with SPA (ng-route)
             console.log('redirecting to user page');
@@ -24,23 +29,24 @@ myApp.controller('LoginController', ['$http', '$location', function($http, $loca
             console.log('failure: ', response);
             vm.message = "Wrong!!";
           }
-        });
+        });//end post
       }
     };
 
-    vm.registerUser = function() {
-      if(vm.user.username == '' || vm.user.password == '') {
-        vm.message = "Choose a username and password!";
-      } else {
-        console.log('sending to server...', vm.user);
-        $http.post('/register', vm.user).then(function(response) {
-          console.log('success');
-          $location.path('/home');
-        },
-        function(response) {
-          console.log('error');
-          vm.message = "Please try again.";
-        });
-      }
-    };
+
+    // vm.registerUser = function() {
+    //   if(vm.user.username == '' || vm.user.password == '') {
+    //     vm.message = "Choose a username and password!";
+    //   } else {
+    //     console.log('sending to server...', vm.user);
+    //     $http.post('/register', vm.user).then(function(response) {
+    //       console.log('success');
+    //       $location.path('/home');
+    //     },
+    //     function(response) {
+    //       console.log('error');
+    //       vm.message = "Please try again.";
+    //     });
+    //   }
+    // };
 }]);

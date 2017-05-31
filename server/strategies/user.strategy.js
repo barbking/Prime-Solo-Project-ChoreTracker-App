@@ -1,6 +1,6 @@
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
-var User = require('../models/user.model');
+var users = require('../models/user.model');
 
 // Store this user's unique id in the session for later reference
 // Only runs during authentication
@@ -14,7 +14,7 @@ passport.serializeUser(function(user, done) {
 // Look up the user's id in the session and use it to find them in the DB for each request
 // result is stored on req.user
 passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
+   users.findById(id, function(err, user) {
     if(err) {
       done(err);
     }
@@ -31,7 +31,7 @@ passport.use('local', new localStrategy({
   usernameField: 'username'
   }, function(req, username, password, done) {
     // mongoose stuff
-    User.findOne({username: username}, function(err, user) {
+     users.findOne({username: username}, function(err, user) {
       if(err) {
         throw err;
       }

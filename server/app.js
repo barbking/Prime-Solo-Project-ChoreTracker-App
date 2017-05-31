@@ -10,7 +10,9 @@ var session = require('express-session');
 // Route includes
 var index = require('./routes/index');
 var user = require('./routes/user');
+var admin = require('./routes/admin');
 var register = require('./routes/register');
+
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,6 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.use('/admin', admin);
 app.use('/register', register);
 app.use('/user', user);
 app.use('/*', index);
@@ -46,7 +49,7 @@ if(process.env.MONGODB_URI != undefined) {
     mongoURI = process.env.MONGODB_URI;
 } else {
     // use the local database server
-    mongoURI = 'mongodb://localhost:27017/passport';
+    mongoURI = 'mongodb://localhost:27017/momapp';
 }
 
 // var mongoURI = "mongodb://localhost:27017/passport";

@@ -1,0 +1,11 @@
+
+
+<div class="container">
+  <h3>Admin</h3>
+    <h3 ng-if="ac.message != ''">{{ac.message}}</h3>
+  <form ng-submit="ac.addUser()">
+  Add Child <input type="text" ng-model="ac.user.username">
+  Password <input type="text" ng-model="ac.user.password">
+  <input class="btn btn-default" type="submit" name="submit" value="submit" />
+  </form>
+</div>

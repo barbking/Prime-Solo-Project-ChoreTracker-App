@@ -6,7 +6,8 @@ var SALT_WORK_FACTOR = 10;
 // Mongoose Schema
 var UserSchema = new Schema({
     username: {type: String, required: true, index: {unique: true}},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    admin: {type: Boolean, default:false}
 });
 
 // Called before adding a new user to the DB. Encrypts password.
@@ -29,8 +30,8 @@ UserSchema.pre('save', function(next) {
 
             user.password = hash;
             next();
-        })
-    })
+        });
+    });
 });
 
 // Used by login methods to compare login form password to DB password
@@ -46,4 +47,4 @@ UserSchema.methods.comparePassword = function(candidatePassword, callback) {
 };
 
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('users', UserSchema);
