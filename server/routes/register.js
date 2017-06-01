@@ -10,11 +10,15 @@ router.get('/', function(req, res, next) {
 });
 
 // Handles POST request with child user data
-router.post('/', function(req, res, next) {
-    users.create(req.body, function(err, post) {
-         if(err) {
-           sendStatus(500);
-         } 
+router.post('/', function(req, res) {
+    users.create(req.body, function(err, response) {
+      if (err) {
+        console.log('DB error:',err);
+        res.sendStatus( 500 );
+      } else {
+        console.log('DB success:',response);
+        res.sendStatus( 201 );
+      }
     });
 });
 

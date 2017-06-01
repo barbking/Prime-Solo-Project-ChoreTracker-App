@@ -12,6 +12,8 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var admin = require('./routes/admin');
 var register = require('./routes/register');
+var username = require('./routes/usernames');
+var tasks = require('./routes/tasks');
 
 
 // Body parser middleware
@@ -35,8 +37,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/admin', admin);
+app.use('/tasks', tasks);
+app.use('/usernames', username);
 app.use('/register', register);
+app.use('/admin', admin);
 app.use('/user', user);
 app.use('/*', index);
 
@@ -63,7 +67,7 @@ mongoDB.on('error', function(err){
 });
 
 mongoDB.once('open', function(){
-   console.log("Connected to Mongo, meow!");
+   console.log("Connected to Mongo!");
 });
 
 // App Set //
