@@ -10,7 +10,7 @@ var task = require('../models/task.model.js');
 //get tasks from database
 router.get( '/', function( req, res ){
     console.log( 'tasks router get call' );
-    tasks.find().then(function (data){
+    task.find().then(function (data){
     console.log('in tasks route get data:',data);
     res.send( data);
   });
@@ -35,8 +35,13 @@ router.post('/', function (req,res){
     });
   });
 
-
-
+//delete task using the task db id
+  router.delete( '/:id', function( req, res ){
+      console.log("in delete task request", req.params.id);
+      task.remove({_id:req.params.id}).then(function(){
+        res.sendStatus(200);
+    });
+  }); //end get
 
 
 module.exports = router;

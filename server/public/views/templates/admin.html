@@ -28,33 +28,36 @@
         </span>
       </td>
       <td>
-        <!-- editable frequency (select-local) -->
+        <!-- editable frequency-->
         <span editable-select="task.frequency" e-name="frequency" e-form="rowform" e-ng-options="f.value as f.text for f in ac.frequencies">
-          {{ showStatus(task) }}
+          {{ showFrequency(task) }}
         </span>
       </td>
       <td>
         <!-- editable username (select-remote) -->
         <span editable-select="task.username" e-name="username" onshow="ac.loadUsernames()" e-form="rowform" e-ng-options="u.username as u.username for u in ac.usernames">
-          {{ showGroup(task) }}
+          {{ showUsername(task) }}
         </span>
       </td>
       <td style="white-space: nowrap">
         <!-- form -->
-        <form editable-form name="rowform" onbeforesave="ac.saveTask($data, task.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+        <form editable-form name="rowform" onbeforesave="ac.saveTask($data, task.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == task">
           <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
             save
           </button>
-          <button type="button" ng-disabled="rowform.$waiting" ng-click="ac.rowform.$cancel()" class="btn btn-default">
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
             cancel
           </button>
         </form>
         <div class="buttons" ng-show="!rowform.$visible">
-          <button type="button" class="btn btn-primary" ng-click="ac.rowform.$show()">edit</button>
-          <button type="button" class="btn btn-danger" ng-click="ac.removeTask($index)">del</button>
+          <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+          <button type="button" class="btn btn-danger" ng-click="ac.removeTask($index,task._id)">del</button>
         </div>
       </td>
     </tr>
   </table>
 
   <button type="button" class="btn btn-default" ng-click="ac.addTask()">Add Task</button>
+  <button type="button" class="btn btn-default" ng-click="ac.loadTasks()">Load Task List</button>
+
+    <button type="button" class="btn btn-primary" ng-click="ac.loadTasks()">LOGOUT</button>
