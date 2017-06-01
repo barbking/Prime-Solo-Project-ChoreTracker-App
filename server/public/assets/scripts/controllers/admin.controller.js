@@ -1,4 +1,4 @@
-myApp.controller('AdminController', ['$http', '$location', '$filter', function($http, $location, $filter) {
+myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksService', function($http, $location, $filter, tasksService) {
 
   console.log('in AdminController');
 
@@ -12,7 +12,9 @@ myApp.controller('AdminController', ['$http', '$location', '$filter', function($
 
   };
 
-  vm.tasks = [];
+  // vm.tasks = [];
+  vm.tasks = tasksService.tasks;
+
 
   vm.frequencies = [
     {value: 1, text: '1'},
@@ -86,18 +88,19 @@ myApp.controller('AdminController', ['$http', '$location', '$filter', function($
     }
     return selected.length ? selected[0].text : 'Not set';
   };
-  // get tasks from database
+  // get tasks from database using tasks.service
   vm.loadTasks = function() {
      return vm.tasks.length ? null : $http.get('/tasks').then(function(response) {
       console.log('in loadTasks, task[]:', response.data);
-      vm.tasks = response.data;
+      return tasksService.getTasks;
     });
   };
-  // save a task to database upon save button click
+  // save a task to database upon save button click and using task.service.js
   vm.saveTask = function(data, id) {
     angular.extend(data, {id: id});
     console.log('saveTask data:',data);
-    return $http.post('/tasks', data);
+    // return $http.post('/tasks', data);
+    return tasksService.saveTask;
   };
   // remove a task from table and database upon delete button click
   vm.removeTask = function(index,id) {
@@ -105,7 +108,7 @@ myApp.controller('AdminController', ['$http', '$location', '$filter', function($
     console.log('removeTask id:',id);
     return $http.delete('/tasks/'+id);
   };
-  // add a task to tasks[] to populate table
+  // add a task input to tasks[] to populate xeditable table
   vm.addTask = function() {
     console.log('addTask', vm.inserted);
     vm.inserted = {
