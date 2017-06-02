@@ -1,6 +1,21 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+ <div class="container-fluid">
+   <div class="navbar-header">
+     <a class="navbar-brand" href="#">Welcome to The Mom App!</a>
+   </div>
+   <ul class="nav navbar-nav">
+     <li class="active"><a href="#home">Home</a></li>
+     <li><a href="#checklist">My To-Do List</a></li>
+     <li><a href="#bank">Mom Bank</a></li>
+   </ul>
+   <button class="btn btn-default navbarbutton" ng-click="uc.logout()">Log Out</button>
+ </div>
+</nav>
 
 <div class="container">
-    <h1 id="welcome" class="lead">Welcome, {{uc.userName}}!</h1>
-    <p>This is the user page!</p>
-    <button class="btn btn-default" ng-click="uc.logout()">Log Out</button>
+    <h1 id="welcome" class="lead">Welcome, {{uc.userName}}! Don't forget to do your chores!</h1>
+</div>
+
+<div id="catimagediv">
+  <a href="http://thecatapi.com"><img class="catimage" src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>
 </div>

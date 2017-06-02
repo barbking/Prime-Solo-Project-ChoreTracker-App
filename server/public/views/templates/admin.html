@@ -1,18 +1,32 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+ <div class="container-fluid">
+   <div class="navbar-header">
+     <a class="navbar-brand" href="#">Welcome to The Mom App!</a>
+   </div>
+   <ul class="nav navbar-nav">
+     <li class="active"><a href="#admin">Admin Home</a></li>
+     <!-- <li class="active"><a href="#home">Home</a></li> -->
+     <!-- <li><a href="#checklist">My To-Do List</a></li>
+     <li><a href="#bank">Mom Bank</a></li> -->
+   </ul>
+   <button class="btn btn-default navbarbutton" ng-click="ac.logout()">Log Out</button>
+ </div>
+</nav>
 
 
 <div class="container">
-  <h3>Admin</h3>
-    <h3 ng-if="ac.message != ''">{{ac.message}}</h3>
-  <form ng-submit="ac.addUser()">
-
-  Add a child  First Name: <input type="text" ng-model="ac.user.firstname">
-  Last Name: <input type="text" value="Last Name" ng-model="ac.user.lastname">
-  Username: <input type="text" ng-model="ac.user.username">
-  Password: <input type="text" ng-model="ac.user.password">
-  <input class="btn btn-default" type="submit" name="submit" value="submit" />
-  </form>
+  <!-- <h3>Admin Home</h3> -->
+  <h3 ng-if="ac.message != ''">{{ac.message}}</h3>
+    <form ng-submit="ac.addUser()">
+      <b>ADD CHILD</b>  First Name: <input type="text" ng-model="ac.user.firstname">
+      Last Name: <input type="text" value="Last Name" ng-model="ac.user.lastname">
+      Username: <input type="text" ng-model="ac.user.username">
+      Password: <input type="text" ng-model="ac.user.password">
+      <input class="btn btn-default" type="submit" name="submit" value="submit" />
+    </form>
 </div>
 
+<div id="admintable">
   <table class="table table-bordered table-hover table-condensed">
     <tr style="font-weight: bold">
       <td style="width:35%">Responsibility</td>
@@ -56,8 +70,9 @@
       </td>
     </tr>
   </table>
-
+</div>
+<div class="adminbuttons">
   <button type="button" class="btn btn-default" ng-click="ac.addTask()">Add Task</button>
   <button type="button" class="btn btn-default" ng-click="ac.loadTasks()">Load Task List</button>
-
-    <button type="button" class="btn btn-primary" ng-click="ac.logout()">LOGOUT</button>
+  <!-- <button type="button" class="btn btn-primary adminlogout" ng-click="ac.logout()">LOGOUT</button> -->
+</div>

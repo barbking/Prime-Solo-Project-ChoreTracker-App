@@ -1,0 +1,17 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+ <div class="container-fluid">
+   <div class="navbar-header">
+     <a class="navbar-brand" href="#">Welcome to The Mom App!</a>
+   </div>
+   <ul class="nav navbar-nav">
+     <li class="active"><a href="#home">Home</a></li>
+     <li><a href="#/checklist">My To-Do List</a></li>
+     <li><a href="#/bank">Mom Bank</a></li>
+   </ul>
+   <button class="btn btn-default navbarbutton" ng-click="bc.logout()">Log Out</button>
+ </div>
+</nav>
+
+<div class="container">
+    <h1 id="welcome" class="lead">Welcome to the Mom Bank, {{bc.userName}}!</h1>
+</div>

@@ -1,7 +1,5 @@
-myApp.controller('UserController', ['$http', '$location', function($http, $location) {
-  // This happens after view/controller loads -- not ideal but it works for now.
-  var vm = this;
-
+myApp.controller('BankController', [ '$http', '$location', function($http, $location){
+  vm = this;
   console.log('checking user');
 
   // Upon load, check this user's session on the server
@@ -22,5 +20,6 @@ myApp.controller('UserController', ['$http', '$location', function($http, $locat
       console.log('logged out');
       $location.path("/home");
     });
-  }
+  };
+
 }]);

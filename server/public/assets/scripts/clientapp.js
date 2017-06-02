@@ -18,13 +18,21 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/register.html',
       controller: "LoginController as lc"
     })
+    .when('/admin', {
+      templateUrl: '/views/templates/admin.html',
+      controller: "AdminController as ac"
+    })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
       controller: "UserController as uc"
     })
-    .when('/admin', {
-      templateUrl: '/views/templates/admin.html',
-      controller: "AdminController as ac"
+    .when('/checklist', {
+      templateUrl: '/views/templates/checklist.html',
+      controller: "CheckListController as clc"
+    })
+    .when('/bank', {
+      templateUrl: '/views/templates/bank.html',
+      controller: "BankController as bc"
     })
     .otherwise({
       redirectTo: 'home'

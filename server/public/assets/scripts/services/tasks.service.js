@@ -31,11 +31,21 @@ myApp.service('tasksService', ['$http', function($http){
       data: task
     }).then(function(response) {
       console.log(response);
-      vm.tasks = response.data;
-      return vm.tasks;
+      vm.getTasks();
     });
   };//end of saveFavorite func
 
-  
+  vm.deleteTask = function(id) {
+   console.log('in deleteTask');
+   console.log('deleteTask:', id);
+   return $http({
+     method: 'DELETE',
+     url: '/tasks/'+id,
+   }).then(function(response) {
+     console.log(response);
+     vm.tasks = response.data;
+     return vm.tasks;
+   });
+ };
 
 }]);

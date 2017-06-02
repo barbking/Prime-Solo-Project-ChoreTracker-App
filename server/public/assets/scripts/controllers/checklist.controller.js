@@ -1,9 +1,7 @@
-myApp.controller('UserController', ['$http', '$location', function($http, $location) {
-  // This happens after view/controller loads -- not ideal but it works for now.
-  var vm = this;
-
+myApp.controller('CheckListController', [ '$http', '$location','tasksService', function($http, $location, tasksService){
+  vm = this;
   console.log('checking user');
-
+  vm.tasks = [];
   // Upon load, check this user's session on the server
   $http.get('/user').then(function(response) {
       if(response.data.username) {
@@ -15,12 +13,18 @@ myApp.controller('UserController', ['$http', '$location', function($http, $locat
           // user has no session, bounce them back to the login page
           $location.path("/home");
       }
-  });
+  });//end of $http get
 
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
       console.log('logged out');
       $location.path("/home");
     });
-  }
+  };//end of logout func
+//get tasks using taskService
+  vm.getTasks = function(){
+    tasksService.getTasks().then(function (data){
+      vm.tasks = data;
+    });
+  };//end of getTasks func
 }]);
