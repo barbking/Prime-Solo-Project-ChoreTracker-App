@@ -1,14 +1,20 @@
 myApp.controller('CheckListController', [ '$http', '$location','tasksService', function($http, $location, tasksService){
   vm = this;
-  console.log('checking user');
-  vm.tasks = [];
-  // Upon load, check this user's session on the server
+  vm.usertasks = [];
+
+  // Upon load, check this user's session on the server and get username tasks from db
   $http.get('/user').then(function(response) {
       if(response.data.username) {
           // user has a curret session on the server
           // vm.userName = response.data.username;
-          vm.userName = response.data.firstname;
-          console.log('User Data: ', vm.userName);
+          vm.firstname = response.data.firstname;
+          vm.userName = response.data.username;
+          console.log('vm.userName: ', vm.userName);
+          //get username specific task using tasksService service
+          tasksService.getUserTasks(vm.userName).then(function(){
+            vm.usertasks = tasksService.usertasks;
+            console.log('get usertasks:', vm.usertasks);
+          }); //get tasks for this specific username
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
@@ -22,9 +28,12 @@ myApp.controller('CheckListController', [ '$http', '$location','tasksService', f
     });
   };//end of logout func
 //get tasks using taskService
-  vm.getTasks = function(){
-    tasksService.getTasks().then(function (data){
-      vm.tasks = data;
-    });
-  };//end of getTasks func
+  // vm.getTasks = function(){
+  //   tasksService.getTasks().then(function (data){
+  //     vm.tasks = data;
+  //   });
+  // };//end of getTasks func
+
+  // vm.getTasks();
+
 }]);

@@ -7,6 +7,15 @@ var bodyParser = require( 'body-parser' );
 var task = require('../models/task.model.js');
 
 
+// get tasks for specific user in database
+router.get( '/:username', function( req, res ){
+    console.log( 'in tasks username router get call' );
+    task.find({username:req.params.username}).then(function (data){
+    console.log('in tasks username route get data:',data);
+    res.send( data);
+  });
+}); //end get
+
 //get tasks from database
 router.get( '/', function( req, res ){
     console.log( 'tasks router get call' );
