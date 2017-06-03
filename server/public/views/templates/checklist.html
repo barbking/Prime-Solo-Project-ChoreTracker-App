@@ -33,14 +33,14 @@
       <td>{{ task.description }}</td>
       <td>{{ task.frequency }}</td>
       <!--don't need brackets for checkbox below, ng-repeat has it's own scope  -->
-      <td><input ng-model = "task.suncheckbox" type="checkbox" ng-change="clc.saveCheck(task.suncheckbox,task._id)"></td>
+      <td><input ng-model = "task.suncheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
       <td><input ng-model = "task.moncheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
       <td><input ng-model = "task.tuescheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
       <td><input ng-model = "task.wedcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
       <td><input ng-model = "task.thurcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
       <td><input ng-model = "task.fricheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
       <td><input ng-model = "task.satcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td>/{{ task.frequency }}</td>
+      <td>{{task.checkboxcount}} / {{task.frequency }}</td>
     </tr>
   </table>
 

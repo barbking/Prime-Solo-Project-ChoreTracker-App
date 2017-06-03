@@ -47,26 +47,60 @@ router.post('/', function (req,res){
 //delete task using the task db id
   router.delete( '/:id', function(req,res){
       console.log("in delete task request", req.params.id);
-      task.remove({_id:req.params.id}).then(function(){
-        res.sendStatus(200);
+      // task.remove({_id:req.params.id}).then(function(){
+      //   res.sendStatus(200);
+      task.remove({_id:req.params.id}, function(err){
+        if (err) {
+          console.log('Error removing task from database', err);
+          res.sendStatus(500);
+        } else {
+          console.log('DB success');
+          res.sendStatus(200);
+        }
     });
   }); //end get
+
 
   //update checkbox value in db
   router.post('/update', function (req,res){
     console.log('in update post tasks:', req.body);
-    var id = req.params.id;
-    var updateTask = req.body;
-      task.update(updateTask).then(function ( err, response ){
-    // task.update({_id:req.body._id},updateTask).then(function ( err, response ){
+    var count = req.body.checkboxcount;
+    var sun = req.body.suncheckbox;
+    var mon = req.body.moncheckbox;
+    var tues = req.body.tuescheckbox;
+    var wed = req.body.wedcheckbox;
+    var thur = req.body.thurcheckbox;
+    var fri = req.body.fricheckbox;
+    var sat = req.body.satcheckbox;
+    // var updateTask = req.body;
+      // task.update(updateTask).then(function ( err, response ){
+    task.update({_id:req.body._id},{ checkboxcount : count,
+      satcheckbox : sat,
+      fricheckbox : fri,
+      thurcheckbox : thur,
+      wedcheckbox : wed,
+      tuescheckbox : tues,
+      moncheckbox : mon,
+      suncheckbox : sun
+    }, function(err){
       if (err) {
-        console.log('DB error:',err);
-        res.sendStatus( 500 );
+        console.log('Error removing task from database', err);
+        res.sendStatus(500);
       } else {
-        console.log('DB success:',response);
-        res.sendStatus( 201 );
+        console.log('DB success');
+        res.sendStatus(200);
       }
     });
+    // }).then(function ( err, response ){
+    // // task.update({_id:req.body._id},updateTask).then(function ( err, response ){
+    //   if (err) {
+    //     console.log('DB error:',err);
+    //     res.sendStatus( 500 );
+    //   } else {
+    //     console.log('DB success:',response);
+    //     res.sendStatus( 201 );
+    //   }
+    // });
   });
 
 

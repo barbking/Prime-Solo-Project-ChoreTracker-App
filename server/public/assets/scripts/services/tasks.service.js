@@ -68,6 +68,20 @@ myApp.service('tasksService', ['$http', function($http){
 // update task checkbox status upon box click and save
  vm.updateTasks = function (task) {
    console.log('in updateTask http request:', task);
+
+    // for (var key in task){
+    //   console.log(task[key]);
+    // }
+
+  counter = 0;
+   for (var key in task){
+     if (task[key] === true) {
+       counter += 1;
+     }
+     task.checkboxcount = counter;
+     console.log(task.checkboxcount);
+   }
+
     return $http({
      method: 'POST',
      url: '/tasks/update',
@@ -76,5 +90,6 @@ myApp.service('tasksService', ['$http', function($http){
      console.log(response);
    });
  };//end updateTasks func
+
 
 }]);

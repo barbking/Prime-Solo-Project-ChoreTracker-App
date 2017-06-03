@@ -15,6 +15,7 @@ var taskSchema = {
   thurcheckbox: {type: Boolean, default: false},
   fricheckbox: {type: Boolean, default: false},
   satcheckbox: {type: Boolean, default: false},
+  checkboxcount: {type: Number, default: 0}
 };
 
 

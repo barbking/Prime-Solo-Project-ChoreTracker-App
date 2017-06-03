@@ -18,7 +18,7 @@ myApp.controller('LoginController', ['$http', '$location', function($http, $loca
           if(response.data.username && response.data.admin === true) {
             console.log('success: ', response.data);
             // location works with SPA (ng-route)
-            console.log('redirecting to user page');
+            console.log('redirecting to admin page');
             $location.path('/admin');
           } else if(response.data.username) {
             console.log('success: ', response.data);
