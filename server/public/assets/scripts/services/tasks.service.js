@@ -25,7 +25,6 @@ myApp.service('tasksService', ['$http', function($http){
 
   //save a task in the db and update tasks []
   vm.saveTask = function(task) {
-    console.log('in saveTask');
     console.log('task to save is:', task);
     return $http({
       method: 'POST',
@@ -53,8 +52,7 @@ myApp.service('tasksService', ['$http', function($http){
 
  // get task from db for specific username and populate usertasks []
  vm.getUserTasks = function(username) {
-   console.log('in getTasks http request');
-   console.log('getUserTask for username',username);
+   console.log('in getTasks http request with username:',username);
    return $http({
      method: 'GET',
      url: '/tasks/'+username
@@ -66,5 +64,17 @@ myApp.service('tasksService', ['$http', function($http){
      //  return vm.tasks.list = response.data;
    });
  };//end getTasks func
+
+// update task checkbox status upon box click and save
+ vm.updateTasks = function (task) {
+   console.log('in updateTask http request:', task);
+    return $http({
+     method: 'POST',
+     url: '/tasks/update',
+     data: task
+   }).then(function(response){
+     console.log(response);
+   });
+ };//end updateTasks func
 
 }]);

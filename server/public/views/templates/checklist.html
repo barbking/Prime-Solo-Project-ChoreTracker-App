@@ -19,7 +19,7 @@
   <table>
     <tr>
        <th>My Responsibility</th>
-       <th>Times/Week</th>
+       <th>times/week</th>
        <th>Sunday</th>
        <th>Monday</th>
        <th>Tuesday</th>
@@ -27,18 +27,20 @@
        <th>Thursday</th>
        <th>Friday</th>
        <th>Saturday</th>
+       <th>Completed</th>
     </tr>
     <tr ng-repeat="task in clc.usertasks">
       <td>{{ task.description }}</td>
       <td>{{ task.frequency }}</td>
       <!--don't need brackets for checkbox below, ng-repeat has it's own scope  -->
-      <td><input ng-model = "task.suncheckbox" type="checkbox" ng-change="clc.save.Check(task._id)"></td>
-      <td><input ng-model = "task.moncheckbox" type="checkbox" ng-change="clc.save.Check(task._id)"></td>
-      <td><input ng-model = "task.tuescheckbox" type="checkbox" ng-change="clc.save.Check(task._id)"></td>
-      <td><input ng-model = "task.wedcheckbox" type="checkbox" ng-change="clc.save.Check(task._id)"></td>
-      <td><input ng-model = "task.thurcheckbox" type="checkbox" ng-change="clc.save.Check(task._id)"></td>
-      <td><input ng-model = "task.fricheckbox" type="checkbox" ng-change="clc.save.Check(task._id)"></td>
-      <td><input ng-model = "task.satcheckbox" type="checkbox" ng-change="clc.save.Check(task._id)"></td>
+      <td><input ng-model = "task.suncheckbox" type="checkbox" ng-change="clc.saveCheck(task.suncheckbox,task._id)"></td>
+      <td><input ng-model = "task.moncheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+      <td><input ng-model = "task.tuescheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+      <td><input ng-model = "task.wedcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+      <td><input ng-model = "task.thurcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+      <td><input ng-model = "task.fricheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+      <td><input ng-model = "task.satcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+      <td>/{{ task.frequency }}</td>
     </tr>
   </table>
 

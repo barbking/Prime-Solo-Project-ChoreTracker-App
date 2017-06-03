@@ -45,12 +45,29 @@ router.post('/', function (req,res){
   });
 
 //delete task using the task db id
-  router.delete( '/:id', function( req, res ){
+  router.delete( '/:id', function(req,res){
       console.log("in delete task request", req.params.id);
       task.remove({_id:req.params.id}).then(function(){
         res.sendStatus(200);
     });
   }); //end get
+
+  //update checkbox value in db
+  router.post('/update', function (req,res){
+    console.log('in update post tasks:', req.body);
+    var id = req.params.id;
+    var updateTask = req.body;
+      task.update(updateTask).then(function ( err, response ){
+    // task.update({_id:req.body._id},updateTask).then(function ( err, response ){
+      if (err) {
+        console.log('DB error:',err);
+        res.sendStatus( 500 );
+      } else {
+        console.log('DB success:',response);
+        res.sendStatus( 201 );
+      }
+    });
+  });
 
 
 module.exports = router;
