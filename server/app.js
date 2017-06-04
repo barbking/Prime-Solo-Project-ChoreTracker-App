@@ -10,6 +10,7 @@ var session = require('express-session');
 // Route includes
 var index = require('./routes/index');
 var user = require('./routes/user');
+// var home = require('./routes/home');
 var admin = require('./routes/admin');
 var register = require('./routes/register');
 var username = require('./routes/usernames');
@@ -44,6 +45,7 @@ app.use('/tasks', tasks);
 app.use('/usernames', username);
 app.use('/register', register);
 app.use('/admin', admin);
+// app.use('/home', home);
 app.use('/user', user);
 app.use('/*', index);
 

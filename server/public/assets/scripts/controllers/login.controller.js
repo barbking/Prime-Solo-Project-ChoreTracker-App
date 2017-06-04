@@ -1,4 +1,6 @@
 myApp.controller('LoginController', ['$http', '$location', function($http, $location) {
+  //set background image for this page
+  vm.bodyClass = 'login-view';
   console.log('LoginController loaded');
     var vm = this;
 

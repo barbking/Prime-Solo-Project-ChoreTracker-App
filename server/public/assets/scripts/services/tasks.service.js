@@ -68,11 +68,7 @@ myApp.service('tasksService', ['$http', function($http){
 // update task checkbox status upon box click and save
  vm.updateTasks = function (task) {
    console.log('in updateTask http request:', task);
-
-    // for (var key in task){
-    //   console.log(task[key]);
-    // }
-
+//counter to tack number of true/false checkboxes and save in db as checkboxcount
   counter = 0;
    for (var key in task){
      if (task[key] === true) {
@@ -81,7 +77,6 @@ myApp.service('tasksService', ['$http', function($http){
      task.checkboxcount = counter;
      console.log(task.checkboxcount);
    }
-
     return $http({
      method: 'POST',
      url: '/tasks/update',

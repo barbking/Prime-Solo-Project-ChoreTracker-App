@@ -2,10 +2,6 @@
 myApp.controller('CheckListController', [ '$http', '$location','tasksService', function($http, $location, tasksService){
   vm = this;
   vm.usertasks = [];
- //calc boxes with "true" values (boxes checked)
-
-
-
   // Upon load, check this user's session on the server and get username tasks from db
   $http.get('/user').then(function(response) {
       if(response.data.username) {
@@ -23,21 +19,8 @@ myApp.controller('CheckListController', [ '$http', '$location','tasksService', f
           $location.path("/home");
       }
   });//end of $http get
-
   //on checkbox click, run saveCheck func which calls service updateTask http PUT
   vm.saveCheck = tasksService.updateTasks;
-  // vm.saveCheck = function (task, checkbox) {
-  //   if(checkbox) {
-  //     task.checkboxcount += 1;
-  //   } else {
-  //     task.checkboxcount -= 1;
-  //   }
-  //  console.log(task);
-  //   // tasksService.updateTasks(task);
-  // };
-
-
-
   //user logout when logout button clicked
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
@@ -45,6 +28,4 @@ myApp.controller('CheckListController', [ '$http', '$location','tasksService', f
       $location.path("/home");
     });
   };//end of logout func
-
-
-}]);
+}]);//end of CheckListController

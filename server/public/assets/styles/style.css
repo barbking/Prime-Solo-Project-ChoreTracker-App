@@ -22,6 +22,16 @@ table, th , td {
           margin: 50px;
         }
 
+.home.container.ng-scope {
+  /*background-image: url(http://www.unlicool.com/image/cache/data/allsome/super_mom_0-500x500.png);*/
+  background-image: url(http://images.all-free-download.com/images/graphiclarge/super_mom_concept_illustration_with_woman_and_works_6825791.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height:100vh;
+  width:1305px;
+  background-color: #cfc087;
+}
 #admintable {
   width: 1200px;
   /*margin-right: 50px;*/

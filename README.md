@@ -1,10 +1,15 @@
+
 My solo project for Prime Digital Academy - The Mom App
-=======================================================
+--------------------------------------------------------
+The objective of this assignment is to create an application in two weeks that uses full stack software
+development tools taught at Prime.
+
+Summary
+--------
 *  As a busy single parent, I have a hard time keeping track of my kid's responsibilities.  I lose track
 of which child got their chores done or if they got in five practice sessions for their music classes.
 Previously, I made up excel spread sheets and tried keeping them on a clipboard in each child's room but they still
-got lost or forgotten.  The Mom App makes it easier for all of us in my family to keep track of responsibilities and
-also earned allowances that are tracked in the Mom Bank.
+got lost or forgotten.  The Mom App makes it easier for all of us in my family to keep track of responsibilities and allow my children to earn an allowance and mangage in their Mom Bank account.
 
 [x] Scope and planning turned in to Prime
 
@@ -26,7 +31,7 @@ also earned allowances that are tracked in the Mom Bank.
 
 [x] Set up User chore page to pull username specific chores and repeat in a table with checkboxes
 
-[] Set up logic for User checkboxes, need to save checkbox status and keep track of task completed for allowances
+[x] Set up logic for User checkboxes, need to save checkbox status and keep track of task completed for allowances
 
 [] Set up reset button on Admin page to reset all checkboxes at end of week after admin reviews/approves allowance for the week
 

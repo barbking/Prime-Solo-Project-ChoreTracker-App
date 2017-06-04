@@ -13,6 +13,7 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   };
 
   vm.tasks = [];
+  console.log('tasks:', vm.tasks);
   // vm.tasks = tasksService.tasks;
 
 
