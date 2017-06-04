@@ -91,6 +91,10 @@ btn {
 #list {
   margin: 100px;
 }
+#piechart {
+  width: 500px;
+  height: 500px;
+}
 
 
 

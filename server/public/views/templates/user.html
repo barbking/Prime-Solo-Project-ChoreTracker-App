@@ -16,6 +16,17 @@
     <h1 id="welcome" class="lead">Welcome, {{uc.userName}}! Don't forget to do your chores!</h1>
 </div>
 
-<div id="catimagediv">
+<!-- <div id="catimagediv">
   <a href="http://thecatapi.com"><img class="catimage" src="http://thecatapi.com/api/images/get?format=src&type=gif"></a>
+</div> -->
+<div id="piechart">
+<!-- <canvas id="pie" class="chart chart-pie"
+  chart-data="uc.data" chart-labels="uc.labels" chart-colors="ac.colors">
+</canvas> -->
+  <canvas id="pie" class="chart chart-pie" chart-data="uc.data"
+          chart-labels="uc.labels" chart-options="optionsPie"
+           chart-colors="uc.colorsPie"
+           chart-click="uc.clickme" chart-hover="uc.hoverme"
+           chart-dataset-override="uc.PieDataSetOverride">
+  </canvas>
 </div>

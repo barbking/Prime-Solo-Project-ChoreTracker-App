@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute','xeditable']);
+var myApp = angular.module('myApp', ['ngRoute','xeditable','chart.js']);
 
 myApp.run(function(editableOptions) {
   editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'

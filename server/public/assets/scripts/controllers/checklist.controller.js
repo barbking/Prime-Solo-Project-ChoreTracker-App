@@ -1,3 +1,4 @@
+//controller for user chore page - controls task chart with checkboes
 myApp.controller('CheckListController', [ '$http', '$location','tasksService', function($http, $location, tasksService){
   vm = this;
   vm.usertasks = [];
