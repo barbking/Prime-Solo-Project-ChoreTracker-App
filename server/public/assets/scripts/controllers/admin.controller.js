@@ -82,9 +82,11 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   //show username data in editable table if usernames[] contains task.username val
   vm.showUsername = function(task) {
     if(task.username && vm.usernames.length) {
+      console.log ('showUsername',task.username, vm.usernames.length);
       //check to see if vm.username contains task.username
-      var selected = $filter('filter')(vm.usernames, {id: task.username});
-      return selected.length ? selected[0].text : 'Not set';
+      var selected = $filter('filter')(vm.usernames, {username: task.username});
+      console.log('selected', selected);
+      return selected.length ? selected[0].username : 'Not set';
     } else {
       return task.username || 'Not set';
     }

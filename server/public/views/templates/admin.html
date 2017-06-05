@@ -37,7 +37,7 @@
     <tr ng-repeat="task in ac.tasks">
       <td>
         <!-- editable username (text with validation) -->
-        <span editable-text="task.description" e-name="description" e-form="rowform" onbeforesave="checkName($data, task.id)">
+        <span editable-text="task.description" e-name="description" e-form="rowform" onbeforesave="checkName($data, task._id)">
           {{ task.description || 'empty' }}
         </span>
       </td>
@@ -49,7 +49,7 @@
       </td>
       <td>
         <!-- editable username (select-remote) -->
-        <span editable-select="task.username" e-name="username" onshow="ac.loadUsernames()" e-form="rowform" e-ng-options="u.username as u.username for u in ac.usernames">
+        <span editable-select="task.username" e-name="username" onshow="ac.loadUsernames()" e-form="rowform" >
           {{ ac.showUsername(task) }}
         </span>
       </td>
