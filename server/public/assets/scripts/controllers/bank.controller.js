@@ -1,6 +1,7 @@
 myApp.controller('BankController', [ '$http', '$location', function($http, $location){
   vm = this;
   console.log('checking user');
+  var bank = [];
 
   // Upon load, check this user's session on the server
   $http.get('/user').then(function(response) {

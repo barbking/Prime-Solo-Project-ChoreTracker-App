@@ -40,7 +40,7 @@ table, th , td {
 #catimagediv {
   border-style: solid;
   border-color: red;
-  width: 600px;
+  width: 500px;
 }
 .adminlogout {
   float: right;
@@ -72,6 +72,7 @@ table, th , td {
   width: 400px;
   height: 400px;
 }
+
 .navbar {
    border-radius: 5px
 }
@@ -101,14 +102,18 @@ btn {
 #list {
   margin: 100px;
 }
-#piechart {
-  width: 500px;
-  height: 500px;
+/*#piechart*/
+ #pie {
+  width: 400px;
+  height: 400px;
+  align-content: center;
+  /*margin-left: 200px;*/
+  float: right;
 }
 
 
 
-/**/xeditable styles
+/*xeditable styles*/
 .instructions .container h1 {
     font-size: 24px;
     font-weight: 700;

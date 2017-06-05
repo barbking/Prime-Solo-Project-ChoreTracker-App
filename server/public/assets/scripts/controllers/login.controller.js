@@ -1,6 +1,5 @@
 myApp.controller('LoginController', ['$http', '$location', function($http, $location) {
-  //set background image for this page
-  vm.bodyClass = 'login-view';
+
   console.log('LoginController loaded');
     var vm = this;
 
@@ -29,7 +28,7 @@ myApp.controller('LoginController', ['$http', '$location', function($http, $loca
             $location.path('/user');
           } else {
             console.log('failure: ', response);
-            vm.message = "Wrong!!";
+            vm.message = "Try again! Your username or password did not match.";
           }
         });//end post
       }

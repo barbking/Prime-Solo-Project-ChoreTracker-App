@@ -1,19 +1,16 @@
 //controller for user home page
 myApp.controller('UserController', ['$http', '$location', 'tasksService', function($http, $location, tasksService) {
-  
+
   var vm = this;
-  //array to save db data for calculations/pie graph
-  vm.usertasks = [];
-  //checking user
-  console.log('checking user');
-  // //logout user
+
+  //logout user
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
       console.log('logged out');
       $location.path("/home");
     });
   };
-  //
+  // get task data from database and calc data for pie graph
   $http.get('/user').then(function(response) {
       if(response.data.username) {
           // user has a curret session on the server
@@ -25,7 +22,7 @@ myApp.controller('UserController', ['$http', '$location', 'tasksService', functi
           vm.usertasks = tasksService.usertasks;
           console.log('get usertasks in user controller:', vm.usertasks);
           vm.calcPieGraphPercent();
-          }); //get tasks for this specific username
+        });
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
@@ -65,7 +62,7 @@ myApp.controller('UserController', ['$http', '$location', 'tasksService', functi
         }
     };
     vm.clickme = function($event){
-        alert("You've clicked upon "+$event[0]._view.label);
+        alert($event[0]._view.label);
     };
 
 }]);//end of UserController

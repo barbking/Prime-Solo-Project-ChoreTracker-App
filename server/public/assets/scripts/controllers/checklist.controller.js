@@ -11,8 +11,8 @@ myApp.controller('CheckListController', [ '$http', '$location','tasksService', f
           console.log('vm.userName: ', vm.userName);
           //get username specific task using tasksService service
           tasksService.getUserTasks(vm.userName).then(function(){
-            vm.usertasks = tasksService.usertasks;
-            console.log('get usertasks:', vm.usertasks);
+            vm.tasks = tasksService.tasks;
+            console.log('get usertasks:', vm.tasks);
           }); //get tasks for this specific username
       } else {
           // user has no session, bounce them back to the login page

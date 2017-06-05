@@ -33,8 +33,15 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   $http.get('/admin').then(function(response) {
       if(response.data.username) {
           // user has a curret session on the server
+          // vm.userName = response.data.username;
+          // console.log('User Data: ', vm.userName);
+          vm.firstname = response.data.firstname;
           vm.userName = response.data.username;
-          console.log('User Data: ', vm.userName);
+          console.log('vm.userName: ', vm.userName);
+          // tasksService.getTasks().then(function(){
+          //   vm.tasks = tasksService.usertasks;
+          //   console.log('get usertasks:', vm.tasks);
+          // }); //get tasks for this specific username
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
@@ -72,30 +79,43 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       console.log('username[]',vm.usernames);
     });
   };
-  //show username data in editable table
-  vm.showUsername = function(user) {
-    if(user.username && vm.usernames.length) {
-      var selected = $filter('filter')(vm.usernames, {id: user.username});
+  //show username data in editable table if usernames[] contains task.username val
+  vm.showUsername = function(task) {
+    if(task.username && vm.usernames.length) {
+      //check to see if vm.username contains task.username
+      var selected = $filter('filter')(vm.usernames, {id: task.username});
       return selected.length ? selected[0].text : 'Not set';
     } else {
-      return user.username || 'Not set';
+      return task.username || 'Not set';
     }
   };
-  //show frequency data in editable table
-  vm.showFrequency = function(user) {
+  //show frequency data in editable table if frequencies[] contains task.frequency val
+  vm.showFrequency = function(task) {
     var selected = [];
-    if(vm.user.frequency) {
-      selected = $filter('filter')(vm.statuses, {value: vm.user.frequency});
+    if(task.frequency) {
+      selected = $filter('filter')(vm.frequencies, {value: task.frequency});
     }
     return selected.length ? selected[0].text : 'Not set';
   };
+
+  vm.checkName = function(data,task_id) {
+   if (data === 'empty') {
+     return "Enter a task name";
+   }
+ };
   // get tasks from database using tasks.service
   vm.loadTasks = function() {
      return vm.tasks.length ? null : $http.get('/tasks').then(function(response) {
       console.log('in loadTasks, task[]:', response.data);
       vm.tasks = response.data;
+      return vm.tasks;
       // return tasksService.getTasks;
     });
+  };
+  // hide task list on button click
+  vm.hideTasks = function() {
+    vm.tasks=[];
+    return vm.tasks;
   };
   // save a task to database upon save button click and using task.service.js
   vm.saveTask = function(data, id) {
@@ -110,7 +130,6 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
     console.log('removeTask id:',id);
     return $http.delete('/tasks/'+id);
     // tasksService.deleteTask;
-
   };
   // add a task input to tasks[] to populate xeditable table
   vm.addTask = function() {
@@ -118,8 +137,8 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
     vm.inserted = {
       id: vm.tasks.length+1,
       description: '',
-      frequency: '',
-      username: '',
+      frequency: null,
+      username: null,
     };
     vm.tasks.push(vm.inserted);
     console.log('addTask tasks[]:',vm.tasks);

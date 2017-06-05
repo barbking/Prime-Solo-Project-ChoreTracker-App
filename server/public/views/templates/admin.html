@@ -44,18 +44,18 @@
       <td>
         <!-- editable frequency-->
         <span editable-select="task.frequency" e-name="frequency" e-form="rowform" e-ng-options="f.value as f.text for f in ac.frequencies">
-          {{ showFrequency(task) }}
+          {{ ac.showFrequency(task) }}
         </span>
       </td>
       <td>
         <!-- editable username (select-remote) -->
         <span editable-select="task.username" e-name="username" onshow="ac.loadUsernames()" e-form="rowform" e-ng-options="u.username as u.username for u in ac.usernames">
-          {{ showUsername(task) }}
+          {{ ac.showUsername(task) }}
         </span>
       </td>
       <td style="white-space: nowrap">
         <!-- form -->
-        <form editable-form name="rowform" onbeforesave="ac.saveTask($data, task.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == task">
+        <form editable-form name="rowform"  onbeforesave="ac.saveTask($data, task.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="ac.inserted === task">
           <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
             save
           </button>
@@ -70,9 +70,10 @@
       </td>
     </tr>
   </table>
-</div>
-<div class="adminbuttons">
+<!-- </div>
+<div class="adminbuttons"> -->
   <button type="button" class="btn btn-default" ng-click="ac.addTask()">Add Task</button>
-  <button type="button" class="btn btn-default" ng-click="ac.loadTasks()">Load Task List</button>
+  <button type="button" class="btn btn-default" ng-click="ac.loadTasks()">Show Task List</button>
+  <button type="button" class="btn btn-default" ng-click="ac.hideTasks()">Hide Task List</button>
   <!-- <button type="button" class="btn btn-primary adminlogout" ng-click="ac.logout()">LOGOUT</button> -->
 </div>
