@@ -22,6 +22,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/admin.html',
       controller: "AdminController as ac"
     })
+    .when('/adminbank', {
+      templateUrl: '/views/templates/adminbank.html',
+      controller: "AdminBankController as abc"
+    })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
       controller: "UserController as uc"

@@ -4,13 +4,13 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
 
   var vm = this;
 
-  vm.user = {
-    firstname: '',
-    lastname: '',
-    username: '',
-    password: ''
-
-  };
+  // vm.user = {
+  //   firstname: '',
+  //   lastname: '',
+  //   username: '',
+  //   password: ''
+  //
+  // };
 
   vm.tasks = [];
   console.log('tasks:', vm.tasks);
@@ -107,7 +107,8 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
  };
   // get tasks from database using tasks.service
   vm.loadTasks = function() {
-     return vm.tasks.length ? null : $http.get('/tasks').then(function(response) {
+       $http.get('/tasks').then(function(response) {
+    //  return vm.tasks.length ? null : $http.get('/tasks').then(function(response) {
       console.log('in loadTasks, task[]:', response.data);
       vm.tasks = response.data;
       return vm.tasks;
