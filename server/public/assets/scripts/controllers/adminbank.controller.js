@@ -1,63 +1,67 @@
-myApp.controller('AdminBankController',['$http', '$location', '$filter', 'tasksService', function($http, $location, $filter, tasksService) {
+myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankService', function($http, $location, $filter, bankService) {
 
   console.log('in AdminBankController');
 
   var vm = this;
   //get data from bank collection in db
-  vm.bank = [];
-  //type of transaction
-  vm.tansaction = ["deposit", "withdrawal"];
+  vm.bankTransactions = [];
   //usernames from db
-  vm.usernames = [{username:"sarahking"}, {username:"connorking"}];
+  vm.usernames = [];
   // Upon load, check this user's session on the server
   $http.get('/admin').then(function(response) {
+    console.log(response);
       if(response.data.username) {
-          // user has a curret session on the server
-          // vm.userName = response.data.username;
-          // console.log('User Data: ', vm.userName);
           vm.firstname = response.data.firstname;
           vm.userName = response.data.username;
           console.log('vm.userName: ', vm.userName);
-          // tasksService.getTasks().then(function(){
-          //   vm.tasks = tasksService.usertasks;
-          //   console.log('get usertasks:', vm.tasks);
-          // }); //get tasks for this specific username
+          vm.loadUsernames();
+          vm.getBankTransactions().then(function(){
+            vm.bankTransactions = bankService.bankTransactions;
+            console.log(vm.bankTransactions);
+          });
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
       }
   });
-
+  //logout button function
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
       console.log('logged out');
       $location.path("/home");
     });
   };
-
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
-    return vm.usernames.length ? null : $http.get('/usernames').then(function(response) {
+    $http.get('/usernames').then(function(response) {
       vm.usernames = response.data;
-      console.log('username[]',vm.usernames);
+      console.log('usernames[]',vm.usernames);
     });
   };
-
+  //save bank transaction to db
+  vm.addTransaction = function() {
+    if(vm.bank.date == '' || vm.bank.username == '' || vm.bank.transaction == '' || vm.bank.amount == '' ) {
+      vm.message = "Cannot enter a blank selection!";
+    } else {
+      //data to send to bank db
+      data = {
+        date: vm.bank.date,
+        username: vm.bank.username,
+        transaction: vm.bank.transaction,
+        amount: vm.bank.amount
+      };
+      console.log('data to send to db:',data);
+      bankService.saveTransaction(data);
+    }//end of else/if
+  };//end addTransaction
 
   // get tasks from database using tasks.service
-  vm.loadTasks = function() {
-       $http.get('/tasks').then(function(response) {
-    //  return vm.tasks.length ? null : $http.get('/tasks').then(function(response) {
-      console.log('in loadTasks, task[]:', response.data);
-      vm.tasks = response.data;
-      return vm.tasks;
-      // return tasksService.getTasks;
-    });
-  };
+  vm.getBankTransactions = bankService.getBankTransactions;
+
   // hide task list on button click
-  vm.hideTasks = function() {
-    vm.tasks=[];
-    return vm.tasks;
+  vm.hideTransactions = function() {
+    vm.bank=[];
+    return vm.bank;
   };
 
   //logout function run on admin logout button click
@@ -67,4 +71,4 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'tasksS
       $location.path("/home");
     });
   };//end of logOut func
-}]);//end of AdminController
+}]);//end of AdminBankController

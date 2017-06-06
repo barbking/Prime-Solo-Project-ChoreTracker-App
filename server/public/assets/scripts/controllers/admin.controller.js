@@ -4,18 +4,9 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
 
   var vm = this;
 
-  // vm.user = {
-  //   firstname: '',
-  //   lastname: '',
-  //   username: '',
-  //   password: ''
-  //
-  // };
-
   vm.tasks = [];
   console.log('tasks:', vm.tasks);
   // vm.tasks = tasksService.tasks;
-
 
   vm.frequencies = [
     {value: 1, text: '1'},
@@ -38,6 +29,7 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
           vm.firstname = response.data.firstname;
           vm.userName = response.data.username;
           console.log('vm.userName: ', vm.userName);
+          vm.loadTasks();
           // tasksService.getTasks().then(function(){
           //   vm.tasks = tasksService.usertasks;
           //   console.log('get usertasks:', vm.tasks);
@@ -47,14 +39,13 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
           $location.path("/home");
       }
   });
-
+ //logout button function
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
       console.log('logged out');
       $location.path("/home");
     });
   };
-
   //add child user account to database
   vm.addUser = function() {
     if(vm.user.username == '' || vm.user.password == '') {
@@ -71,7 +62,6 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       });
     }
   };//end addUser
-
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
     return vm.usernames.length ? null : $http.get('/usernames').then(function(response) {

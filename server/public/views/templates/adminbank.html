@@ -12,28 +12,48 @@
 </nav>
 <!--  this is AdminBankController as abc-->
 <div id="banktransaction">
+  <h3 ng-if="ac.message != ''">{{abc.message}}</h3>
       <form ng-submit="abc.addTransaction()">
         <b>MAKE A BANK TRANSACTION</b><br>
-        <label for="datepicker">Select transaction date:</label>
-        <input type="date" name="datepicker" ng-model="abc.bank.date">
-        <label for="transaction"> Select transaction type: </label>
+
+          <label for="datepicker">Select transaction date:</label>
+          <input type="date" name="datepicker" ng-model="abc.bank.date">
+
+          <label for="transaction"> Select transaction type: </label>
           <select name="transaction" ng-model="abc.bank.transaction">
-            <option value="{{abc.transaction.deposit}}">deposit</option>
-            <option value="{{abc.transaction.withdrawal}}">withdrawal</option>
+            <option value="deposit">deposit</option>
+            <option value="withdrawal">withdrawal</option>
           </select>
-        <label>Amount:
+
+          <label>Amount:  </label>
           <input type="number" name="input" ng-model="abc.bank.amount"
                 min="0" max="20" required>
-        </label>
-        <label for="username"> Select child: </label>
-          <select ng-model="thing"
-            ng-options="thing as thing.username for thing in abc.usernames">
-            <option value=""></option>
-        </select>
-        <input class="btn btn-default" type="submit" name="submit" value="submit" />
+
+          <label for="username"> Select child: </label>
+          <select ng-model="abc.bank.username"
+            ng-options="thing.username as thing.username for thing in abc.usernames">
+            <option value="{{thing.username}}"></option>
+          </select>
+
+          <input class="btn btn-default" type="submit" name="submit" value="submit"/>
       </form>
 </div>
-
+<table>
+  <tr>
+     <th>Date</th>
+     <th>Transaction Type</th>
+     <!-- <th>Deposit</th> -->
+     <!-- <th>Withdrawl</th> -->
+     <th>Amount</th>
+     <th>Name</th>
+  </tr>
+  <tr ng-repeat="item in abc.bankTransactions">
+    <td>{{ item.date }}</td>
+    <td>{{ item.transaction }}</td>
+    <td>{{ item.amount }}</td>
+    <td>{{ item.username }}</td>
+  </tr>
+</table>
 <!-- <div class="adminbuttons">
   <button type="button" class="btn btn-default" ng-click="ac.addItem()">Add item</button>
   <button type="button" class="btn btn-default" ng-click="ac.loadItems()">Show</button>

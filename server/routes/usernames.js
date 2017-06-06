@@ -9,11 +9,10 @@ var users = require('../models/user.model.js');
 
 
 router.get( '/', function( req, res ){
-  console.log( 'username router get call' );
   users.find().then(function (data){
-  console.log('in username route get data:',data);
-  res.send( data);
-});
+    console.log('in username route get data:', data);
+    res.send( data);
+  });
 }); //end get
 
 module.exports = router;

@@ -3,5 +3,34 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var path = require('path');
+var bodyParser = require('body-parser');
+var bank = require('../models/bank.model.js');
+
+// create bank deposit/withdrawal record in db
+router.post('/', function (req,res){
+  console.log('in post to bank:', req.body);
+    // send back user object from database
+    var newTransaction;
+    newTransaction = new bank(req.body);
+    console.log('new bank transaction:', newTransaction);
+    //save new task in database
+    newTransaction.save( function ( err, response ){
+      if (err) {
+        console.log('DB error:',err);
+        res.sendStatus( 500 );
+      } else {
+        console.log('DB success:',response);
+        res.sendStatus( 201 );
+      }
+    });
+  });
+
+  router.get('/', function (req, res){
+    console.log ('in router get bankTransactions');
+    bank.find().then(function (data){
+      console.log('in bank route get data:',data);
+      res.send( data);
+    });
+  });
 
 module.exports = router;
