@@ -15,20 +15,20 @@
   <h3 ng-if="ac.message != ''">{{abc.message}}</h3>
       <form ng-submit="abc.addTransaction()">
         <b>MAKE A BANK TRANSACTION</b><br>
-
+          <!--date picker input-->
           <label for="datepicker">Select transaction date:</label>
           <input type="date" name="datepicker" ng-model="abc.bank.date">
-
+          <!--select withdrawal/deposit -->
           <label for="transaction"> Select transaction type: </label>
           <select name="transaction" ng-model="abc.bank.transaction">
             <option value="deposit">deposit</option>
             <option value="withdrawal">withdrawal</option>
           </select>
-
+          <!--select dollar amount-->
           <label>Amount:  </label>
           <input type="number" name="input" ng-model="abc.bank.amount"
-                min="0" max="20" required>
-
+                min="-20" max="20" required>
+          <!--select username-->
           <label for="username"> Select child: </label>
           <select ng-model="abc.bank.username"
             ng-options="thing.username as thing.username for thing in abc.usernames">
@@ -48,7 +48,7 @@
      <th>Name</th>
   </tr>
   <tr ng-repeat="item in abc.bankTransactions">
-    <td>{{ item.date }}</td>
+    <td>{{ item.date | date:'MM-dd-yyyy'}}</td>
     <td>{{ item.transaction }}</td>
     <td>{{ item.amount }}</td>
     <td>{{ item.username }}</td>

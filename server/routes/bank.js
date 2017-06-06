@@ -5,7 +5,6 @@ var passport = require('passport');
 var path = require('path');
 var bodyParser = require('body-parser');
 var bank = require('../models/bank.model.js');
-
 // create bank deposit/withdrawal record in db
 router.post('/', function (req,res){
   console.log('in post to bank:', req.body);
@@ -24,13 +23,21 @@ router.post('/', function (req,res){
       }
     });
   });
-
+  //get username specific data from bank collection in db
+  router.get('/:username', function (req,res){
+    console.log ('in router get user bank transactions');
+    bank.find({username:req.params.username}).then(function (data){
+    console.log('in bank username route get data:',data);
+    res.send( data);
+    });//end get username
+  });
+  //get all data from bank collection in db
   router.get('/', function (req, res){
     console.log ('in router get bankTransactions');
     bank.find().then(function (data){
       console.log('in bank route get data:',data);
       res.send( data);
     });
-  });
+  });//end get
 
 module.exports = router;

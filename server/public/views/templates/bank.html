@@ -13,7 +13,7 @@
 </nav>
 
 <div class="container">
-    <h1 id="welcome" class="lead">{{bc.userName}}'s account at the Mom Bank</h1>
+    <h1 id="welcome" class="lead">{{bc.firstName}}'s account at the Mom Bank</h1>
 </div>
 
   <table>
@@ -24,9 +24,10 @@
     </tr>
     <tr ng-repeat="item in bc.bank">
       <!--don't need brackets for checkbox below, ng-repeat has it's own scope  -->
-      <td><input ng-model = "bank.date" type="checkbox"></td>
-      <td><input ng-model = "task.deposit" type="checkbox"></td>
-      <td><input ng-model = "task.withdrawel" type="checkbox"></td>
+      <td>{{ item.date | date:'MM-dd-yyyy' }}</td>
+      <td>{{ item.transaction }}</td>
+      <!-- <td><input ng-model = "{{ item.transaction}}"></td> -->
+      <td>{{ item.amount }}</td>
     </tr>
   </table>
 

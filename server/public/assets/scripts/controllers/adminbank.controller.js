@@ -41,7 +41,6 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
       vm.usernames = response.data;
       for (i=0; i<=vm.usernames.length-1; i++){
         if (vm.usernames[i].admin) {
-          console.log('loop:',vm.usernames[i]);
           vm.usernames.splice(vm.usernames[i],1);
       }
       console.log('usernames[]',vm.usernames);
@@ -63,6 +62,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
       };
       console.log('data to send to db:',data);
       bankService.saveTransaction(data);
+      vm.getBankTransactions();
     }//end of else/if
   };//end addTransaction
 
@@ -73,23 +73,23 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   vm.calcBalance = function(){
     console.log('in calcBalance');
     for (i=0; i<=vm.usernames.length-1; i++){
+      var counter = 0;
       for (j=0; j<=vm.bankTransactions.length-1; j++) {
-        if ((vm.bankTransactions[j].username === vm.usernames[i].username) && vm.bankTransactions[j].transaction === "deposit") {
-          vm.usernames[i].balance =+ parseInt(vm.bankTransactions[j].amount);
-          // console.log('username bal', vm.usernames[i].balance);
-        } else if ((vm.bankTransactions[j].username === vm.usernames[i].username) && vm.bankTransactions[j].transaction === "withdrawal"){
-          vm.usernames[i].balance =- parseInt(vm.bankTransactions[j].amount);
+        if (vm.usernames[i].username == vm.bankTransactions[j].username) {
+          counter = counter + parseInt(vm.bankTransactions[j].amount);
+          console.log(vm.usernames[i].username,counter);
         }
-      }
+      }//end j loop
         var username = vm.usernames[i].username;
-        var balance = vm.usernames[i].balance;
+        balance = counter;
         var userBal = {
           username: username,
           balance: balance
-        };
+        };//end obj
         console.log ('userBal',userBal);
         vm.balance.push(userBal);
-  }
+        console.log(10+(-5));
+    }//end i for loop
 };//end of calcBalance
 
   // hide task list on button click
