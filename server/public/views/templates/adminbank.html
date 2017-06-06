@@ -38,7 +38,7 @@
           <input class="btn btn-default" type="submit" name="submit" value="submit"/>
       </form>
 </div>
-<table>
+<table id="adminbanktable">
   <tr>
      <th>Date</th>
      <th>Transaction Type</th>
@@ -54,9 +54,14 @@
     <td>{{ item.username }}</td>
   </tr>
 </table>
-<!-- <div class="adminbuttons">
-  <button type="button" class="btn btn-default" ng-click="ac.addItem()">Add item</button>
-  <button type="button" class="btn btn-default" ng-click="ac.loadItems()">Show</button>
-  <button type="button" class="btn btn-default" ng-click="ac.hideItems()">Hide</button>
-  <!-- <button type="button" class="btn btn-primary adminlogout" ng-click="ac.logout()">LOGOUT</button> -->
-<!-- </div> -->
+<table id="balancestable">
+  <tr>
+     <th colspan="2">Account Balances</th>
+  </tr>
+     <th>Name</th>
+     <th>Balance</th>
+  <tr ng-repeat="item in abc.balance">
+    <td>{{ item.username }}</td>
+    <td>{{ item.balance }}</td>
+  </tr>
+</table>

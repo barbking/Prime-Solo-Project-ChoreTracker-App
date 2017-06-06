@@ -7,6 +7,8 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   vm.bankTransactions = [];
   //usernames from db
   vm.usernames = [];
+  //balance for each username
+  vm.balance = [];
   // Upon load, check this user's session on the server
   $http.get('/admin').then(function(response) {
     console.log(response);
@@ -18,7 +20,9 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
           vm.getBankTransactions().then(function(){
             vm.bankTransactions = bankService.bankTransactions;
             console.log(vm.bankTransactions);
-          });
+            vm.calcBalance();
+          });//end getBankTransactions func
+
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
@@ -35,7 +39,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   vm.loadUsernames = function() {
     $http.get('/usernames').then(function(response) {
       vm.usernames = response.data;
-      console.log('usernames[]',vm.usernames);
+      console.log('usernames[]',vm.usernames,response.data.username);
     });
   };
   //save bank transaction to db
@@ -57,6 +61,29 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
 
   // get tasks from database using tasks.service
   vm.getBankTransactions = bankService.getBankTransactions;
+
+  // calculate balances for each user account
+  vm.calcBalance = function(){
+    console.log('in calcBalance');
+    for (i=0; i<=vm.usernames.length-1; i++){
+      for (j=0; j<=vm.bankTransactions.length-1; j++) {
+        if ((vm.bankTransactions[j].username === vm.usernames[i].username) && vm.bankTransactions[j].transaction === "deposit") {
+          vm.usernames[i].balance =+ parseInt(vm.bankTransactions[j].amount);
+          console.log('username bal', vm.usernames[i].balance);
+        } else if ((vm.bankTransactions[j].username === vm.usernames[i].username) && vm.bankTransactions[j].transaction === "withdrawal"){
+          vm.usernames[i].balance =- parseInt(vm.bankTransactions[j].amount);
+        }
+      }
+        var username = vm.usernames[i].username;
+        var balance = vm.usernames[i].balance;
+        var userBal = {
+          username: username,
+          balance: balance
+        };
+        console.log ('userBal',userBal);
+        vm.balance.push(userBal);
+  }
+};//end of calcBalance
 
   // hide task list on button click
   vm.hideTransactions = function() {

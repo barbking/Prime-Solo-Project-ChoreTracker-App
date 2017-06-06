@@ -47,7 +47,7 @@
       </td>
       <td>
         <!-- editable username (select-remote) -->
-        <span editable-select="task.username" e-name="username" onshow="ac.loadUsernames()" e-form="rowform" >
+        <span editable-select="task.username" e-name="username" onshow="ac.loadUsernames()" e-form="rowform" e-ng-options="u.username as u.username for u in ac.usernames">
           {{ ac.showUsername(task) }}
         </span>
       </td>
