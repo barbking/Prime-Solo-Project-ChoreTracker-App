@@ -39,9 +39,16 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   vm.loadUsernames = function() {
     $http.get('/usernames').then(function(response) {
       vm.usernames = response.data;
-      console.log('usernames[]',vm.usernames,response.data.username);
-    });
-  };
+      for (i=0; i<=vm.usernames.length-1; i++){
+        if (vm.usernames[i].admin) {
+          console.log('loop:',vm.usernames[i]);
+          vm.usernames.splice(vm.usernames[i],1);
+      }
+      console.log('usernames[]',vm.usernames);
+      return vm.usernames;
+    }
+  });
+};//end of loadUsernames
   //save bank transaction to db
   vm.addTransaction = function() {
     if(vm.bank.date == '' || vm.bank.username == '' || vm.bank.transaction == '' || vm.bank.amount == '' ) {
@@ -69,7 +76,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
       for (j=0; j<=vm.bankTransactions.length-1; j++) {
         if ((vm.bankTransactions[j].username === vm.usernames[i].username) && vm.bankTransactions[j].transaction === "deposit") {
           vm.usernames[i].balance =+ parseInt(vm.bankTransactions[j].amount);
-          console.log('username bal', vm.usernames[i].balance);
+          // console.log('username bal', vm.usernames[i].balance);
         } else if ((vm.bankTransactions[j].username === vm.usernames[i].username) && vm.bankTransactions[j].transaction === "withdrawal"){
           vm.usernames[i].balance =- parseInt(vm.bankTransactions[j].amount);
         }
