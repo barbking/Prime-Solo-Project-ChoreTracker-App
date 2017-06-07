@@ -63,9 +63,16 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
       };
       console.log('data to send to db:',data);
       bankService.saveTransaction(data).then(function(){
-        vm.getBankTransactions();
-        vm.calcBalance();
+        vm.getBankTransactions().then(function(){
+          vm.bankTransactions = bankService.bankTransactions;
+          console.log(vm.bankTransactions);
+          vm.calcBalance();
+        });//end getBankTransactions func
       });
+
+
+
+
     }//end of else/if
   };//end addTransaction
 

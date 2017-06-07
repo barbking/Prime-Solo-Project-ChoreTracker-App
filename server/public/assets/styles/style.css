@@ -115,12 +115,12 @@ btn {
   margin: 100px;
 }
 /*#piechart*/
- #pie {
+ #piechart {
   width: 400px;
   height: 400px;
   align-content: center;
   /*margin-left: 200px;*/
-  float: right;
+  float: left;
 }
 
 

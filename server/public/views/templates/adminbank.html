@@ -13,7 +13,7 @@
 <!--  this is AdminBankController as abc-->
   <h3 ng-if="ac.message != ''">{{abc.message}}</h3>
   <div id="banktransaction" class="panel panel-default">
-    <div class="panel-heading"><b>MAKE A BANK TRANSACTION</b></div>
+    <div class="panel-heading"><b>MAKE A TRANSACTION AT THE MOM BANK</b></div>
       <div class="panel-body">
         <form ng-submit="abc.addTransaction()">
 
@@ -35,7 +35,7 @@
             <select ng-model="abc.bank.username"
               ng-options="thing.username as thing.username for thing in abc.usernames">
               <option value="{{thing.username}}"></option>
-            </select><br>
+            </select><br><br>
             <!--comment input-->
             <label for "comment"> Comments: </label>
             <input type="string" name="comment" ng-model="abc.bank.comment"/>
@@ -54,7 +54,7 @@
   <tr ng-repeat="item in abc.bankTransactions | orderBy:'date'">
     <td>{{ item.date | date:'MM-dd-yyyy'}}</td>
     <td>{{ item.transaction }}</td>
-    <td>{{ item.amount }}</td>
+    <td>{{ item.amount | currency}}</td>
     <td>{{ item.username }}</td>
     <td>{{ item.comment }}</td>
   </tr>

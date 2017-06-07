@@ -38,6 +38,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/bank.html',
       controller: "BankController as bc"
     })
+    .when('/funstuff', {
+      templateUrl: '/views/templates/funstuff.html',
+      controller: "FunStuffController as fc"
+    })
     .otherwise({
       redirectTo: 'home'
     });

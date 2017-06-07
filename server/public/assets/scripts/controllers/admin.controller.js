@@ -22,17 +22,10 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   // Upon load, check this user's session on the server
   $http.get('/admin').then(function(response) {
       if(response.data.username) {
-          // user has a curret session on the server
-          // vm.userName = response.data.username;
-          // console.log('User Data: ', vm.userName);
           vm.firstname = response.data.firstname;
           vm.userName = response.data.username;
           console.log('vm.userName: ', vm.userName);
           vm.loadTasks();
-          // tasksService.getTasks().then(function(){
-          //   vm.tasks = tasksService.usertasks;
-          //   console.log('get usertasks:', vm.tasks);
-          // }); //get tasks for this specific username
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
@@ -54,6 +47,8 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       $http.post('/register', vm.user).then(function(response) {
         console.log('success');
         vm.user = {};
+        vm.loadUsernames();
+        console.log('adduser',vm.usernames);
       },
       function(response) {
         console.log('error');
@@ -69,13 +64,15 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
    }).then(function(response) {
      console.log(response);
      vm.loadUsernames();
+     console.log('removeUser',vm.usernames);
    });
+  //  return vm.loadUsernames();
   };
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
     return vm.usernames.length ? null : $http.get('/usernames').then(function(response) {
       vm.usernames = response.data;
-      console.log('username[]',vm.usernames);
+      console.log('in loadUsernames()',vm.usernames);
     });
   };//end loadUsernames
   //show users on button click
