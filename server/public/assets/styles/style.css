@@ -59,6 +59,9 @@ table, th , td {
   width: 1000px;
   margin-left: 50px;
 }
+.banksubmit{
+  float: right;
+}
 .navbarbutton {
   margin: 10px;
   float: right;

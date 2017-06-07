@@ -35,9 +35,11 @@
             <select ng-model="abc.bank.username"
               ng-options="thing.username as thing.username for thing in abc.usernames">
               <option value="{{thing.username}}"></option>
-            </select>
-
-            <input class="btn btn-primary" type="submit" name="submit" value="submit"/>
+            </select><br>
+            <!--comment input-->
+            <label for "comment"> Comments: </label>
+            <input type="string" name="comment" ng-model="abc.bank.comment"/>
+            <input class="btn banksubmit btn-primary" type="submit" name="submit" value="submit"/>
         </form>
       </div>
     </div>
@@ -45,8 +47,6 @@
   <tr>
      <th>Date</th>
      <th>Transaction Type</th>
-     <!-- <th>Deposit</th> -->
-     <!-- <th>Withdrawl</th> -->
      <th>Amount</th>
      <th>Name</th>
      <th>Comments</th>

@@ -22,20 +22,12 @@
        <th>Transaction</th>
        <th>Amount</th>
        <th>Comments</th>
-       <!-- <th>Deposit</th>
-       <th>Withdrawal</th> -->
     </tr>
       <tr ng-repeat="item in bc.bank | orderBy:'date' ">
         <td>{{ item.date | date:'MM-dd-yyyy' }}</td>
         <td>{{ item.transaction}}</td>
         <td>{{ item.amount | currency }}</td>
         <td>{{ item.comment }}</td>
-
-    <!-- <tr ng-repeat="item in bc.bank | orderBy:'date' ">
-      <td>{{ item.date | date:'MM-dd-yyyy' }}</td>
-      <td ng-if="item.transaction === 'deposit' ">{{item.transaction}}{{ item.amount | currency }}</td>
-      <td ng-if="item.transaction === 'withdrawal' ">{{item.transaction}}{{ item.amount | currency }}</td>
-    </tr> -->
   </tr>
     <tr>
       <td>Account Balance</td>

@@ -58,7 +58,8 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
         date: vm.bank.date,
         username: vm.bank.username,
         transaction: vm.bank.transaction,
-        amount: vm.bank.amount
+        amount: vm.bank.amount,
+        comment: vm.bank.comment
       };
       console.log('data to send to db:',data);
       bankService.saveTransaction(data).then(function(){

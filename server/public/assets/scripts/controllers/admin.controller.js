@@ -61,6 +61,16 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       });
     }
   };//end addUser
+  //delete user
+  vm.removeUser = function (id){
+    $http({
+     method: 'DELETE',
+     url: '/user/'+id,
+   }).then(function(response) {
+     console.log(response);
+     vm.loadUsernames();
+   });
+  };
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
     return vm.usernames.length ? null : $http.get('/usernames').then(function(response) {

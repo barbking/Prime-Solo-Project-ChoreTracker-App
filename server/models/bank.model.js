@@ -6,7 +6,8 @@ var bankSchema = {
   username: {type: String, required: true},
   transaction: {type: String, required: true},
   amount: {type: Number, required: true},
-  date: {type: Date, required: true}
+  date: {type: Date, required: true},
+  comment: {type: String}
 };
 
 
