@@ -19,15 +19,27 @@
   <table>
     <tr>
        <th>Date</th>
-       <th>Deposit</th>
-       <th>Withdrawel</th>
+       <th>Transaction</th>
+       <th>Amount</th>
+       <th>Comments</th>
+       <!-- <th>Deposit</th>
+       <th>Withdrawal</th> -->
     </tr>
-    <tr ng-repeat="item in bc.bank">
-      <!--don't need brackets for checkbox below, ng-repeat has it's own scope  -->
+      <tr ng-repeat="item in bc.bank | orderBy:'date' ">
+        <td>{{ item.date | date:'MM-dd-yyyy' }}</td>
+        <td>{{ item.transaction}}</td>
+        <td>{{ item.amount | currency }}</td>
+        <td>{{ item.comment }}</td>
+
+    <!-- <tr ng-repeat="item in bc.bank | orderBy:'date' ">
       <td>{{ item.date | date:'MM-dd-yyyy' }}</td>
-      <td>{{ item.transaction }}</td>
-      <!-- <td><input ng-model = "{{ item.transaction}}"></td> -->
-      <td>{{ item.amount }}</td>
+      <td ng-if="item.transaction === 'deposit' ">{{item.transaction}}{{ item.amount | currency }}</td>
+      <td ng-if="item.transaction === 'withdrawal' ">{{item.transaction}}{{ item.amount | currency }}</td>
+    </tr> -->
+  </tr>
+    <tr>
+      <td>Account Balance</td>
+      <td colspan="3">{{ bc.balance | currency }}</td>
     </tr>
   </table>
 

@@ -61,8 +61,10 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
         amount: vm.bank.amount
       };
       console.log('data to send to db:',data);
-      bankService.saveTransaction(data);
-      vm.getBankTransactions();
+      bankService.saveTransaction(data).then(function(){
+        vm.getBankTransactions();
+        vm.calcBalance();
+      });
     }//end of else/if
   };//end addTransaction
 
@@ -71,13 +73,14 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
 
   // calculate balances for each user account
   vm.calcBalance = function(){
+    vm.balance =[];
     console.log('in calcBalance');
     for (i=0; i<=vm.usernames.length-1; i++){
       var counter = 0;
       for (j=0; j<=vm.bankTransactions.length-1; j++) {
         if (vm.usernames[i].username == vm.bankTransactions[j].username) {
           counter = counter + parseInt(vm.bankTransactions[j].amount);
-          console.log(vm.usernames[i].username,counter);
+          console.log('username:',vm.usernames[i].username,'counter:',counter);
         }
       }//end j loop
         var username = vm.usernames[i].username;
@@ -88,7 +91,6 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
         };//end obj
         console.log ('userBal',userBal);
         vm.balance.push(userBal);
-        console.log(10+(-5));
     }//end i for loop
 };//end of calcBalance
 

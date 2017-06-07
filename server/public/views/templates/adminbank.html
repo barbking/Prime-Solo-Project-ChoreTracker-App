@@ -11,33 +11,36 @@
  </div>
 </nav>
 <!--  this is AdminBankController as abc-->
-<div id="banktransaction">
   <h3 ng-if="ac.message != ''">{{abc.message}}</h3>
-      <form ng-submit="abc.addTransaction()">
-        <b>MAKE A BANK TRANSACTION</b><br>
-          <!--date picker input-->
-          <label for="datepicker">Select transaction date:</label>
-          <input type="date" name="datepicker" ng-model="abc.bank.date">
-          <!--select withdrawal/deposit -->
-          <label for="transaction"> Select transaction type: </label>
-          <select name="transaction" ng-model="abc.bank.transaction">
-            <option value="deposit">deposit</option>
-            <option value="withdrawal">withdrawal</option>
-          </select>
-          <!--select dollar amount-->
-          <label>Amount:  </label>
-          <input type="number" name="input" ng-model="abc.bank.amount"
-                min="-20" max="20" required>
-          <!--select username-->
-          <label for="username"> Select child: </label>
-          <select ng-model="abc.bank.username"
-            ng-options="thing.username as thing.username for thing in abc.usernames">
-            <option value="{{thing.username}}"></option>
-          </select>
+  <div id="banktransaction" class="panel panel-default">
+    <div class="panel-heading"><b>MAKE A BANK TRANSACTION</b></div>
+      <div class="panel-body">
+        <form ng-submit="abc.addTransaction()">
 
-          <input class="btn btn-default" type="submit" name="submit" value="submit"/>
-      </form>
-</div>
+            <!--date picker input-->
+            <label for="datepicker">Select transaction date:</label>
+            <input type="date" name="datepicker" ng-model="abc.bank.date">
+            <!--select withdrawal/deposit -->
+            <label for="transaction"> Select transaction type: </label>
+            <select name="transaction" ng-model="abc.bank.transaction">
+              <option value="deposit">deposit</option>
+              <option value="withdrawal">withdrawal</option>
+            </select>
+            <!--select dollar amount-->
+            <label>Amount:  </label>
+            <input type="number" name="input" ng-model="abc.bank.amount"
+                  min="-20" max="20" required>
+            <!--select username-->
+            <label for="username"> Select child: </label>
+            <select ng-model="abc.bank.username"
+              ng-options="thing.username as thing.username for thing in abc.usernames">
+              <option value="{{thing.username}}"></option>
+            </select>
+
+            <input class="btn btn-primary" type="submit" name="submit" value="submit"/>
+        </form>
+      </div>
+    </div>
 <table id="adminbanktable">
   <tr>
      <th>Date</th>
@@ -46,12 +49,14 @@
      <!-- <th>Withdrawl</th> -->
      <th>Amount</th>
      <th>Name</th>
+     <th>Comments</th>
   </tr>
-  <tr ng-repeat="item in abc.bankTransactions">
+  <tr ng-repeat="item in abc.bankTransactions | orderBy:'date'">
     <td>{{ item.date | date:'MM-dd-yyyy'}}</td>
     <td>{{ item.transaction }}</td>
     <td>{{ item.amount }}</td>
     <td>{{ item.username }}</td>
+    <td>{{ item.comment }}</td>
   </tr>
 </table>
 <table id="balancestable">
@@ -62,6 +67,6 @@
      <th>Balance</th>
   <tr ng-repeat="item in abc.balance">
     <td>{{ item.username }}</td>
-    <td>{{ item.balance }}</td>
+    <td>{{ item.balance | currency}}</td>
   </tr>
 </table>

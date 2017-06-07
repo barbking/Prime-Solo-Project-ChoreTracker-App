@@ -42,12 +42,21 @@ table, th , td {
   border-color: red;
   width: 500px;
 }
+.adduser {
+  width: 1200px;
+  margin-left: 50px;
+  margin-top: 25px;
+}
 .adminlogout {
   float: right;
   margin-right: 50px;
 }
 .adminbuttons {
   align-self: center;
+  margin-left: 50px;
+}
+#banktransaction {
+  width: 1000px;
   margin-left: 50px;
 }
 .navbarbutton {

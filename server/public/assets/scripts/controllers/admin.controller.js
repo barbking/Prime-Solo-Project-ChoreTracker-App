@@ -3,7 +3,6 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   console.log('in AdminController');
 
   var vm = this;
-
   vm.tasks = [];
   console.log('tasks:', vm.tasks);
   // vm.tasks = tasksService.tasks;
@@ -68,14 +67,19 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       vm.usernames = response.data;
       console.log('username[]',vm.usernames);
     });
+  };//end loadUsernames
+  //show users on button click
+  vm.isVisible = false;
+  vm.showHide = function () {
+    vm.loadUsernames();
+    //If DIV is visible it will be hidden and vice versa.
+    vm.isVisible = vm.isVisible ? false : true;
   };
   //show username data in editable table if usernames[] contains task.username val
   vm.showUsername = function(task) {
     if(task.username && vm.usernames.length) {
-      console.log ('showUsername',task.username, vm.usernames.length);
       //check to see if vm.username contains task.username
       var selected = $filter('filter')(vm.usernames, {username: task.username});
-      console.log('selected', selected);
       return selected.length ? selected[0].username : 'Not set';
     } else {
       return task.username || 'Not set';
