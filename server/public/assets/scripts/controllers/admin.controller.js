@@ -70,7 +70,8 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   };
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
-    return vm.usernames.length ? null : $http.get('/usernames').then(function(response) {
+    return $http.get('/usernames').then(function(response) {
+    // return vm.usernames.length ? null : $http.get('/usernames').then(function(response) {
       vm.usernames = response.data;
       console.log('in loadUsernames()',vm.usernames);
     });
@@ -154,4 +155,5 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       $location.path("/home");
     });
   };//end of logOut func
+  
 }]);//end of AdminController

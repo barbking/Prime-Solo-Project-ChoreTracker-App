@@ -24,11 +24,12 @@
             <select name="admin" ng-model="ac.user.admin">
               <option value="true">true</option>
               <option value="false">false</option>
-            </select>
-            <!-- <div class=" btn-group"> -->
+            </select><br><br>
+          Link to google embedded calendar: <input type="text" ng-model="ac.user.calendar">
+          <div class="adduserbuttons">
           <input class="btn btn-primary" type="submit" name="submit" value="submit"/>
           <button type="button" class="btn btn-default btn-primary" ng-click="ac.showHide()">show</button>
-        <!-- </div> -->
+          </div>
         </form>
 
         <table ng-show="ac.isVisible">
@@ -37,6 +38,7 @@
              <th>Last</th>
              <th>Username</th>
              <th>Admin</th>
+             <th>Calendar Link</th>
              <th>Remove User</th>
           </tr>
             <tr ng-repeat="user in ac.usernames ">
@@ -44,6 +46,7 @@
               <td>{{ user.lastname }}</td>
               <td>{{ user.username }}</td>
               <td>{{ user.admin }}</td>
+              <td>{{ user.calendar }}</td>
               <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.removeUser(user._id)">delete</button></td>
         </tr>
         </table>
@@ -96,8 +99,8 @@
     </tr>
   </table>
  </div>
-<div class="adminbuttons  btn-group">
-  <button type="button" class="btn btn-default btn-primary" ng-click="ac.addTask()">Add Task</button>
-  <button type="button" class="btn btn-default btn-primary" ng-click="ac.loadTasks()">Show Task List</button>
-  <button type="button" class="btn btn-default btn-primary" ng-click="ac.hideTasks()">Hide Task List</button>
-</div>
+  <div class="adminbuttons  btn-group">
+    <button type="button" class="btn btn-default btn-primary" ng-click="ac.addTask()">Add Task</button>
+    <button type="button" class="btn btn-default btn-primary" ng-click="ac.loadTasks()">Show Task List</button>
+    <button type="button" class="btn btn-default btn-primary" ng-click="ac.hideTasks()">Hide Task List</button>
+  </div>

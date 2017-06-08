@@ -1,5 +1,5 @@
 //controller for user home page
-myApp.controller('UserController', ['$http', '$location', 'tasksService', function($http, $location, tasksService) {
+myApp.controller('UserController', ['$http', '$location','tasksService','$sce', function($http, $location, tasksService,$sce) {
 
   var vm = this;
 
@@ -10,13 +10,19 @@ myApp.controller('UserController', ['$http', '$location', 'tasksService', functi
       $location.path("/home");
     });
   };
+
+ // myApp.filter('vm.calendar', function($sce) { return $sce.trustAsResourceUrl; });
+// $sce.trustAsResourceUrl($sce. https://calendar.google.com/calendar/embed, vm.calendar);
+
   // get task data from database and calc data for pie graph
   $http.get('/user').then(function(response) {
       if(response.data.username) {
           // user has a curret session on the server
           vm.firstname = response.data.firstname;
           vm.userName = response.data.username;
+          vm.calendar = $sce.trustAsResourceUrl(response.data.calendar);
           console.log('vm.userName: ', vm.userName);
+          console.log('vm.calendar: ', vm.calendar);
           //get username specific task using tasksService service
           tasksService.getUserTasks(vm.userName).then(function(){
           vm.usertasks = tasksService.usertasks;
@@ -65,4 +71,10 @@ myApp.controller('UserController', ['$http', '$location', 'tasksService', functi
         alert($event[0]._view.label);
     };
 
+    vm.listCalendar =function(){
+      vm.events=[];
+      GoogleAPI.listEvents().then(function(data){
+        vm.events=data;
+      });
+    };
 }]);//end of UserController

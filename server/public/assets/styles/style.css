@@ -23,13 +23,15 @@ table, th , td {
         }
 
 .home.container.ng-scope {
+  background-image: url(https://static1.squarespace.com/static/5123e8d0e4b068400111fdea/51254750e4b0bcef28971654/51254750e4b0bcef28971656/1361397648916/);
+  /*background-image: url(https://images.duckduckgo.com/iu/?u=http%3A%2F%2F4.bp.blogspot.com%2F-8mzJJpcV1xU%2FUYU7tEuR45I%2FAAAAAAAAA2o%2FQAjZxb3sw_s%2Fs1600%2FResponsibility-large.jpg&f=1);*/
   /*background-image: url(http://www.unlicool.com/image/cache/data/allsome/super_mom_0-500x500.png);*/
-  background-image: url(http://images.all-free-download.com/images/graphiclarge/super_mom_concept_illustration_with_woman_and_works_6825791.jpg);
+  /*background-image: url(http://images.all-free-download.com/images/graphiclarge/super_mom_concept_illustration_with_woman_and_works_6825791.jpg);*/
    background-repeat: no-repeat;
-   background-size: contain;
+   /*background-size: contain;*/
    background-position: center;
-   height:100vh;
-   width:1305px;
+   height: 100vh;
+   width: auto;
    background-color: #cfc087;
 }
 #admintable {
@@ -37,12 +39,36 @@ table, th , td {
   /*margin-right: 50px;*/
   align-self: center;
 }
+#banktransaction {
+  width: 1000px;
+  margin-left: 50px;
+}
 #catimagediv {
   border-style: solid;
   border-color: red;
   width: 500px;
 }
-.adduser {
+iframe {
+  padding: 40px;
+  width: 600px;
+  height: 500px;
+}
+#home {
+  margin-top: 100px;
+}
+#list {
+  margin: 100px;
+}
+/*#piechart*/
+ #piechart {
+   padding-top: 40px;
+  width: 400px;
+  height: 400px;
+  align-content: center;
+  /*margin-left: 200px;*/
+  float: left;
+}
+.adduser, .addcalendar {
   width: 1200px;
   margin-left: 50px;
   margin-top: 25px;
@@ -55,11 +81,8 @@ table, th , td {
   align-self: center;
   margin-left: 50px;
 }
-#banktransaction {
-  width: 1000px;
-  margin-left: 50px;
-}
-.banksubmit{
+
+.banksubmit, .adduserbuttons{
   float: right;
 }
 .navbarbutton {
@@ -108,20 +131,7 @@ btn {
     font-size: 16px;
     border-radius: 100%;
 }
-#home {
-  margin-top: 100px;
-}
-#list {
-  margin: 100px;
-}
-/*#piechart*/
- #piechart {
-  width: 400px;
-  height: 400px;
-  align-content: center;
-  /*margin-left: 200px;*/
-  float: left;
-}
+
 
 
 

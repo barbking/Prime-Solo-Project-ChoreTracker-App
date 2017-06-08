@@ -69,10 +69,6 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
           vm.calcBalance();
         });//end getBankTransactions func
       });
-
-
-
-
     }//end of else/if
   };//end addTransaction
 
