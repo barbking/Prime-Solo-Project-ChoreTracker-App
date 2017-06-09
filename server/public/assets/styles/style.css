@@ -1,3 +1,6 @@
+h1{
+  text-align: center;
+}
 h2{
   padding-top: 50px;
 }
@@ -34,6 +37,39 @@ table, th , td {
    width: auto;
    background-color: #cfc087;
 }
+.bankbackground {
+  /*background-image: url(https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.powerpointhintergrund.com%2Fuploads%2Fmoney-ppt-background-6.jpg&f=1);*/
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-color: #fffae8;
+   background-position: center;
+   height: 100vh;
+   width: auto;
+}
+.userbackground {
+   background-color: #fffae8;
+   height: 100vh;
+   width: auto;
+}
+.funbackground {
+  background-image: url(http://wallpaper-gallery.net/images/fun-wallpaper/fun-wallpaper-18.jpg);
+   background-repeat: no-repeat;
+   background-size: contain;
+   background-color: #fffae8;
+   background-position: center;
+   height: 100vh;
+   width: auto;
+}
+
+.listbackground {
+  background-image: url(http://wallpapercave.com/wp/FvEjaYp.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: #fffae8;
+  background-position: center;
+  height: 100vh;
+  width: auto;
+}
 #admintable {
   width: 1200px;
   /*margin-right: 50px;*/
@@ -47,6 +83,13 @@ table, th , td {
   border-style: solid;
   border-color: red;
   width: 500px;
+  margin: 40px;
+}
+#calendar {
+  padding-left: 150px;
+}
+#checklisttable {
+  margin-left: 100px;
 }
 iframe {
   padding: 40px;
@@ -62,8 +105,9 @@ iframe {
 /*#piechart*/
  #piechart {
    padding-top: 40px;
-  width: 400px;
-  height: 400px;
+   padding-left: 50px;
+  width: 500px;
+  height: 500px;
   align-content: center;
   /*margin-left: 200px;*/
   float: left;
@@ -85,6 +129,7 @@ iframe {
 .banksubmit, .adduserbuttons{
   float: right;
 }
+
 .navbarbutton {
   margin: 10px;
   float: right;
@@ -94,6 +139,9 @@ iframe {
   text-align: center;
   font-family: 'Luckiest Guy', cursive;
   font-size: 40px;
+}
+.loginbtn {
+  background-color: #0085dc;
 }
 .funstuff {
   margin: 50px;
@@ -107,7 +155,6 @@ iframe {
   width: 400px;
   height: 400px;
 }
-
 .navbar {
    border-radius: 5px
 }
@@ -142,7 +189,7 @@ btn {
 }
 
 .instructions {
-    background-color: #6bb39d;
+    background-color: #0e7bc0;
     color: #DDDDDD;
 }
 

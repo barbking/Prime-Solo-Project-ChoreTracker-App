@@ -2,7 +2,6 @@
 myApp.controller('UserController', ['$http', '$location','tasksService','$sce', function($http, $location, tasksService,$sce) {
 
   var vm = this;
-
   //logout user
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
@@ -10,9 +9,6 @@ myApp.controller('UserController', ['$http', '$location','tasksService','$sce', 
       $location.path("/home");
     });
   };
-
- // myApp.filter('vm.calendar', function($sce) { return $sce.trustAsResourceUrl; });
-// $sce.trustAsResourceUrl($sce. https://calendar.google.com/calendar/embed, vm.calendar);
 
   // get task data from database and calc data for pie graph
   $http.get('/user').then(function(response) {

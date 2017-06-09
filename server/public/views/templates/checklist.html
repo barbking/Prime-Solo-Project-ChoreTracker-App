@@ -1,48 +1,44 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
- <div class="container-fluid">
-   <div class="navbar-header">
-     <a class="navbar-brand" href="#">Welcome to The Mom App!</a>
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <a class="navbar-brand" href="#">Welcome to The Mom App!</a>
    </div>
-   <ul class="nav navbar-nav">
-     <li class="active"><a href="#user">Home</a></li>
-     <li><a href="#checklist">My To-Do List</a></li>
-     <li><a href="#bank">Mom Bank</a></li>
-     <li><a href="#funstuff">Fun Stuff</a></li>
-   </ul>
-   <button class="btn btn-default navbarbutton" ng-click="uc.logout()">Log Out</button>
- </div>
-</nav>
-
-<div class="container">
-    <h1 id="welcome" class="lead">{{clc.firstname}}, here are your responsibilities for the week!</h1>
-</div>
-
-  <table>
-    <tr>
-       <th>My Responsibility</th>
-       <th>Required</th>
-       <th>Sunday</th>
-       <th>Monday</th>
-       <th>Tuesday</th>
-       <th>Wednesday</th>
-       <th>Thursday</th>
-       <th>Friday</th>
-       <th>Saturday</th>
-       <th>Completed</th>
-    </tr>
-    <tr ng-repeat="task in clc.usertasks">
-      <td>{{ task.description }}</td>
-      <td>{{ task.frequency }}</td>
-      <!--don't need brackets for checkbox below, ng-repeat has it's own scope  -->
-      <td><input ng-model = "task.suncheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td><input ng-model = "task.moncheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td><input ng-model = "task.tuescheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td><input ng-model = "task.wedcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td><input ng-model = "task.thurcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td><input ng-model = "task.fricheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td><input ng-model = "task.satcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
-      <td>{{task.checkboxcount}} / {{task.frequency }}</td>
-    </tr>
-  </table>
-
+     <ul class="nav navbar-nav">
+       <li class="active"><a href="#user">Home</a></li>
+       <li><a href="#checklist">My To-Do List</a></li>
+       <li><a href="#bank">Mom Bank</a></li>
+       <li><a href="#funstuff">Fun Stuff</a></li>
+     </ul>
+     <button class="btn btn-default navbarbutton" ng-click="clc.logout()">Log Out</button>
+   </div>
+  </nav>
+<div class="container listbackground">
+  <h1 id="welcome" class="lead"><b>{{clc.firstname}}, here are your responsibilities for the week!</b></h1>
+    <table id="checklisttable">
+      <tr>
+         <th>My Responsibility</th>
+         <th>Required</th>
+         <th>Sunday</th>
+         <th>Monday</th>
+         <th>Tuesday</th>
+         <th>Wednesday</th>
+         <th>Thursday</th>
+         <th>Friday</th>
+         <th>Saturday</th>
+         <th>Completed</th>
+      </tr>
+      <tr ng-repeat="task in clc.usertasks">
+        <td>{{ task.description }}</td>
+        <td>{{ task.frequency }}</td>
+        <!--don't need brackets for checkbox below, ng-repeat has it's own scope  -->
+        <td><input ng-model = "task.suncheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+        <td><input ng-model = "task.moncheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+        <td><input ng-model = "task.tuescheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+        <td><input ng-model = "task.wedcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+        <td><input ng-model = "task.thurcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+        <td><input ng-model = "task.fricheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+        <td><input ng-model = "task.satcheckbox" type="checkbox" ng-change="clc.saveCheck(task)"></td>
+        <td>{{task.checkboxcount}} / {{task.frequency }}</td>
+      </tr>
+    </table>
 </div>

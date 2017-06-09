@@ -1,11 +1,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
- <div class="container-fluid">
+ <div class="container-fluid bank">
    <div class="navbar-header">
      <a class="navbar-brand" href="#">Welcome to The Mom App!</a>
    </div>
    <ul class="nav navbar-nav">
      <li class="active"><a href="#user">Home</a></li>
-     <!-- <li><a href="#user">User</a></li> -->
      <li><a href="#checklist">My To-Do List</a></li>
      <li><a href="#bank">Mom Bank</a></li>
      <li><a href="#funstuff">Fun Stuff</a></li>
@@ -14,27 +13,24 @@
  </div>
 </nav>
 
-<div class="container">
-    <h1 id="welcome" class="lead">{{bc.firstName}}'s account at the Mom Bank</h1>
-</div>
-
-  <table>
-    <tr>
-       <th>Date</th>
-       <th>Deposit</th>
-       <th>Withdrawal</th>
-       <th>Comments</th>
-    </tr>
+<div class="container bankbackground">
+  <h1 id="welcome" class="lead">{{bc.firstName}}'s account at the Mom Bank</h1>
+    <table>
+      <tr>
+         <th>Date</th>
+         <th>Deposit</th>
+         <th>Withdrawal</th>
+         <th>Comments</th>
+      </tr>
       <tr ng-repeat="item in bc.bank | orderBy:'date' ">
         <td>{{ item.date | date:'MM-dd-yyyy' }}</td>
         <td><span ng-if="item.amount > 0">{{ item.amount | currency }}</span></td>
         <td><span ng-if="item.amount < 0">{{ item.amount | currency }}</span></td>
         <td>{{ item.comment }}</td>
-  </tr>
-    <tr>
-      <td>Account Balance</td>
-      <td colspan="3">{{ bc.balance | currency }}</td>
-    </tr>
-  </table>
-
+      </tr>
+      <tr>
+        <td>Account Balance</td>
+        <td colspan="3">{{ bc.balance | currency }}</td>
+      </tr>
+    </table>
 </div>

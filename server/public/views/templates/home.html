@@ -1,19 +1,10 @@
 
-  <div class="container home">
-    <h1 class="lead">Login to The Mom App</h1>
+  <div class="container home homebackground">
       <h2 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
       <form ng-submit="lc.login()">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" ng-model="lc.user.username" />
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" ng-model="lc.user.password" />
-        </div>
-        <div>
-            <input class="btn btn-default" type="submit" name="submit" value="Log In" />
-            <!-- <a href="#register">Register</a> -->
-        </div>
+            <input type="text" placeholder="username" ng-model="lc.user.username" />
+            <input type="password" placeholder="password" ng-model="lc.user.password" />
+            <input class="btn loginbtn btn-default" type="submit" name="submit" value="Sign In" />
+            If you do not have a login, ask your Mom!
       </form>
   </div>

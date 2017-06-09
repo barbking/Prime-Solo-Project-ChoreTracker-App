@@ -20,9 +20,6 @@ myApp.service('tasksService', ['$http', function($http){
     });
   };//end getTasks func
 
-  //run getTasks as soon as tasksService loaded so admin sees all db tasks on login
-  // vm.getTasks();
-
   //save a task in the db and update tasks []
   vm.saveTask = function(task) {
     console.log('task to save is:', task);
@@ -68,10 +65,12 @@ myApp.service('tasksService', ['$http', function($http){
 // update task checkbox status upon box click and save
  vm.updateTasks = function (task) {
    console.log('in updateTask http request:', task);
-//counter to tack number of true/false checkboxes and save in db as checkboxcount
+  //counter to tack number of true/false checkboxes up to limit and save in db as checkboxcount
   counter = 0;
    for (var key in task){
-     if (task[key] === true) {
+     limit = task.frequency;
+     console.log('limit:', limit);
+     if (task[key] === true && counter < limit) {
        counter += 1;
      }
      task.checkboxcount = counter;
@@ -85,6 +84,5 @@ myApp.service('tasksService', ['$http', function($http){
      console.log(response);
    });
  };//end updateTasks func
-
 
 }]);
