@@ -10,7 +10,8 @@ var UserSchema = new Schema({
     firstname: {type: String, required: true},
     lastname: {type: String, required: true},
     admin: {type: Boolean, default:false},
-    calendar: {type: String, default:false}
+    calendar: {type: String, default:false},
+    allowance: {type: Number, required: false}
 });
 
 // Called before adding a new user to the DB. Encrypts password.

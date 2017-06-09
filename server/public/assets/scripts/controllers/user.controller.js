@@ -2,6 +2,7 @@
 myApp.controller('UserController', ['$http', '$location','tasksService','$sce', function($http, $location, tasksService,$sce) {
 
   var vm = this;
+  vm.data = [];
   //logout user
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
@@ -16,6 +17,7 @@ myApp.controller('UserController', ['$http', '$location','tasksService','$sce', 
           // user has a curret session on the server
           vm.firstname = response.data.firstname;
           vm.userName = response.data.username;
+          vm.allowance = response.data.allowance;
           vm.calendar = $sce.trustAsResourceUrl(response.data.calendar);
           console.log('vm.userName: ', vm.userName);
           console.log('vm.calendar: ', vm.calendar);
@@ -41,13 +43,17 @@ myApp.controller('UserController', ['$http', '$location','tasksService','$sce', 
     vm.greenDone = (completedTasks/required)*100;
     console.log('green pie graph %', vm.greenDone);
     vm.redNotDone = 100 - vm.greenDone;
-    vm.data = [vm.redNotDone,vm.greenDone];
+    vm.data = [vm.redNotDone.toFixed(0),vm.greenDone.toFixed(0)];
+    vm.valuenow=((vm.greenDone/100)*(vm.allowance)).toFixed(0);
+    console.log(vm.valuenow);
+    vm.progressPercent = 'width:' + vm.greenDone.toFixed(0) + '%';
+    console.log(vm.progressPercent);
     return vm.data;
   };//end of calcPieGraphPercent
 
   //pie graph variables and settings
   vm.labels = ["Needs to be done to get allowance!", "Completed Chores.  Great Job!"];
-  vm.data = [vm.redNotDone,vm.greenDone];
+
   //Make sure to use color codes, instead of color name.
   vm.colorsPie = ['#DC143C', '#008000'];
   vm.optionsPie = {
@@ -63,6 +69,10 @@ myApp.controller('UserController', ['$http', '$location','tasksService','$sce', 
               }]
         }
     };
+    //progress bar calc based on user allowance and completedtasks
+    // vm.valuenow=(vm.data.greenDone/100)*parseInt(vm.allowance);
+    // console.log(vm.data);
+
     vm.clickme = function($event){
         alert($event[0]._view.label);
     };

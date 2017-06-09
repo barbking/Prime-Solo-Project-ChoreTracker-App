@@ -45,7 +45,7 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
     } else {
       console.log('sending to server...', vm.user);
       $http.post('/register', vm.user).then(function(response) {
-        console.log('success');
+        console.log('success', vm.user);
         vm.user = {};
         vm.loadUsernames();
         console.log('adduser',vm.usernames);
@@ -155,5 +155,5 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       $location.path("/home");
     });
   };//end of logOut func
-  
+
 }]);//end of AdminController

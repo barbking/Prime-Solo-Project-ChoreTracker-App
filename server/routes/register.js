@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
 
 // Handles POST request with child user data
 router.post('/', function(req, res) {
+    console.log('in post user data', req.body);
     users.create(req.body, function(err, response) {
       if (err) {
         console.log('DB error:',err);
