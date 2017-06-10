@@ -100,7 +100,7 @@ btn {
 }
 .catimage {
   margin-left: 40px;
-  padding: 40px;
+  padding: 10px;
   width: 400px;
   height: 400px;
 }
@@ -153,11 +153,8 @@ btn {
   border-style: solid;
   border-color: red;
   width: 500px;
-  margin: 40px;
+  margin: 10px;
 }
-/*#calendar {
-  padding-left: 40vw;
-}*/
 #checklisttable {
   margin-left: 10vw;
 }

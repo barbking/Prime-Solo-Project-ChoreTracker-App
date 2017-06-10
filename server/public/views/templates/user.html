@@ -16,10 +16,6 @@
   </nav>
 <div class="container userbackground">
     <h1 id="welcome" class="lead">Welcome, {{uc.firstname}}! Don't forget to do your chores!</h1>
-
-<!-- <div id="catimagediv">
-  <a href="http://thecatapi.com"><img class="catimage" src="http://thecatapi.com/api/images/get?format=src&type=gif"></a> -->
-<!-- </div> -->
     <div id="piechart">
       <canvas id="pie" class="chart chart-pie" chart-data="uc.data"
               chart-labels="uc.labels" chart-options="optionsPie"
@@ -37,8 +33,6 @@
       <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-
       valuenow="70" aria-valuemin="0" aria-valuemax="100" style="{{uc.progressPercent}}">
           {{uc.valuenow | currency}}
-
-          <!-- <span class="sr-only">{{uc.valuenow}}</span> -->
         </div>
       </div>
     </div>

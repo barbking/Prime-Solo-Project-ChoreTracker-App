@@ -8,11 +8,10 @@ var bank = require('../models/bank.model.js');
 // create bank deposit/withdrawal record in db
 router.post('/', function (req,res){
   console.log('in post to bank:', req.body);
+  if(req.isAuthenticated()) {
     // send back user object from database
     var newTransaction;
     newTransaction = new bank(req.body);
-    console.log('new bank transaction:', newTransaction);
-    //save new task in database
     newTransaction.save( function ( err, response ){
       if (err) {
         console.log('DB error:',err);
@@ -22,6 +21,11 @@ router.post('/', function (req,res){
         res.sendStatus( 201 );
       }
     });
+   } else {
+    console.log('not logged in :(');
+    // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+    res.send(false);
+    }
   });
   //get username specific data from bank collection in db
   router.get('/:username', function (req,res){

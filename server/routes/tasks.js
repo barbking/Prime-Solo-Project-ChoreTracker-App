@@ -27,12 +27,11 @@ router.get( '/', function( req, res ){
 
 //save tasks to database
 router.post('/', function (req,res){
+  if(req.isAuthenticated()) {
   console.log('in post to tasks:', req.body);
-    // send back user object from database
     var newTask;
     newTask = new task(req.body);
     console.log('new task:', newTask);
-    //save new task in database
     newTask.save( function ( err, response ){
       if (err) {
         console.log('DB error:',err);
@@ -42,21 +41,27 @@ router.post('/', function (req,res){
         res.sendStatus( 201 );
       }
     });
-  });
+  } else {
+  // failure best handled on the server. do redirect here.
+  console.log('not logged in :(');
+  // should probably be res.sendStatus(403) and handled client-side, esp if this is an AJAX request (which is likely with AngularJS)
+  res.send(false);
+  }
+});
 
 //delete task using the task db id
   router.delete( '/:id', function(req,res){
-      console.log("in delete task request", req.params.id);
-      // task.remove({_id:req.params.id}).then(function(){
-      //   res.sendStatus(200);
-      task.remove({_id:req.params.id}, function(err){
-        if (err) {
-          console.log('Error removing task from database', err);
-          res.sendStatus(500);
-        } else {
-          console.log('DB success');
-          res.sendStatus(200);
-        }
+    console.log("in delete task request", req.params.id);
+    // task.remove({_id:req.params.id}).then(function(){
+    //   res.sendStatus(200);
+    task.remove({_id:req.params.id}, function(err){
+      if (err) {
+        console.log('Error removing task from database', err);
+        res.sendStatus(500);
+      } else {
+        console.log('DB success');
+        res.sendStatus(200);
+      }
     });
   }); //end get
 
