@@ -19,8 +19,6 @@ myApp.controller('UserController', ['$http', '$location','tasksService','$sce', 
           vm.userName = response.data.username;
           vm.allowance = response.data.allowance;
           vm.calendar = $sce.trustAsResourceUrl(response.data.calendar);
-          console.log('vm.userName: ', vm.userName);
-          console.log('vm.calendar: ', vm.calendar);
           //get username specific task using tasksService service
           tasksService.getUserTasks(vm.userName).then(function(){
           vm.usertasks = tasksService.usertasks;
@@ -52,9 +50,8 @@ myApp.controller('UserController', ['$http', '$location','tasksService','$sce', 
   };//end of calcPieGraphPercent
 
   //pie graph variables and settings
-  vm.labels = ["Needs to be done to get allowance!", "Completed Chores.  Great Job!"];
-
-  //Make sure to use color codes, instead of color name.
+  vm.labels = ["Keep up the great work to earn your allowance!", "Completed Chores.  Great Job!"];
+  //Make sure to use color codes, instead of color name for pie graph
   vm.colorsPie = ['#DC143C', '#008000'];
   vm.optionsPie = {
         legend: { display: true },
@@ -62,25 +59,15 @@ myApp.controller('UserController', ['$http', '$location','tasksService','$sce', 
         scales: {
             yAxes: [
               {
-                  id: 'y-axis-1',
-                  type: 'linear',
-                  display: true,
-                  position: 'left'
+                id: 'y-axis-1',
+                type: 'linear',
+                display: true,
+                position: 'left'
               }]
         }
     };
-    //progress bar calc based on user allowance and completedtasks
-    // vm.valuenow=(vm.data.greenDone/100)*parseInt(vm.allowance);
-    // console.log(vm.data);
-
-    vm.clickme = function($event){
-        alert($event[0]._view.label);
-    };
-
-    vm.listCalendar =function(){
-      vm.events=[];
-      GoogleAPI.listEvents().then(function(data){
-        vm.events=data;
-      });
-    };
+  //pie graph alerts
+  vm.clickme = function($event){
+      alert($event[0]._view.label);
+  };
 }]);//end of UserController
