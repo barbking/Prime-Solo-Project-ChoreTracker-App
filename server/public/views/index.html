@@ -1,37 +1,34 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Mom App Trial</title>
-        <!-- vendors -->
-        <script type="text/javascript" src="/vendors/angular.min.js"></script>
-        <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
-        <script type="text/javascript" src="/vendors/xeditable.min.js"></script>
-        <script type="text/javascript" src="/vendors/Chart.js"></script>
-        <script type="text/javascript" src="/vendors/angular-chart.min.js"></script>
-        <script type="text/javascript" src="/vendors/d3.min.js"></script>
-
-        <!-- scripts -->
-        <script type="text/javascript" src="/assets/scripts/clientapp.js"></script>
-        <script type="text/javascript" src="/assets/scripts/controllers/login.controller.js"></script>
-        <script type="text/javascript" src="/assets/scripts/controllers/user.controller.js"></script>
-        <script type="text/javascript" src="/assets/scripts/controllers/admin.controller.js"></script>
-        <script type="text/javascript" src="/assets/scripts/controllers/adminbank.controller.js"></script>
-        <script type="text/javascript" src="/assets/scripts/controllers/checklist.controller.js"></script>
-        <script type="text/javascript" src="/assets/scripts/controllers/bank.controller.js"></script>
-        <script type="text/javascript" src="/assets/scripts/controllers/funstuff.controller.js"></script>
-        <script type="text/javascript" src="/assets/scripts/services/tasks.service.js"></script>
-        <script type="text/javascript" src="/assets/scripts/services/bank.service.js"></script>
-        <!-- styles -->
-        <link rel="stylesheet" href="/vendors/bootstrap.min.css">
-        <link rel="stylesheet" href="/vendors/xeditable.min.css">
-        <link rel="stylesheet" href="/assets/styles/style.css">
-        <base href="/"/>
+      <title>The Mom App</title>
+      <!-- vendors -->
+      <script type="text/javascript" src="/vendors/angular.min.js"></script>
+      <script type="text/javascript" src="/vendors/angular-route.min.js"></script>
+      <script type="text/javascript" src="/vendors/xeditable.min.js"></script>
+      <script type="text/javascript" src="/vendors/Chart.js"></script>
+      <script type="text/javascript" src="/vendors/angular-chart.min.js"></script>
+      <script type="text/javascript" src="/vendors/d3.min.js"></script>
+      <!-- scripts -->
+      <script type="text/javascript" src="/assets/scripts/clientapp.js"></script>
+      <script type="text/javascript" src="/assets/scripts/controllers/login.controller.js"></script>
+      <script type="text/javascript" src="/assets/scripts/controllers/user.controller.js"></script>
+      <script type="text/javascript" src="/assets/scripts/controllers/admin.controller.js"></script>
+      <script type="text/javascript" src="/assets/scripts/controllers/adminbank.controller.js"></script>
+      <script type="text/javascript" src="/assets/scripts/controllers/checklist.controller.js"></script>
+      <script type="text/javascript" src="/assets/scripts/controllers/bank.controller.js"></script>
+      <script type="text/javascript" src="/assets/scripts/controllers/funstuff.controller.js"></script>
+      <script type="text/javascript" src="/assets/scripts/services/tasks.service.js"></script>
+      <script type="text/javascript" src="/assets/scripts/services/bank.service.js"></script>
+      <!-- styles -->
+      <link rel="stylesheet" href="/vendors/bootstrap.min.css">
+      <link rel="stylesheet" href="/vendors/xeditable.min.css">
+      <link rel="stylesheet" href="/assets/styles/style.css">
+      <base href="/"/>
     </head>
 
     <body ng-app="myApp">
       <header ng-include="'/views/templates/header.html'"></header>
-
       <div ng-view></div>
-
     </body>
 </html>

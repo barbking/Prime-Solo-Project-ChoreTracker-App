@@ -42,5 +42,47 @@ router.post('/', function (req,res){
       res.send( data);
     });
   });//end get
+  //delete task using the task db id
+  router.delete( '/:id', function(req,res){
+    console.log("in delete transaction request", req.params.id);
+    if(req.isAuthenticated()) {
+    bank.remove({_id:req.params.id}, function(err){
+      if (err) {
+        console.log('Error removing transaction from database', err);
+        res.sendStatus(500);
+      } else {
+        console.log('DB success');
+        res.sendStatus(200);
+      }
+    });
+   } else {
+    console.log('not logged in :(');
+    res.send(false);
+    }
+  });//end delete
 
+  //update transaction value in db
+  router.post('/update', function (req,res){
+    console.log('in update bank post:', req.body);
+    // var date = req.body.date;
+    var transaction = req.body.transaction;
+    var amount = req.body.amount;
+    var username = req.body.username;
+    var comment = req.body.comment;
+    bank.update({_id:req.body._id},{
+      // date: date,
+      transaction: transaction,
+      amount: amount,
+      username: username,
+      comment: comment
+      }, function(err){
+      if (err) {
+        console.log('Error updating transaction from database', err);
+        res.sendStatus(500);
+      } else {
+        console.log('DB success');
+        res.sendStatus(200);
+      }
+    });
+  });
 module.exports = router;

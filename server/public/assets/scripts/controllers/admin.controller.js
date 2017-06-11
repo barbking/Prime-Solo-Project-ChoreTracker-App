@@ -41,7 +41,7 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   //add child user account to database
   vm.addUser = function() {
     if(vm.user.username == '' || vm.user.password == '') {
-      vm.message = "Choose a username and password!";
+      // vm.message = "Choose a username and password!";
     } else {
       console.log('sending to server...', vm.user);
       $http.post('/register', vm.user).then(function(response) {
@@ -70,7 +70,7 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   };
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
-    return $http.get('/usernames').then(function(response) {
+    $http.get('/usernames').then(function(response) {
     // return vm.usernames.length ? null : $http.get('/usernames').then(function(response) {
       vm.usernames = response.data;
       console.log('in loadUsernames()',vm.usernames);
@@ -124,10 +124,16 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   };
   // save a task to database upon save button click and using task.service.js
   vm.saveTask = function(data, id) {
-    angular.extend(data, {id: id});
-    console.log('saveTask data:',data);
-    return $http.post('/tasks', data);
+    if (id === undefined){
+      console.log('in save task - no id');
+      angular.extend(data, {id: id});
+      return $http.post('/tasks', data);
+    } else {
+      angular.extend(data, {_id: id});
+      console.log('saveTask update data:',data);
+      return $http.post('/tasks/update', data);
     // tasksService.saveTask;
+    }
   };
   // remove a task from table and database upon delete button click
   vm.removeTask = function(index,id) {

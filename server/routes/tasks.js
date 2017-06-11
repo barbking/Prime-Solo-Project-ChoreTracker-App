@@ -66,6 +66,26 @@ router.delete( '/:id', function(req,res){
 //update checkbox value in db
 router.post('/update', function (req,res){
   console.log('in update post tasks:', req.body);
+  var username = req.body.username;
+  var description = req.body.description;
+  var frequency = req.body.frequency;
+  task.update({_id:req.body._id},{
+    username: username,
+    description: description,
+    frequency: frequency,
+  },function(err){
+    if (err) {
+      console.log('Error updating taks from database', err);
+      res.sendStatus(500);
+    } else {
+      console.log('DB success');
+      res.sendStatus(200);
+    }
+  });
+});
+//update checkbox value in db
+router.post('/checkbox', function (req,res){
+  console.log('in update post tasks:', req.body);
   var count = req.body.checkboxcount;
   var sun = req.body.suncheckbox;
   var mon = req.body.moncheckbox;
@@ -74,7 +94,8 @@ router.post('/update', function (req,res){
   var thur = req.body.thurcheckbox;
   var fri = req.body.fricheckbox;
   var sat = req.body.satcheckbox;
-  task.update({_id:req.body._id},{ checkboxcount : count,
+  task.update({_id:req.body._id},{
+    checkboxcount : count,
     satcheckbox : sat,
     fricheckbox : fri,
     thurcheckbox : thur,
@@ -84,7 +105,7 @@ router.post('/update', function (req,res){
     suncheckbox : sun
     }, function(err){
     if (err) {
-      console.log('Error removing task from database', err);
+      console.log('Error updating task from database', err);
       res.sendStatus(500);
     } else {
       console.log('DB success');

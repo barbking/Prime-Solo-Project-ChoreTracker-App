@@ -11,7 +11,7 @@ myApp.controller('BankController', [ '$http', '$location', 'bankService', functi
           vm.firstName = response.data.firstname;
           console.log('User Data: ', vm.userName);
           bankService.getUserBankTransactions(vm.userName).then(function(){
-          vm.bank = bankService.bankTransactions;
+          vm.bank = bankService.bank;
           vm.calcBalance(vm.bank);
           });
       } else {

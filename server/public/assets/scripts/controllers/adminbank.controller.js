@@ -4,11 +4,15 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
 
   var vm = this;
   //get data from bank collection in db
-  vm.bankTransactions = [];
+  vm.bank = [];
   //usernames from db
   vm.usernames = [];
   //balance for each username
   vm.balance = [];
+  vm.transaction = [
+    {value: 1, text: 'withdrawal'},
+    {value: 2, text: 'deposit'}
+  ];
   // Upon load, check this user's session on the server
   $http.get('/admin').then(function(response) {
     console.log(response);
@@ -18,8 +22,8 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
           console.log('vm.userName: ', vm.userName);
           vm.loadUsernames();
           vm.getBankTransactions().then(function(){
-            vm.bankTransactions = bankService.bankTransactions;
-            console.log(vm.bankTransactions);
+            vm.bank = bankService.bank;
+            console.log(vm.bank);
             vm.calcBalance();
           });//end getBankTransactions func
 
@@ -28,13 +32,6 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
           $location.path("/home");
       }
   });
-  //logout button function
-  vm.logout = function() {
-    $http.get('/user/logout').then(function(response) {
-      console.log('logged out');
-      $location.path("/home");
-    });
-  };
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
     $http.get('/usernames').then(function(response) {
@@ -64,15 +61,29 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
       console.log('data to send to db:',data);
       bankService.saveTransaction(data).then(function(){
         vm.getBankTransactions().then(function(){
-          vm.bankTransactions = bankService.bankTransactions;
-          console.log(vm.bankTransactions);
+          vm.bank = bankService.bank;
+          console.log(vm.bank);
           vm.calcBalance();
         });//end getBankTransactions func
       });
     }//end of else/if
   };//end addTransaction
-
-  // get tasks from database using tasks.service
+  //delete transaction
+  vm.deleteTransaction = function (index, id){
+    vm.bank.splice(index, 1);
+    console.log('remove transaction id:',id);
+     bankService.deleteTransaction(id).then(function(response) {
+     console.log(response);
+     vm.loadUsernames();
+     vm.getBankTransactions().then(function(){
+       vm.bank = bankService.bank;
+       console.log(vm.bank);
+       vm.calcBalance();
+     console.log('removeUser',vm.usernames);
+     });
+   });
+  };
+  // get tasks from database using bank.service
   vm.getBankTransactions = bankService.getBankTransactions;
 
   // calculate balances for each user account
@@ -81,9 +92,9 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
     console.log('in calcBalance');
     for (i=0; i<=vm.usernames.length-1; i++){
       var counter = 0;
-      for (j=0; j<=vm.bankTransactions.length-1; j++) {
-        if (vm.usernames[i].username == vm.bankTransactions[j].username) {
-          counter = counter + parseInt(vm.bankTransactions[j].amount);
+      for (j=0; j<=vm.bank.length-1; j++) {
+        if (vm.usernames[i].username == vm.bank[j].username) {
+          counter = counter + parseInt(vm.bank[j].amount);
           console.log('username:',vm.usernames[i].username,'counter:',counter);
         }
       }//end j loop
@@ -98,17 +109,55 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
     }//end i for loop
 };//end of calcBalance
 
-  // hide task list on button click
-  vm.hideTransactions = function() {
-    vm.bank=[];
-    return vm.bank;
-  };
+// xeditable
+//show username data in editable table if usernames[] contains bankTransactions.transaction val
+vm.showUsername = function(item) {
+  if(item.username && vm.usernames.length) {
+    //check to see if vm.username contains task.username
+    var selected = $filter('filter')(vm.usernames, {username: item.username});
+    return selected.length ? selected[0].username : 'Not set';
+  } else {
+    return item.username || 'Not set';
+  }
+};
+//show transaction data in editable table if transaction[] contains bankTransactions.transaction val
+vm.showTransaction = function(item) {
+  var selected = [];
+  if(item.transaction) {
+    selected = $filter('filter')(vm.transaction, {text: item.transaction});
+  }
+  return selected.length ? selected[0].text : 'Not set';
+};
 
-  //logout function run on admin logout button click
-  vm.logout = function() {
-    $http.get('/user/logout').then(function(response) {
-      console.log('logged out');
-      $location.path("/home");
-    });
-  };//end of logOut func
+vm.checkAmount = function(data,item_id) {
+ if (data === 'empty') {
+   return "Enter an amount";
+ }
+};
+vm.checkDate = function(data,item_id) {
+ if (data === 'empty') {
+   return "Enter a new date";
+ }
+};
+vm.checkComment = function(data,item_id) {
+ if (data === 'empty') {
+   return "Enter a comment";
+ }
+};
+
+//logout button function
+vm.logout = function() {
+  $http.get('/user/logout').then(function(response) {
+    console.log('logged out');
+    $location.path("/home");
+  });
+};
+// save a transaction to database upon save button click
+vm.saveTransaction = function(data, id) {
+  angular.extend(data, {_id: id});
+  console.log('save bank data:',data);
+  $http.post('/bank/update', data).then(function(){
+    vm.calcBalance();
+  });
+ };
 }]);//end of AdminBankController

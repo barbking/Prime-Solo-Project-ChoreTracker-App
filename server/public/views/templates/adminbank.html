@@ -11,6 +11,7 @@
  </div>
 </nav>
 <!--  this is AdminBankController as abc-->
+<div>
   <h3 ng-if="ac.message != ''">{{abc.message}}</h3>
   <div id="banktransaction" class="panel panel-default">
     <div class="panel-heading"><b>MAKE A TRANSACTION AT THE MOM BANK</b></div>
@@ -43,7 +44,69 @@
         </form>
       </div>
     </div>
-<table id="adminbanktable">
+    <div id="admintable">
+      <table class="table table-bordered table-hover table-condensed">
+        <tr style="font-weight: bold">
+          <td style="width:20%">Date</td>
+          <td style="width:10%">Transaction</td>
+          <td style="width:10%">Amount</td>
+          <td style="width:25%">Name</td>
+          <td style="width:25%">Comment</td>
+          <td style="width:25%">Edit</td>
+        </tr>
+        <tr ng-repeat="item in abc.bank">
+          <td>
+            <!-- editable username (text with validation) -->
+            <span editable-date="item.date" e-name="date" e-form="rowform" onbeforesave="checkDate($data, item._id)">
+              {{ item.date | date:'MM-dd-yyyy' || 'empty' }}
+            </span>
+          </td>
+          <td>
+            <!-- editable frequency-->
+            <span editable-select="item.transaction" e-name="transaction" e-form="rowform" e-ng-options="t.text as t.text for t in abc.transaction">
+              {{ abc.showTransaction(item) }}
+            </span>
+          </td>
+          <td>
+            <!-- editable username (select-remote) -->
+            <span editable-number="item.amount" e-name="amount" onshow="ac.loadAmount()" e-form="rowform" onbeforesave="checkAmount($data, item._id)">
+              {{ item.amount || 'empty' | number}}
+            </span>
+          </td>
+          <td>
+            <!-- editable username (text with validation) -->
+            <span editable-select="item.username" e-name="username" e-form="rowform" e-ng-options="u.username as u.username for u in abc.usernames">
+              {{ abc.showUsername(item) }}
+            </span>
+          </td>
+          <td>
+            <!-- editable username (text with validation) -->
+            <span editable-text="item.comment" e-name="comment" e-form="rowform" onbeforesave="checkComment($data, item._id)">
+              <!-- {{ abc.showComment(item) }} -->
+              {{ item.comment || 'empty' }}
+            </span>
+          </td>
+          <td style="white-space: nowrap">
+            <!-- form -->
+            <form editable-form name="rowform"  onbeforesave="abc.saveTransaction($data, item._id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="abc.inserted === item">
+              <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                save
+              </button>
+              <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                cancel
+              </button>
+            </form>
+            <div class="buttons" ng-show="!rowform.$visible">
+              <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+              <button type="button" class="btn btn-danger" ng-click="abc.deleteTransaction($index,item._id)">del</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+     </div>
+ <!-- <button type="button" class="btn btn-default" ng-click="addUser()">Add row</button> -->
+
+<!-- <table id="adminbanktable">
   <tr>
      <th>Date</th>
      <th>Transaction Type</th>
@@ -58,7 +121,7 @@
     <td>{{ item.username }}</td>
     <td>{{ item.comment }}</td>
   </tr>
-</table>
+<!-- </table> -->
 <table id="balancestable">
   <tr>
      <th colspan="2">Account Balances</th>
@@ -70,3 +133,4 @@
     <td>{{ item.balance | currency}}</td>
   </tr>
 </table>
+</div>

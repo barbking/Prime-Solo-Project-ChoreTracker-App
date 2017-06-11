@@ -25,7 +25,7 @@ myApp.service('tasksService', ['$http', function($http){
     console.log('task to save is:', task);
     return $http({
       method: 'POST',
-      url: '/tasks',
+      url: '/tasks/update',
       data: task
     }).then(function(response) {
       console.log(response);
@@ -78,7 +78,7 @@ myApp.service('tasksService', ['$http', function($http){
    }
     return $http({
      method: 'POST',
-     url: '/tasks/update',
+     url: '/tasks/checkbox',
      data: task
    }).then(function(response){
      console.log(response);
