@@ -1,6 +1,6 @@
 myApp.service('bankService', ['$http', function($http){
   var vm = this;
-  var bank = [];
+  vm.bank = [];
   //save a new transaction in the db and update tasks []
   vm.saveTransaction = function(data) {
     console.log('data to save is:', data);

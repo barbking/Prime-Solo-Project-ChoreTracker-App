@@ -10,9 +10,8 @@
    <button class="btn btn-default navbarbutton" ng-click="ac.logout()">Log Out</button>
  </div>
 </nav>
-<h3 ng-if="ac.message != ''">{{ac.message}}</h3>
-<div class="adduser panel panel-default">
-  <!-- <h3>Admin Home</h3> -->
+  <h3 ng-if="ac.message != ''">{{ac.message}}</h3>
+  <div class="adduser panel panel-default">
     <div class="panel-heading"><b>ADD USER</b></div>
       <div class="panel-body">
         <form ng-submit="ac.addUser()">
@@ -35,7 +34,7 @@
           <button type="button" class="btn btn-default btn-primary" ng-click="ac.showHide()">show/hide</button>
           </div>
         </form>
-
+      </div>
         <table ng-show="ac.isVisible">
           <tr>
              <th>First</th>
@@ -56,19 +55,20 @@
               <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.removeUser(user._id)">delete</button></td>
         </tr>
         </table>
-
     </div>
-</div>
+
+
 
 <div id="admintable">
-  <table class="table table-bordered table-hover table-condensed">
+  <p class="search">Search: <input type="text" ng-model="search.$" /></p>
+  <table class="table admin table-bordered table-hover table-condensed">
     <tr style="font-weight: bold">
       <td style="width:35%">Responsibility</td>
       <td style="width:20%">Frequency</td>
       <td style="width:20%">User</td>
       <td style="width:25%">Edit</td>
     </tr>
-    <tr ng-repeat="task in ac.tasks">
+    <tr ng-repeat="task in ac.tasks | orderBy:ac.mySortFunction | filter:search">
       <td>
         <!-- editable username (text with validation) -->
         <span editable-text="task.description" e-name="description" e-form="rowform" onbeforesave="checkName($data, task._id)">

@@ -162,4 +162,9 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
     });
   };//end of logOut func
 
+  vm.mySortFunction = function(task) {
+    if(isNaN(task[vm.sortExpression]))
+      return task[vm.sortExpression];
+    return parseInt(task[vm.sortExpression]);
+  };
 }]);//end of AdminController

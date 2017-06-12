@@ -80,9 +80,13 @@ btn {
   width: auto;
 }
 .adduser, .addcalendar {
-  width: 1200px;
-  margin-left: 50px;
-  margin-top: 25px;
+  width: 90vw;
+  margin-left: 4vw;
+  margin-top: 2vh;
+  align-self: center;
+}
+.admin {
+  margin-top: 1vh;
 }
 .adminlogout {
   float: right;
@@ -137,9 +141,16 @@ btn {
     font-size: 16px;
     border-radius: 100%;
 }
+.pagination {
+  margin-left: 5vw;
+}
+.search {
+  margin-left: 5vw;
+  margin-bottom: 0;
+}
 #admintable {
-  width: 1200px;
-  /*margin-right: 50px;*/
+  padding-top: 0;
+  width: 90vw;
   align-self: center;
 }
 #allowancebar {
