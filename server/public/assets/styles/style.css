@@ -21,8 +21,8 @@ table, th , td {
            text-align: center;
         }
         table {
-          width: 1000px;
-          margin: 50px;
+          width: 90vw;
+          margin: 4vw;
         }
 
 iframe {
@@ -90,11 +90,11 @@ btn {
 }
 .adminlogout {
   float: right;
-  margin-right: 50px;
+  margin-right: 2vw;
 }
 .adminbuttons {
   align-self: center;
-  margin-left: 50px;
+  margin-left: 4vw;
 }
 .allowancebar {
   margin-top: 10vh;
@@ -103,7 +103,7 @@ btn {
   float: right;
 }
 .catimage {
-  margin-left: 40px;
+  margin-left: 4vw;
   padding: 10px;
   width: 400px;
   height: 400px;
@@ -124,10 +124,10 @@ btn {
   border: solid 2px;
 }
 .navbar {
-   border-radius: 5px
+   border-radius: 5px;
 }
 .navbarbutton {
-  margin: 10px;
+  margin: 1vw;
   float: right;
 }
 .button {
@@ -157,8 +157,8 @@ btn {
   width:90vw;
 }
 #banktransaction {
-  width: 1000px;
-  margin-left: 50px;
+  width: 90vw;
+  margin-left: 4vw;
 }
 #catimagediv {
   border-style: solid;
@@ -188,11 +188,6 @@ btn {
   /*margin-left: 200px;*/
   float: left;
 }
-
-
-
-
-
 
 /*xeditable styles*/
 .instructions .container h1 {

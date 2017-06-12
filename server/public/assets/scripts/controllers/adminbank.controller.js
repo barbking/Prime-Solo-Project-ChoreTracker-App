@@ -13,15 +13,11 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
     {value: 1, text: 'withdrawal'},
     {value: 2, text: 'deposit'}
   ];
-  // get transactions from database using bank.service
-  vm.getBankTransactions = bankService.getBankTransactions;
   // Upon load, check this user's session on the server
   $http.get('/admin').then(function(response) {
-    console.log(response);
       if(response.data.username) {
           vm.firstname = response.data.firstname;
           vm.userName = response.data.username;
-          console.log('vm.userName: ', vm.userName);
           vm.loadUsernames();
           vm.getBankTransactions().then(function(){
             vm.bank = bankService.bank;
@@ -29,7 +25,6 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
             vm.calcBalance();
             vm.totalItems = vm.bank.length;
           });//end getBankTransactions func
-
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
@@ -74,9 +69,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   //delete transaction
   vm.deleteTransaction = function (index, id){
     vm.bank.splice(index, 1);
-    console.log('remove transaction id:',id);
-     bankService.deleteTransaction(id).then(function(response) {
-     console.log(response);
+    bankService.deleteTransaction(id).then(function(response) {
      vm.loadUsernames();
      vm.getBankTransactions().then(function(){
        vm.bank = bankService.bank;
@@ -85,8 +78,9 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
      console.log('removeUser',vm.usernames);
      });
    });
-  };
-
+  };//end deleteTransaction
+  // get transactions from database using bank.service
+  vm.getBankTransactions = bankService.getBankTransactions;
   // calculate balances for each user account
   vm.calcBalance = function(){
     vm.balance =[];
@@ -127,7 +121,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
     }
     return selected.length ? selected[0].text : 'Not set';
   };
-
+  //xeditable table check input values
   vm.checkAmount = function(data,item_id) {
    if (data === 'empty') {
      return "Enter an amount";
@@ -143,7 +137,6 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
      return "Enter a comment";
    }
   };
-
   //logout button function
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
@@ -159,8 +152,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
       vm.calcBalance();
     });
    };
-
-
+   //pagination code
    vm.totalItems = vm.bank.length;
    console.log('totalItems', vm.totalItems);
    vm.currentPage = 1;
