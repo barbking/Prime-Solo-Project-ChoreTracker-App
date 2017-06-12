@@ -45,7 +45,7 @@ btn {
    background-position: center;
    height: 100vh;
    width: auto;
-   background-color: #5d7b3d;
+   background-color:#0e7bc0;
 }
 .bankbackground {
   /*background-image: url(https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.powerpointhintergrund.com%2Fuploads%2Fmoney-ppt-background-6.jpg&f=1);*/
@@ -102,6 +102,17 @@ btn {
 .banksubmit, .adduserbuttons{
   float: right;
 }
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 100%;
+}
 .catimage {
   margin-left: 4vw;
   padding: 10px;
@@ -117,6 +128,10 @@ btn {
 .loginbtn {
   background-color: #0085dc;
 }
+.loginform {
+  align-self: center;
+  margin-left: 25vw;
+}
 .funstuff {
   margin: 50px;
   width: 400px;
@@ -130,19 +145,13 @@ btn {
   margin: 1vw;
   float: right;
 }
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 100%;
-}
 .pagination {
   margin-left: 5vw;
+}
+.progress {
+  height: 7vh;
+  font-size: 3vh;
+  align-content: center;
 }
 .search {
   margin-left: 5vw;
@@ -167,13 +176,15 @@ btn {
   margin: 10px;
 }
 #checklisttable {
-  margin-left: 10vw;
+  margin-left: 9vw;
+  width: 80vw;
 }
 #home {
   margin-top: 100px;
 }
 #kidbanktable {
-  margin-left:  10vw;
+  margin-left:  9vw;
+  width: 80vw;
 }
 #list {
   margin: 100px;
