@@ -21,7 +21,7 @@ As a very busy single parent, I have a hard time keeping track of my children’
 ###  User Checklist Page
 ![ChildCheckList](screenshots/ChildCheckList.png)
 ### User Mom Bank Account Page
-![ChildMomBank](screenshots/ChildMomBank.png)
+![ChildMomBankAccount](screenshots/ChildMomBankAccount.png)
 
 ## Technologies Used
 
