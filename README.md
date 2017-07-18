@@ -6,7 +6,7 @@ development tools taught at Prime.
 
 ## Summary
 
-As a very busy single parent, I have a hard time keeping track of my children’s activities, chores and other responsibilities.   I’ve tried making spreadsheet charts in excel and other formats but they get lost and kids lose motivation.  I designed the Mom App as a way for myself to keep track of my children’s responsibilities in a way that is easy to access, fun, and hold kids accountable to earn allowance.
+As a very busy single parent I have a hard time keeping track of my children’s activities, chores and other responsibilities.   I’ve tried making spreadsheet charts in excel and other formats but they get lost and kids lose motivation.  I designed the Mom App as a way for myself to keep track of my children’s responsibilities in a way that is easy to access, fun, and hold kids accountable to earn allowance.
 
 
 ## Application Features
