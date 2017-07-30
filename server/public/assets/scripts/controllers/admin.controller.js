@@ -68,6 +68,8 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
    });
   //  return vm.loadUsernames();
   };
+  //to reset all user checkboxes to false, run resetCheckBoxes func which calls service updateTask http PUT
+  vm.resetCheckBoxes = tasksService.resetTasks;
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
     $http.get('/usernames').then(function(response) {
@@ -167,4 +169,5 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
       return task[vm.sortExpression];
     return parseInt(task[vm.sortExpression]);
   };
+
 }]);//end of AdminController

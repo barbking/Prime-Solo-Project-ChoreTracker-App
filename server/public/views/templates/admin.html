@@ -55,13 +55,11 @@
               <td>{{ user.admin }}</td>
               <td>{{ user.calendar }}</td>
               <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.removeUser(user._id)">Delete</button></td>
-              <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.resetCheckBoxes(user._id)">Reset</button></td>
+              <td> <span ng-if = "user.admin==false" ><button type="button" class="btn btn-default btn-danger" ng-click="ac.resetCheckBoxes(user.username)">Reset</button></span></td>
         </tr>
         </table>
     </div>
-
-
-
+<!--Admin table for adding and editing task list  -->
 <div id="admintable">
   <p class="search">Search: <input type="text" ng-model="search.$" /></p>
   <table class="table admin table-bordered table-hover table-condensed">

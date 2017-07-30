@@ -114,5 +114,36 @@ router.post('/checkbox', function (req,res){
   });
 });
 
+//reset all checkboxes for specific user, use multi: true to update all
+router.post('/reset', function (req,res){
+  console.log('in reset checkboxes:', req.body);
+  var username = req.body.username;
+  var count = req.body.count;
+  var sun = req.body.sun;
+  var mon = req.body.mon;
+  var tues = req.body.tues;
+  var wed = req.body.wed;
+  var thur = req.body.thur;
+  var fri = req.body.fri;
+  var sat = req.body.sat;
+  task.update({username:req.body.username},{
+    checkboxcount : count,
+    satcheckbox : sat,
+    fricheckbox : fri,
+    thurcheckbox : thur,
+    wedcheckbox : wed,
+    tuescheckbox : tues,
+    moncheckbox : mon,
+    suncheckbox : sun
+  },{ multi: true }, function(err){
+    if (err) {
+      console.log('Error updating task from database', err);
+      res.sendStatus(500);
+    } else {
+      console.log('DB success');
+      res.sendStatus(200);
+    }
+  });
+});
 
 module.exports = router;

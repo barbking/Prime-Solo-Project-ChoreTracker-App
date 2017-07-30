@@ -85,4 +85,50 @@ myApp.service('tasksService', ['$http', function($http){
    });
  };//end updateTasks func
 
+ // update task checkbox status upon box click and save
+  vm.updateTasks = function (task) {
+    console.log('in updateTask http request:', task);
+   //counter to tack number of true/false checkboxes up to limit and save in db as checkboxcount
+   counter = 0;
+    for (var key in task){
+      limit = task.frequency;
+      console.log('limit:', limit);
+      if (task[key] === true && counter < limit) {
+        counter += 1;
+      }
+      task.checkboxcount = counter;
+      console.log(task.checkboxcount);
+    }
+     return $http({
+      method: 'POST',
+      url: '/tasks/checkbox',
+      data: task
+    }).then(function(response){
+      console.log(response);
+    });
+  };//end updateTasks func
+
+  // update task checkbox status upon box click and save
+   vm.resetTasks = function (user) {
+     console.log('in resetTask http request:', user);
+     resetAllObj = {
+       username: user,
+       count: 0,
+       sun: false,
+       mon: false,
+       tues: false,
+       wed: false,
+       thur: false,
+       fri: false,
+       sat: false,
+     };
+     console.log('resetAllObj=>',resetAllObj);
+      return $http({
+       method: 'POST',
+       url: '/tasks/reset',
+       data: resetAllObj
+     }).then(function(response){
+       console.log(response);
+     });
+   };//end updateTasks func
 }]);
