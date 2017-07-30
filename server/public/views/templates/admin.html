@@ -9,6 +9,7 @@
    </ul>
    <button class="btn btn-default navbarbutton" ng-click="ac.logout()">Log Out</button>
  </div>
+<!-- add and delete users/password/calendar/reset checkboxes -->
 </nav>
   <h3 ng-if="ac.message != ''">{{ac.message}}</h3>
   <div class="adduser panel panel-default">
@@ -44,6 +45,7 @@
              <th>Admin</th>
              <th>Calendar Link</th>
              <th>Remove User</th>
+             <th>Reset Checkboxes</th>
           </tr>
             <tr ng-repeat="user in ac.usernames ">
               <td>{{ user.firstname }}</td>
@@ -52,7 +54,8 @@
               <td>{{ user.allowance | currency}}</td>
               <td>{{ user.admin }}</td>
               <td>{{ user.calendar }}</td>
-              <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.removeUser(user._id)">delete</button></td>
+              <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.removeUser(user._id)">Delete</button></td>
+              <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.resetCheckBoxes(user._id)">Reset</button></td>
         </tr>
         </table>
     </div>
