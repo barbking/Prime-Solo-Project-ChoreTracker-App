@@ -42,6 +42,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/templates/funstuff.html',
       controller: "FunStuffController as fc"
     })
+    .when('/userbooklog', {
+      templateUrl: '/views/templates/user.booklog.html',
+      controller: "UserBookLog as ubl"
+    })
     .otherwise({
       redirectTo: 'home'
     });

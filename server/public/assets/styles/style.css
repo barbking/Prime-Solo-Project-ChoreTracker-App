@@ -85,6 +85,9 @@ btn {
   margin-top: 2vh;
   align-self: center;
 }
+.addbook {
+  margin: 2vh;
+}
 .admin {
   margin-top: 1vh;
 }
