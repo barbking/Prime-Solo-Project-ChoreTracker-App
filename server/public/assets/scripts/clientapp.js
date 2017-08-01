@@ -44,7 +44,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     })
     .when('/userbooklog', {
       templateUrl: '/views/templates/user.booklog.html',
-      controller: "UserBookLog as ubl"
+      controller: "UserBookLogController as ubl"
     })
     .otherwise({
       redirectTo: 'home'

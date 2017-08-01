@@ -122,6 +122,15 @@ btn {
   width: 400px;
   height: 400px;
 }
+
+.icons {
+  float: left;
+  margin-left: 40px;
+  margin-top: 10px;
+  margin-right: 40px;
+  height: 60px;
+  width: 60px;
+}
 .jumbotron {
   background-color: #7FFF00;
   text-align: center;
