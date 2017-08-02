@@ -55,21 +55,22 @@ btn {
   /*background-image: url(https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.powerpointhintergrund.com%2Fuploads%2Fmoney-ppt-background-6.jpg&f=1);*/
    background-repeat: no-repeat;
    background-size: contain;
-   background-color: #fffae8;
+   /*background-color: #fffae8;*/
    background-position: center;
    height: 100vh;
    width: auto;
 }
 .userbackground {
-   background-color: #fffae8;
+   /*background-color: #fffae8;*/
    height: 100vh;
    width: auto;
 }
 .funbackground {
-  background-image: url(http://wallpaper-gallery.net/images/fun-wallpaper/fun-wallpaper-18.jpg);
+  /*background-image: url(http://wallpaper-gallery.net/images/fun-wallpaper/fun-wallpaper-18.jpg);*/
+  background-image: url(/views/images/catsunglasses.jpeg);
    background-repeat: no-repeat;
    background-size: contain;
-   background-color: #fffae8;
+   /*background-color: #fffae8;*/
    background-position: center;
    height: 100vh;
    width: auto;
@@ -78,7 +79,7 @@ btn {
   background-image: url(http://wallpapercave.com/wp/FvEjaYp.png);
   background-repeat: no-repeat;
   background-size: contain;
-  background-color: #fffae8;
+  /*background-color: #fffae8;*/
   background-position: center;
   height: 100vh;
   width: auto;
