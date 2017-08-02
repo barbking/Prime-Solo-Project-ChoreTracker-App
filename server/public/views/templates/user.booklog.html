@@ -1,4 +1,4 @@
-<div>
+<div class="navbardiv">
 <nav class="navbar navbar-inverse navbar-fixed-top">
  <div class="container-fluid">
    <div class="navbar-header">
@@ -67,15 +67,13 @@
           <textarea rows="4" ng-model="abmic.summary" placeholder="Summary:" class="form-control modal-inputs"></textarea>
       </div>
       <div class="col-xs-12">
-        <label class="col-xs-6">Date: </label>
-        <!-- <div style="display:inline-block; min-height:290px;"> -->
-        <div style="display:inline-block; min-height:290px;">
-     <div uib-datepicker ng-model="abmic.date" datepicker-options="options"></div>
-   </div>
-          <!-- <input type="date" name="datepicker" ng-model="" ></input> -->
+        <label class="col-xs-2">Date: </label>
+        <!-- <div style="display:inline-block; min-height:290px; max-width:100px"> -->
+           <!-- <div uib-datepicker ng-model="abmic.date" class="well well-sm"></div> -->
+        <!-- </div> -->
+          <input class="form-control col-xs-4" type="date" name="datepicker" ng-model="" ></input>
         </div>
       </div>
-    </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-default btn-success" ng-click="abmic.addNewBook()" >
         Save
