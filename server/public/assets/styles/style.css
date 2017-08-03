@@ -127,7 +127,9 @@ btn {
   width: 400px;
   height: 400px;
 }
-
+.homefont {
+  color: #0085dc;
+}
 .icons {
   float: left;
   margin-left: 40px;
@@ -203,9 +205,10 @@ btn {
   margin-left: 9vw;
   width: 80vw;
 }
-#home {
-  margin-top: 100px;
-}
+/*.home {
+  margin-top: 50vh;
+}*/
+
 #kidbanktable {
   margin-left:  9vw;
   width: 80vw;
