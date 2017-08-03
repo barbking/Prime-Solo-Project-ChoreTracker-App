@@ -61,7 +61,8 @@ btn {
    width: auto;
 }
 .listbackground {
-  background-image: url(http://wallpapercave.com/wp/FvEjaYp.png);
+  /*background-image: url(http://wallpapercave.com/wp/FvEjaYp.png);*/
+  /*background-image: url("/views/images/blackboard-backgrounds-wallpapers.jpg");)*/
   background-repeat: no-repeat;
   background-size: contain;
   /*background-color: #fffae8;*/
@@ -89,9 +90,7 @@ btn {
   align-self: center;
   margin-left: 4vw;
 }
-.allowancebar {
-  margin-top: 10vh;
-}
+
 .banksubmit, .adduserbuttons{
   float: right;
 }
@@ -121,13 +120,21 @@ btn {
 .homefont {
   color: #0085dc;
 }
+@media screen and (max-width: 420px)/* for ipad */{
+  .hometext {
+    color: white;
+    font-size: 10vh;
+  }
+}
 .hometext {
-  align-self: center;
   align-content: center;
   font-family: 'Fredericka the Great', cursive;
   color: white;
-  font-size: 30vh;
+  font-size: 25vh;
+  margin-left: 10vw;
 }
+
+
 .home.container.ng-scope {
   /*background-image: url(https://images.duckduckgo.com/iu/?u=http%3A%2F%2Fredhatsafety.com%2Fwp-content%2Fuploads%2F2015%2F12%2Flead-auditor-responsibilities.jpg&f=1);*/
   background-image: url("/views/images/blackboard-backgrounds-wallpapers.jpg");
@@ -195,11 +202,20 @@ btn {
 #allowancebar {
   width:80vw;
   margin-top: 2vh;
-  margin-left: 5vw;
+  margin-left: 9vw;
 }
 #banktransaction {
   width: 90vw;
   margin-left: 4vw;
+}
+#calendar {
+  padding-top: 5vh;
+  padding-left: 8vw;
+  /*padding-right: 5vw;*/
+  /*width: 35vw;
+  height: 35vh;*/
+  align-content: center;
+  /*margin-left: 200px;*/
 }
 #catimagediv {
   border-style: solid;
@@ -223,7 +239,7 @@ btn {
   margin: 100px;
 }
 #piechart {
-  padding-top: 5vh;
+  padding-top: 10vh;
   padding-left: 8vw;
   /*padding-right: 5vw;*/
   width: 35vw;
