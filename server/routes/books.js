@@ -35,7 +35,8 @@ router.post('/', function (req,res){
       level: req.body.level,
       summary: req.body.summary,
       date: req.body.date,
-      username: req.user.username
+      username: req.user.username,
+      momapproved: "Waiting Approval"
     };
     newBook= new book (bookObj);
     // new book(req.body,req.user.username);

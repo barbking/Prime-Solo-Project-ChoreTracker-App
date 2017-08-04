@@ -33,9 +33,9 @@ myApp.service('bookService', ['$http', function($http){
       method: 'GET',
       url: '/books/' + username,
     }).then(function(response){
-      vm.books = response.data;
-      console.log('vm.books from getUserBooks:',vm.books);
-      return vm.books;
+      vm.userbooks = response.data;
+      console.log('vm.books from getUserBooks:',vm.userbooks);
+      return vm.userbooks;
     });
   };//end getgetUserBankTransactions
 //delete a task in the db and update tasks []

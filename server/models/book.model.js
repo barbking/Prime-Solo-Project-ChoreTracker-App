@@ -9,7 +9,8 @@ var bookSchema = {
   pages: {type: Number, required: true},
   level: {type: String, required: false},
   date: {type: Date, required: true},
-  summary: {type: String}
+  summary: {type: String},
+  momapproved: {type: String, default:"Waiting Approval"}
 };
 
 

@@ -2,6 +2,7 @@
 myApp.controller('UserBookLogController', ['$http', '$location','bookService', '$uibModal', '$log', function($http, $location, bookService, $uibModal, $log) {
   vm = this;
   vm.userbooks = [];
+  vm.userbooks = bookService.userbooks;
   // Upon load, check this user's session on the server and get username books from db
   $http.get('/user').then(function(response) {
       if(response.data.username) {
@@ -81,8 +82,7 @@ myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal'
       $uibModalInstance.close();
     } // end if else
   }; //end add Item
-
-
+  vm.userbooks = bookService.userbooks;
   vm.cancel = function (){
     $uibModalInstance.close();
   }; // end cancel
