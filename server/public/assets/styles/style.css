@@ -251,7 +251,10 @@ btn {
 #usertable {
   width: 80vw;
 }
-
+#welcome {
+  margin-top: 5vh;
+  margin-left: 12vw;
+}
 /*xeditable styles*/
 .instructions .container h1 {
     font-size: 24px;
