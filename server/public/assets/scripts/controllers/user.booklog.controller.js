@@ -1,6 +1,24 @@
 //controller for user booklog page
 myApp.controller('UserBookLogController', ['$http', '$location','bookService', '$uibModal', '$log', function($http, $location, bookService, $uibModal, $log) {
   vm = this;
+  vm.userbooks = [];
+  // Upon load, check this user's session on the server and get username books from db
+  $http.get('/user').then(function(response) {
+      if(response.data.username) {
+          // user has a curret session on the server
+          vm.firstname = response.data.firstname;
+          vm.userName = response.data.username;
+          console.log('get user response: ', response.data);
+          //get username specific task using tasksService service
+          bookService.getUserBooks(vm.userName).then(function(){
+          vm.userbooks = bookService.userbooks;
+          console.log('get userbooks:', vm.userbooks);
+        });
+      } else {
+          // user has no session, bounce them back to the login page
+          $location.path("/home");
+      }
+  });//end of $http get
   //user logout when logout button clicked
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
@@ -8,7 +26,6 @@ myApp.controller('UserBookLogController', ['$http', '$location','bookService', '
       $location.path("/home");
     });
   };//end of logout func
-
   vm.addBook = function ( size, parentSelector ) {
     var parentElem = parentSelector ?
       angular.element($document[0].querySelector('.add-book-modal' + parentSelector)) : undefined;
@@ -33,7 +50,7 @@ myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal'
   var vm = this;
 
   vm.addNewBook = function(){
-    if ( !vm.crop || !vm.variety || !vm.purchasedate || !vm.lotnum || !vm.quantity || !vm.itemcode || !vm.selectedSupplier ) {
+    if ( !vm.title || !vm.author || !vm.pages || !vm.level || !vm.summary || !vm.date ) {
       console.log('inputs empty');
       swal({
         title: "Empty Fields!",
@@ -44,18 +61,19 @@ myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal'
       }); // end sweetalert
     } else {
       var itemToSend = {
-        crop: vm.crop,
-        variety: vm.variety,
-        purchase_date: vm.purchasedate,
-        lot_number: vm.lotnum,
-        quantity: vm.quantity,
+        title: vm.title,
+        author: vm.author,
+        pages: vm.pages,
+        level: vm.level,
+        summary: vm.summary,
+        date: vm.date,
+        // username: vm.userName
       };
-
       // console.log(itemToSend);
       bookService.addBook(itemToSend);
       swal({
-        title: "Seed Added!",
-        text: "New seed added to inventory!",
+        title: "Book Added!",
+        text: "New book added for Mom approval!",
         type: "success",
         timer: 3500,
         confirmButtonText: "Ok"

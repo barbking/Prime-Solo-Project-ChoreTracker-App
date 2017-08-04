@@ -106,7 +106,7 @@ btn {
     border-radius: 100%;
 }
 .catimage {
-  margin-left: 4vw;
+  margin-left: 1vw;
   padding: 10px;
   width: 400px;
   height: 400px;
@@ -218,10 +218,10 @@ btn {
   /*margin-left: 200px;*/
 }
 #catimagediv {
-  border-style: solid;
-  border-color: red;
-  width: 500px;
-  margin: 10px;
+  /*border-style: solid;*/
+  /*border-color: red;*/
+  /*width: 500px;*/
+  /*margin: 10px;*/
 }
 #checklisttable {
   margin-left: 9vw;

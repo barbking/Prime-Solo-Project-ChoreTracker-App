@@ -18,6 +18,7 @@ var checklist = require('./routes/checklist');
 var bank = require('./routes/bank');
 var adminbank = require('./routes/adminbank');
 var funstuff = require('./routes/funstuff');
+var books = require('./routes/books');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -40,6 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
+app.use('/books', books);
 app.use('/funstuff', funstuff);
 app.use('/adminbank', adminbank);
 app.use('/bank', bank);

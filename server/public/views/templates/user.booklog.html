@@ -32,7 +32,7 @@
        <th>Mom Approved Reward</th>
        <th>Delete</th>
     </tr>
-    <tr ng-repeat="book in ubl.books">
+    <tr ng-repeat="book in ubl.userbooks">
       <td>{{ book.date | date:'MM-dd-yyyy' }}</td>
       <td>{{ book.title }}</td>
       <td>{{ book.author }}</td>
@@ -61,7 +61,7 @@
         <input type="number" ng-model="abmic.pages" placeholder="Pages:" class="modal-inputs form-control col-xs-8">
       </div>
       <div class="col-xs-12">
-        <input type="text" min=0 ng-model="abmic.lexile" placeholder="Lexile Level or enter NA if don't know:" class="modal-inputs form-control col-xs-8">
+        <input type="text" min=0 ng-model="abmic.level" placeholder="Lexile Level or enter NA if don't know:" class="modal-inputs form-control col-xs-8">
       </div>
       <div class="col-xs-12">
           <textarea rows="4" ng-model="abmic.summary" placeholder="Summary:" class="form-control modal-inputs"></textarea>
@@ -71,7 +71,7 @@
         <!-- <div style="display:inline-block; min-height:290px; max-width:100px"> -->
            <!-- <div uib-datepicker ng-model="abmic.date" class="well well-sm"></div> -->
         <!-- </div> -->
-          <input class="form-control col-xs-4" type="date" name="datepicker" ng-model="" ></input>
+          <input class="form-control col-xs-4" type="date" name="datepicker" ng-model="abmic.date" ></input>
         </div>
       </div>
     <div class="modal-footer">

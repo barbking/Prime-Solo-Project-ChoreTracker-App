@@ -1,8 +1,9 @@
 myApp.service('bookService', ['$http', function($http){
   var vm = this;
   vm.books = [];
+  vm.userbooks = [];
   //save a new transaction in the db and update tasks []
-  vm.saveBook = function(data) {
+  vm.addBook = function(data) {
     console.log('data to save is:', data);
     return $http({
       method: 'POST',
@@ -10,6 +11,7 @@ myApp.service('bookService', ['$http', function($http){
       data: data
     }).then(function(response) {
       console.log(response);
+      vm.getUserBooks();
     });
   };//end of saveBook func
   //get call to server for all books in bank collection
