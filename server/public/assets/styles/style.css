@@ -77,7 +77,8 @@ btn {
   align-self: center;
 }
 .addbook {
-  margin: 2vh;
+  margin-top: 8vh;
+  margin-left: 5vh;
 }
 .admin {
   margin-top: 1vh;
@@ -204,6 +205,11 @@ btn {
   margin-top: 2vh;
   margin-left: 9vw;
 }
+#bank {
+  margin-top: 2vh;
+  margin-left: 20vw;
+  width: 40vw;
+}
 #banktransaction {
   width: 90vw;
   margin-left: 4vw;
@@ -252,8 +258,9 @@ btn {
   width: 80vw;
 }
 #welcome {
-  margin-top: 5vh;
-  margin-left: 12vw;
+  margin-top: 2vh;
+  margin-left: 20vw;
+  width: 50vw;
 }
 /*xeditable styles*/
 .instructions .container h1 {
