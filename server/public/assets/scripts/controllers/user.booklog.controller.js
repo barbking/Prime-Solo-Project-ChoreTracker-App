@@ -45,12 +45,23 @@ myApp.controller('UserBookLogController', ['$http', '$location','bookService', '
     }); // end modalInstance
   }; // end open book modal
   vm.delete = function (id) {
-    console.log("in delete book controller");
-    bookService.deleteBook(id);
-    bookService.getUserBooks().then(function(){
-      vm.userbooks = bookService.userbooks;
-      console.log('get userbooks:', vm.userbooks);
-   });
+    swal({
+      title: "Are you sure?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    },
+    function(){
+      swal("Deleted!", "success");
+      console.log("in delete book controller");
+      bookService.deleteBook(id);
+      bookService.getUserBooks().then(function(){
+        vm.userbooks = bookService.userbooks;
+        console.log('get userbooks:', vm.userbooks);
+     });
+    });
  };//end delete function
 }]);//end of UserBookLogController
 //addBookModalInstanceCtrl
@@ -81,8 +92,9 @@ myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal'
       bookService.addBook(itemToSend);
       swal({
         title: "Book Added!",
-        text: "New book added for Mom approval!",
-        type: "success",
+        text: "Today a reader, tomorrow a leader.",
+        imageUrl: "/views/images/thumbs-up.png",
+        // type: "success",
         timer: 3500,
         confirmButtonText: "Ok"
       }); // end sweetalert
