@@ -101,7 +101,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
         vm.balance.push(userBal);
     }//end i for loop
   };//end of calcBalance
-
+  vm.calcBalance();
   // xeditable
   //show username data in editable table if usernames[] contains bankTransactions.transaction val
   vm.showUsername = function(item) {

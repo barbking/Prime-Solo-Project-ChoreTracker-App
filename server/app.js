@@ -19,7 +19,7 @@ var bank = require('./routes/bank');
 var adminbank = require('./routes/adminbank');
 var funstuff = require('./routes/funstuff');
 var books = require('./routes/books');
-// var bonusrewards = require('./routes/bonusrewards');
+var bonusrewards = require('./routes/bonusrewards');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -42,7 +42,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-// app.use('/bonusrewards', bonusrewards);
+app.use('/bonusrewards', bonusrewards);
 app.use('/books', books);
 app.use('/funstuff', funstuff);
 app.use('/adminbank', adminbank);

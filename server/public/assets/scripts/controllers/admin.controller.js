@@ -40,8 +40,14 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   };
   //add child user account to database
   vm.addUser = function() {
-    if(vm.user.username == '' || vm.user.password == '') {
-      // vm.message = "Choose a username and password!";
+    if(vm.user.username === '' || vm.user.firsname === '' || vm.user.lastname === '' || vm.user.password === '' || vm.user.admin === '') {
+      swal({
+        title: "Empty Fields!",
+        text: "All fields except calendar are required!",
+        type: "error",
+        timer: 3500,
+        confirmButtonText: "Ok"
+      }); // end sweetalert
     } else {
       console.log('sending to server...', vm.user);
       $http.post('/register', vm.user).then(function(response) {
@@ -49,6 +55,12 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
         vm.user = {};
         vm.loadUsernames();
         console.log('adduser',vm.usernames);
+        swal({
+          title: "User Added!",
+          type: "success",
+          timer: 3500,
+          confirmButtonText: "Ok"
+        }); // end sweetalert
       },
       function(response) {
         console.log('error');

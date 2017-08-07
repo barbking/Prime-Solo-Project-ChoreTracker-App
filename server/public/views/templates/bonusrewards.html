@@ -11,3 +11,28 @@
    <button class="btn btn-default navbarbutton" ng-click="abc.logout()">Log Out</button>
  </div>
 </nav>
+<!-- book table -->
+<div class="row">
+  <table id="checklisttable">
+    <tr>
+       <th>Date</th>
+       <th>Username</th>
+       <th>Book Title</th>
+       <th>Author</th>
+       <th>Pages</th>
+       <th>Lexile Level</th>
+       <th>Summary</th>
+       <th>Mom Approved Reward</th>
+    </tr>
+    <tr ng-repeat="book in brc.books.list">
+      <td>{{ book.date | date:'MM-dd-yyyy' }}</td>
+      <td>{{ book.username }}</td>
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.pages }}</td>
+      <td>{{ book.level }}</td>
+      <td>{{ book.summary }}</td>
+      <td><button type="button" class="btn btn-default btn-danger" ng-click="brc.approve(book._id)">Approve</button></td>
+    </tr>
+  </table>
+</div>

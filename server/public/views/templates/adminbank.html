@@ -22,12 +22,12 @@
                 <!--date picker input-->
                 <div class="col-md-3">
                   <label for="datepicker">Select transaction date:</label>
-                  <input class="form-control" type="date" name="datepicker" ng-model="abc.bank.date">
+                  <input class="form-control" type="date" name="datepicker" ng-model="abc.bank.date" required>
                </div>
                 <!--select withdrawal/deposit -->
                 <div class="col-md-3">
                   <label for="transaction"> Select transaction type: </label>
-                  <select class="form-control" name="transaction" ng-model="abc.bank.transaction">
+                  <select class="form-control" name="transaction" ng-model="abc.bank.transaction" required>
                     <option value="deposit">deposit</option>
                     <option value="withdrawal">withdrawal</option>
                   </select>
@@ -42,7 +42,7 @@
               <div class="col-md-3">
                 <label for="username"> Select child: </label>
                 <select class="form-control" ng-model="abc.bank.username"
-                  ng-options="thing.username as thing.username for thing in abc.usernames">
+                  ng-options="thing.username as thing.username for thing in abc.usernames" required>
                   <option value="{{thing.username}}"></option>
                 </select>
                </div>
