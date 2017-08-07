@@ -8,9 +8,9 @@ var book = require('../models/book.model.js');
 
 
 // get tasks for specific user in database
-router.get( '/:username', function( req, res ){
-    console.log( 'in bookss username router get call' );
-    book.find({username:req.params.username}).then(function (data){
+router.get( '/', function( req, res ){
+    console.log( 'in books username router get call', req.user.username );
+    book.find({username:req.user.username}).then(function (data){
     res.send( data);
   });
 }); //end get

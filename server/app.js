@@ -82,7 +82,7 @@ mongoDB.once('open', function(){
 });
 
 // App Set //
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 3003));
 
 // Listen //
 app.listen(app.get("port"), function(){

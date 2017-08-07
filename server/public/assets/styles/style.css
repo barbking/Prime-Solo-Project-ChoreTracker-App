@@ -207,8 +207,9 @@ btn {
 }
 #bank {
   margin-top: 2vh;
-  margin-left: 20vw;
+  margin-left: 28vw;
   width: 40vw;
+  font-size: 50em;
 }
 #banktransaction {
   width: 90vw;

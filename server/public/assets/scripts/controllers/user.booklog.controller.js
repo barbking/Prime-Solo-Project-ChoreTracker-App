@@ -1,17 +1,18 @@
 //controller for user booklog page
 myApp.controller('UserBookLogController', ['$http', '$location','bookService', '$uibModal', '$log', function($http, $location, bookService, $uibModal, $log) {
   vm = this;
-  vm.userbooks = [];
   vm.userbooks = bookService.userbooks;
+  bookService.getUserBooks();
+  console.log("controller",vm.userbooks);
   // Upon load, check this user's session on the server and get username books from db
   $http.get('/user').then(function(response) {
       if(response.data.username) {
           // user has a curret session on the server
           vm.firstname = response.data.firstname;
-          vm.userName = response.data.username;
+          vm.username = response.data.username;
           console.log('get user response: ', response.data);
-          //get username specific task using tasksService service
-          bookService.getUserBooks(vm.userName).then(function(){
+          //get username specific books
+          bookService.getUserBooks().then(function(){
           vm.userbooks = bookService.userbooks;
           console.log('get userbooks:', vm.userbooks);
         });
@@ -42,13 +43,19 @@ myApp.controller('UserBookLogController', ['$http', '$location','bookService', '
       resolve: {
       }
     }); // end modalInstance
-  }; // end addBook
-
-}]);
-
+  }; // end open book modal
+  vm.delete = function (id) {
+    console.log("in delete book controller");
+    bookService.deleteBook(id);
+    bookService.getUserBooks().then(function(){
+      vm.userbooks = bookService.userbooks;
+      console.log('get userbooks:', vm.userbooks);
+   });
+ };//end delete function
+}]);//end of UserBookLogController
 //addBookModalInstanceCtrl
 myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal', '$log', 'bookService',function ( $uibModalInstance, $uibModal, $log, bookService) {
-  var vm = this;
+  vm = this;
 
   vm.addNewBook = function(){
     if ( !vm.title || !vm.author || !vm.pages || !vm.level || !vm.summary || !vm.date ) {
@@ -70,7 +77,7 @@ myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal'
         date: vm.date,
         // username: vm.userName
       };
-      // console.log(itemToSend);
+      console.log(itemToSend);
       bookService.addBook(itemToSend);
       swal({
         title: "Book Added!",
@@ -80,9 +87,8 @@ myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal'
         confirmButtonText: "Ok"
       }); // end sweetalert
       $uibModalInstance.close();
-    } // end if else
-  }; //end add Item
-  vm.userbooks = bookService.userbooks;
+   }// end if else
+ };//end add Item
   vm.cancel = function (){
     $uibModalInstance.close();
   }; // end cancel
