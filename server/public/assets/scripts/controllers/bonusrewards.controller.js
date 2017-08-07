@@ -1,8 +1,10 @@
 //controller for user booklog page
 myApp.controller('BonusRewardsController', ['$http', '$location','bookService', '$uibModal', '$log', function($http, $location, bookService, $uibModal, $log) {
+
   vm = this;
+  vm.books = bookService.books;
   bookService.getBooks();
-  console.log("controller",vm.userbooks);
+  console.log("controller",vm.books);
   //user logout when logout button clicked
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
@@ -10,73 +12,57 @@ myApp.controller('BonusRewardsController', ['$http', '$location','bookService', 
       $location.path("/home");
     });
   };//end of logout func
-  vm.addBook = function ( size, parentSelector ) {
+  vm.addReward = function ( book, size, parentSelector ) {
     var parentElem = parentSelector ?
-      angular.element($document[0].querySelector('.add-book-modal' + parentSelector)) : undefined;
+      angular.element($document[0].querySelector('.add-reward-modal' + parentSelector)) : undefined;
     var modalInstance = $uibModal.open({
       animation: true,
       ariaLabelledBy: 'modal-title',
       ariaDescribedBy: 'modal-body',
-      templateUrl: 'addBookModalContent.html',
-      controller: 'addBookModalInstanceCtrl',
-      controllerAs: 'abmic',
+      templateUrl: 'addRewardModalContent.html',
+      controller: 'addRewardModalInstanceCtrl',
+      controllerAs: 'armic',
       size: size,
       appendTo: parentElem,
       resolve: {
+        book: function() {
+          return book;
+        }
       }
     }); // end modalInstance
   }; // end open book modal
-  vm.delete = function (id) {
-    swal({
-      title: "Are you sure?",
-      type: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#DD6B55",
-      confirmButtonText: "Yes, delete it!",
-      closeOnConfirm: false
-    },
-    function(){
-      swal("Deleted!", "success");
-      console.log("in delete book controller");
-      bookService.deleteBook(id);
-      bookService.getUserBooks().then(function(){
-        vm.userbooks = bookService.userbooks;
-        console.log('get userbooks:', vm.userbooks);
-     });
-    });
- };//end delete function
 }]);//end of UserBookLogController
 //addBookModalInstanceCtrl
-myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal', '$log', 'bookService',function ( $uibModalInstance, $uibModal, $log, bookService) {
+myApp.controller( 'addRewardModalInstanceCtrl', [ '$uibModalInstance', '$uibModal', '$log', 'bookService','book', function ( $uibModalInstance, $uibModal, $log, bookService, book) {
   vm = this;
-
-  vm.addNewBook = function(){
-    if ( !vm.title || !vm.author || !vm.pages || !vm.level || !vm.summary || !vm.date ) {
+  vm.books = bookService.books;
+  vm.username = book.username;
+  vm.title = book.title;
+  vm.pages = book.pages;
+  vm.level = book.level;
+  vm.book_id=book._id;
+  //addReward
+  vm.addReward = function(){
+    if ( !vm.reward ) {
       console.log('inputs empty');
       swal({
         title: "Empty Fields!",
-        text: "Please enter all fields!",
+        text: "Please enter reward!",
         type: "error",
         timer: 3500,
         confirmButtonText: "Ok"
       }); // end sweetalert
     } else {
       var itemToSend = {
-        title: vm.title,
-        author: vm.author,
-        pages: vm.pages,
-        level: vm.level,
-        summary: vm.summary,
-        date: vm.date,
-        // username: vm.userName
+        reward: vm.reward,
+        book_id: vm.book_id
       };
       console.log(itemToSend);
-      bookService.addBook(itemToSend);
+      //send data to service updateBook
+      bookService.updateBook(itemToSend);
       swal({
-        title: "Book Added!",
-        text: "Today a reader, tomorrow a leader.",
-        imageUrl: "/views/images/thumbs-up.png",
-        // type: "success",
+        title: "Reward Added!",
+        type: "success",
         timer: 3500,
         confirmButtonText: "Ok"
       }); // end sweetalert

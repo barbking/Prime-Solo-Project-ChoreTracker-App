@@ -41,15 +41,14 @@ myApp.service('bookService', ['$http', function($http){
     console.log('in getUserBooks get');
     return $http({
       method: 'GET',
-      url: '/books',
+      url: '/books/userbooks',
     }).then(function(response){
       self.userbooks.list = response.data;
-      console.log('self.userbooks from getUserBooks:',self.userbooks);
-
+      console.log('self.userbooks from getUserBooks:',self.userbooks.list);
     });
-  };//end getgetUserBankTransactions
+  };//end getUserBooks
   self.getUserBooks();
-// delete a task in the db and update tasks []
+  // delete a book in the db and update userbooks[]
   self.deleteBook = function(id) {
    console.log('in deleteBook');
    console.log('deleteBook:', id);
@@ -60,5 +59,16 @@ myApp.service('bookService', ['$http', function($http){
      console.log(response);
      self.getUserBooks();
    });
- };//end of deleteTask func
+ };//end of deleteBook func
+ // update task checkbox status upon box click and save
+  self.updateBook = function (book) {
+    console.log('in updateBook http request:', book);
+     return $http({
+      method: 'POST',
+      url: '/books/update',
+      data: book
+    }).then(function(response){
+      console.log(response);
+    });
+  };//end updateBook func
 }]);//end bank service

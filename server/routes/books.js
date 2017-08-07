@@ -6,19 +6,18 @@ var path = require('path');
 var bodyParser = require( 'body-parser' );
 var book = require('../models/book.model.js');
 
-
-// get tasks for specific user in database
-router.get( '/', function( req, res ){
-    console.log( 'in books username router get call', req.user.username );
-    book.find({username:req.user.username}).then(function (data){
-    res.send( data);
-  });
-}); //end get
-
 //get books from database
 router.get( '/', function( req, res ){
     book.find().then(function (data){
     console.log('in books route get data:',data);
+    res.send( data);
+  });
+}); //end get
+
+// get tasks for specific user in database
+router.get( '/userbooks', function( req, res ){
+    console.log( 'in books username router get call', req.user.username );
+    book.find({username:req.user.username}).then(function (data){
     res.send( data);
   });
 }); //end get
@@ -74,16 +73,12 @@ router.delete( '/:id', function(req,res){
   });
 }); //end get
 
-//update checkbox value in db
+//update momapproved value in db
 router.post('/update', function (req,res){
-  console.log('in update post tasks:', req.body);
-  var username = req.body.username;
-  var description = req.body.description;
-  var frequency = req.body.frequency;
-  task.update({_id:req.body._id},{
-    username: username,
-    description: description,
-    frequency: frequency,
+  console.log('in update book reward bonus:', req.body);
+  var reward = req.body.reward;
+  book.update({_id:req.body.book_id},{
+    momapproved: reward,
   },function(err){
     if (err) {
       console.log('Error updating taks from database', err);
