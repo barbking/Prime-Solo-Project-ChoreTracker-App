@@ -13,38 +13,55 @@
 </nav>
 <!--  this is AdminBankController as abc-->
 <div>
-  <h3 ng-if="ac.message != ''">{{abc.message}}</h3>
-  <div id="banktransaction" class="panel panel-default">
-    <div class="panel-heading"><b>MAKE A TRANSACTION AT THE MOM BANK</b></div>
-      <div class="panel-body">
-        <form ng-submit="abc.addTransaction()">
-
-            <!--date picker input-->
-            <label for="datepicker">Select transaction date:</label>
-            <input type="date" name="datepicker" ng-model="abc.bank.date">
-            <!--select withdrawal/deposit -->
-            <label for="transaction"> Select transaction type: </label>
-            <select name="transaction" ng-model="abc.bank.transaction">
-              <option value="deposit">deposit</option>
-              <option value="withdrawal">withdrawal</option>
-            </select>
-            <!--select dollar amount-->
-            <label>Amount:  </label>
-            <input type="number" name="input" ng-model="abc.bank.amount"
-                  min="-20" max="20" required>
-            <!--select username-->
-            <label for="username"> Select child: </label>
-            <select ng-model="abc.bank.username"
-              ng-options="thing.username as thing.username for thing in abc.usernames">
-              <option value="{{thing.username}}"></option>
-            </select><br><br>
-            <!--comment input-->
-            <label for "comment"> Comments: </label>
-            <input type="string" name="comment" ng-model="abc.bank.comment"/>
-            <input class="btn banksubmit btn-primary" type="submit" name="submit" value="submit"/>
-        </form>
+  <div class="panel-body">
+    <div id="banktransaction" class="panel panel-default">
+      <div class="panel-heading" style="margin-top: 8vh;"><b>MAKE A TRANSACTION AT THE MOM BANK</b></div>
+        <div class="panel-body">
+            <form ng-submit="abc.addTransaction()">
+                <div class="form-group row">
+                <!--date picker input-->
+                <div class="col-md-3">
+                  <label for="datepicker">Select transaction date:</label>
+                  <input class="form-control" type="date" name="datepicker" ng-model="abc.bank.date">
+               </div>
+                <!--select withdrawal/deposit -->
+                <div class="col-md-3">
+                  <label for="transaction"> Select transaction type: </label>
+                  <select class="form-control" name="transaction" ng-model="abc.bank.transaction">
+                    <option value="deposit">deposit</option>
+                    <option value="withdrawal">withdrawal</option>
+                  </select>
+               </div>
+                <!--select dollar amount-->
+              <div class="col-md-3">
+                  <label>Amount:  </label>
+                  <input class="form-control" type="number" name="input" ng-model="abc.bank.amount"
+                        min="-20" max="20" required>
+              </div>
+                <!--select username-->
+              <div class="col-md-3">
+                <label for="username"> Select child: </label>
+                <select class="form-control" ng-model="abc.bank.username"
+                  ng-options="thing.username as thing.username for thing in abc.usernames">
+                  <option value="{{thing.username}}"></option>
+                </select>
+               </div>
+              </div>
+                <!--comment input-->
+              <div class="form-group row">
+               <div class="col-md-8">
+                <label for "comment"> Comments: </label>
+                <input class="form-control" type="string" name="comment" ng-model="abc.bank.comment"/>
+              </div>
+                <div class="col-md-4">
+                <input class="btn  btn-primary" style="float: right; margin-right: 5vw; margin-top: 4vh;" type="submit" name="submit" value="submit"/>
+              </div>
+              </div>
+            </form>
+        </div>
       </div>
     </div>
+    <!-- bank table -->
     <div id="admintable">
       <table class="table table-bordered table-hover table-condensed" st-table="rowCollection" at-table at-paginated at-list="list" at-config="config">
         <tr style="font-weight: bold">
