@@ -155,6 +155,14 @@ btn {
   height: 70px;
   width: 70px;
 }
+.icons-modal {
+  float: left;
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-right: 40px;
+  height: 60px;
+  width: 60px;
+}
 .jumbotron {
   background-color: #7FFF00;
   text-align: center;
@@ -187,6 +195,29 @@ btn {
   height: 7vh;
   font-size: 3vh;
   align-content: center;
+}
+.round-button {
+    display:block;
+    width:110px;
+    height:110px;
+    line-height:80px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    /*color:#f5f5f5;*/
+    text-align:center;
+    text-decoration:none;
+    /*background: #464646;*/
+    box-shadow: 0 0 3px gray;
+    font-size:20px;
+    font-weight:bold;
+}
+.round-button-img {
+    display: block;
+    width: 65%;
+    padding-left: 20%;
+    margin-left: 5%;
+    margin-top: 5%;
+    height: auto;
 }
 .search {
   margin-left: 5vw;

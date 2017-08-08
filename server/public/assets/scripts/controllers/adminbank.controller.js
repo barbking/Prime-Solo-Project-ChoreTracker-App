@@ -111,6 +111,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
         };//end obj
         vm.balance.push(userBal);
     }//end i for loop
+    return vm.balance;
   };//end of calcBalance
   vm.calcBalance();
   // xeditable
