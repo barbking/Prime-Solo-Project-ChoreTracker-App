@@ -69,6 +69,7 @@ myApp.service('bookService', ['$http', function($http){
       data: book
     }).then(function(response){
       console.log(response);
+      self.getBooks();
     });
   };//end updateBook func
 }]);//end bank service

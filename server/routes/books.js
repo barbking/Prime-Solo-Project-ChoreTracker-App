@@ -5,7 +5,6 @@ var passport = require('passport');
 var path = require('path');
 var bodyParser = require( 'body-parser' );
 var book = require('../models/book.model.js');
-
 //get books from database
 router.get( '/', function( req, res ){
     book.find().then(function (data){
@@ -13,7 +12,6 @@ router.get( '/', function( req, res ){
     res.send( data);
   });
 }); //end get
-
 // get tasks for specific user in database
 router.get( '/userbooks', function( req, res ){
     console.log( 'in books username router get call', req.user.username );
@@ -21,7 +19,6 @@ router.get( '/userbooks', function( req, res ){
     res.send( data);
   });
 }); //end get
-
 //save tasks to database
 router.post('/', function (req,res){
   if(req.isAuthenticated()) {
@@ -56,7 +53,6 @@ router.post('/', function (req,res){
   res.send(false);
   }
 });
-
 //delete task using the task db id
 router.delete( '/:id', function(req,res){
   console.log("in delete book request", req.params.id);
@@ -72,7 +68,6 @@ router.delete( '/:id', function(req,res){
     }
   });
 }); //end get
-
 //update momapproved value in db
 router.post('/update', function (req,res){
   console.log('in update book reward bonus:', req.body);
@@ -89,6 +84,5 @@ router.post('/update', function (req,res){
     }
   });
 });
-
 
 module.exports = router;

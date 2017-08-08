@@ -10,7 +10,7 @@ myApp.service('bankService', ['$http', function($http){
       data: data
     }).then(function(response) {
       console.log(response);
-      // vm.getTasks();
+      vm.getBankTransactions();
     });
   };//end of saveFavorite func
   //get call to server for all data in bank collection

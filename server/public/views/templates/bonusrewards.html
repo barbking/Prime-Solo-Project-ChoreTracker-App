@@ -23,7 +23,8 @@
        <th>Pages</th>
        <th>Lexile Level</th>
        <th>Summary</th>
-       <th>Mom Approved Reward</th>
+       <th>Mom Approved Reward ($)</th>
+       <th></th>
     </tr>
     <tr ng-repeat="book in brc.books.list">
       <td>{{ book.date | date:'MM-dd-yyyy' }}</td>
@@ -33,7 +34,8 @@
       <td>{{ book.pages }}</td>
       <td>{{ book.level }}</td>
       <td>{{ book.summary }}</td>
-      <td><button type="button" class="btn btn-default btn-primary" ng-click="brc.addReward(book)">Approve</button></td>
+      <td>{{ book.momapproved }}</td>
+      <td><span ng-if="book.momapproved === 'Waiting Approval'"><button type="button" class="btn btn-default btn-primary" ng-click="brc.addReward(book)">Approve</button></span></td>
     </tr>
   </table>
 </div>
@@ -55,6 +57,10 @@
       </div>
       <div class="col-xs-8">
         <input type="number" min=0 ng-model="armic.reward" placeholder="Enter a reward" class="modal-inputs form-control col-xs-8">
+      </div>
+      <div class="col-xs-8">
+        <label class="col-xs-2">Date: </label>
+          <input class="form-control col-xs-4" type="date" name="datepicker" ng-model="armic.date" ></input>
       </div>
     </div>
     <div class="modal-footer">

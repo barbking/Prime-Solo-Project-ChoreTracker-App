@@ -70,15 +70,25 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   };//end addUser
   //delete user
   vm.removeUser = function (id){
-    $http({
-     method: 'DELETE',
-     url: '/user/'+id,
-   }).then(function(response) {
-     console.log(response);
-     vm.loadUsernames();
-     console.log('removeUser',vm.usernames);
+    swal({
+      title: "Are you sure?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    },
+    function(){
+      swal("Deleted!", "success");
+      $http({
+       method: 'DELETE',
+       url: '/user/'+id,
+     }).then(function(response) {
+       console.log(response);
+       vm.loadUsernames();
+       console.log('removeUser',vm.usernames);
+    });
    });
-  //  return vm.loadUsernames();
   };
   //to reset all user checkboxes to false, run resetCheckBoxes func which calls service updateTask http PUT
   vm.resetCheckBoxes = tasksService.resetTasks;
@@ -151,10 +161,20 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
   };
   // remove a task from table and database upon delete button click
   vm.removeTask = function(index,id) {
-    vm.tasks.splice(index, 1);
-    console.log('removeTask id:',id);
-    return $http.delete('/tasks/'+id);
-    // tasksService.deleteTask;
+    swal({
+      title: "Are you sure?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    },
+    function(){
+      swal("Deleted!", "success");
+      vm.tasks.splice(index, 1);
+      console.log('removeTask id:',id);
+      return $http.delete('/tasks/'+id);
+    });
   };
   // add a task input to tasks[] to populate xeditable table
   vm.addTask = function() {

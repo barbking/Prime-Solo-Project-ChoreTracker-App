@@ -68,16 +68,27 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   };//end addTransaction
   //delete transaction
   vm.deleteTransaction = function (index, id){
-    vm.bank.splice(index, 1);
-    bankService.deleteTransaction(id).then(function(response) {
-     vm.loadUsernames();
-     vm.getBankTransactions().then(function(){
-       vm.bank = bankService.bank;
-       console.log(vm.bank);
-       vm.calcBalance();
-     console.log('removeUser',vm.usernames);
-     });
-   });
+    swal({
+      title: "Are you sure?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, delete it!",
+      closeOnConfirm: false
+    },
+    function(){
+      swal("Deleted!", "Your imaginary file has been deleted.", "success");
+      vm.bank.splice(index, 1);
+      bankService.deleteTransaction(id).then(function(response) {
+       vm.loadUsernames();
+       vm.getBankTransactions().then(function(){
+         vm.bank = bankService.bank;
+         console.log(vm.bank);
+         vm.calcBalance();
+       console.log('removeUser',vm.usernames);
+       });
+      });
+    });
   };//end deleteTransaction
   // get transactions from database using bank.service
   vm.getBankTransactions = bankService.getBankTransactions;

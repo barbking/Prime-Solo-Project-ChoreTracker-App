@@ -1,10 +1,8 @@
 //controller for user booklog page
 myApp.controller('BonusRewardsController', ['$http', '$location','bookService', '$uibModal', '$log', function($http, $location, bookService, $uibModal, $log) {
-
   vm = this;
   vm.books = bookService.books;
   bookService.getBooks();
-  console.log("controller",vm.books);
   //user logout when logout button clicked
   vm.logout = function() {
     $http.get('/user/logout').then(function(response) {
@@ -33,7 +31,7 @@ myApp.controller('BonusRewardsController', ['$http', '$location','bookService', 
   }; // end open book modal
 }]);//end of UserBookLogController
 //addBookModalInstanceCtrl
-myApp.controller( 'addRewardModalInstanceCtrl', [ '$uibModalInstance', '$uibModal', '$log', 'bookService','book', function ( $uibModalInstance, $uibModal, $log, bookService, book) {
+myApp.controller( 'addRewardModalInstanceCtrl', [ '$uibModalInstance', '$uibModal', '$log', 'bookService','book','bankService', function ( $uibModalInstance, $uibModal, $log, bookService, book, bankService) {
   vm = this;
   vm.books = bookService.books;
   vm.username = book.username;
@@ -55,11 +53,20 @@ myApp.controller( 'addRewardModalInstanceCtrl', [ '$uibModalInstance', '$uibModa
     } else {
       var itemToSend = {
         reward: vm.reward,
-        book_id: vm.book_id
+        book_id: vm.book_id,
+      };
+      var depositToSend = {
+        username: book.username,
+        amount: vm.reward,
+        date: vm.date,
+        comment: "Book Reward:  " + vm.title,
+        transaction: "deposit"
       };
       console.log(itemToSend);
       //send data to service updateBook
       bookService.updateBook(itemToSend);
+      //automatically add reward to mom bank
+      bankService.saveTransaction(depositToSend);
       swal({
         title: "Reward Added!",
         type: "success",
