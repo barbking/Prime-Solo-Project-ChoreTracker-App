@@ -28,8 +28,8 @@
       </tr>
       <tr ng-repeat="item in bc.bank | orderBy:'date' ">
         <td>{{ item.date | date:'MM-dd-yyyy' }}</td>
-        <td><span ng-if="item.amount > 0">{{ item.amount | currency }}</span></td>
-        <td><span ng-if="item.amount < 0">{{ item.amount | currency }}</span></td>
+        <td><span ng-if="item.transaction == 'deposit'">{{ item.amount | currency }}</span></td>
+        <td><span ng-if="item.transaction == 'withdrawal'">{{ item.amount | currency }}</span></td>
         <td>{{ item.comment }}</td>
       </tr>
       <tr>

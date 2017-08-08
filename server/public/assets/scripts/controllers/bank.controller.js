@@ -21,7 +21,11 @@ myApp.controller('BankController', [ '$http', '$location', 'bankService', functi
   vm.calcBalance = function (array) {
     vm.balance = 0;
     for (i=0; i<=array.length-1; i++) {
-      vm.balance = vm.balance + parseInt(array[i].amount);
+      if (array[i].transaction == "deposit") {
+        vm.balance = vm.balance + parseInt(array[i].amount);
+      } else {
+        vm.balance = vm.balance - parseInt(array[i].amount);
+      }
     }
     console.log('BankController balance:',vm.balance);
     return vm.balance;

@@ -226,7 +226,8 @@ btn {
 #admintable {
   padding-top: 0;
   width: 90vw;
-  align-self: center;
+  margin-left:
+  /*align-self: center;*/
 }
 #allowancebar {
   width:80vw;
@@ -241,7 +242,7 @@ btn {
 }
 #banktransaction {
   width: 90vw;
-  margin-left: 4vw;
+  margin-left: 3vw;
 }
 #calendar {
   padding-top: 5vh;

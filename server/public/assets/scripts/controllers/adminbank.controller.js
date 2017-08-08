@@ -96,11 +96,14 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   vm.calcBalance = function(){
     vm.balance =[];
     console.log('in calcBalance');
+    //loop through usernames in bank array, calc balance for each username
     for (i=0; i<=vm.usernames.length-1; i++){
       var counter = 0;
       for (j=0; j<=vm.bank.length-1; j++) {
-        if (vm.usernames[i].username == vm.bank[j].username) {
+        if (vm.usernames[i].username == vm.bank[j].username && vm.bank[j].transaction == "deposit") {
           counter = counter + parseInt(vm.bank[j].amount);
+        } else if (vm.usernames[i].username == vm.bank[j].username && vm.bank[j].transaction == "withdrawal") {
+          counter = counter - parseInt(vm.bank[j].amount);
         }
       }//end j loop
         var username = vm.usernames[i].username;
