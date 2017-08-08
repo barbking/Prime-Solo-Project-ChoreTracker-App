@@ -62,6 +62,19 @@
       </div>
     </div>
     <!-- bank table -->
+    <div class="col-md-4">
+      <form>
+        <div class="form-group" style="margin-left: 3vw">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Search" ng-model="search.$">
+          </div>
+        </div>
+      </form>
+    </div>
+        <!-- <p class="search "><input class="form-control" type="text" placeholder="search transactions:" ng-model="search.$" /></p>
+      </div>
+    </div> -->
     <div id="admintable">
       <table class="table table-bordered table-hover table-condensed" st-table="rowCollection" at-table at-paginated at-list="list" at-config="config">
         <tr style="font-weight: bold">
@@ -72,7 +85,7 @@
           <td style="width:25%">Comment</td>
           <td style="width:25%">Edit</td>
         </tr>
-        <tr ng-repeat="item in abc.bank">
+        <tr ng-repeat="item in abc.bank | filter:search">
           <td>
             <!-- editable username (text with validation) -->
             <span editable-date="item.date" e-name="date" e-form="rowform" onbeforesave="checkDate($data, item._id)">
@@ -124,7 +137,6 @@
     <!-- <ul uib-pagination total-items="abc.totalItems" ng-model="abc.currentPage" max-size="abc.maxSize" class="pagination-sm pagination" boundary-links="true" num-pages="abc.numPages"></ul> -->
   </div>
  <!-- <button type="button" class="btn btn-default" ng-click="addUser()">Add row</button> -->
-
 <table id="balancestable">
   <tr>
      <th colspan="2">Account Balances</th>
