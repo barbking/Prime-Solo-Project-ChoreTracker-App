@@ -34,7 +34,7 @@ I'm very excited to get back to the Mom App post graduation.  While the app had 
  - users are able to check off chores they complete, progress bar at bottom
 ![ChildCheckList](screenshots/ChildCheckList.png)
 ### User Book Log
- - user is able to enter book info and summary which gets submitted for mom approval to earn a rewards
+ - user is able to enter book info and summary which gets submitted for mom approval to earn a reward
 ![BookLog](screenshots/BookLog.png)
 ### Add Book modal
 ![AddBookModal](screenshots/AddBookModal.png)
