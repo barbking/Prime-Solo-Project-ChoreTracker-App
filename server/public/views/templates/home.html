@@ -4,21 +4,29 @@
       <h2 class="lead alert alert-danger" role="alert" ng-if="lc.message != ''">{{lc.message}}</h2>
       <form class="loginform" ng-submit="lc.login()">
         <div class="row">
-        <div class="col-md-6" >
-        <h2 class="homefont">Welcome to the Mom App! </br><h4 class="homefont">Ask your mom if you need a username.</h4> </h2>
-      </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <input class="form-control" type="text" placeholder="username" ng-model="lc.user.username"/>
-          <input class="form-control" type="password" placeholder="password" ng-model="lc.user.password"/><br>
+         <div class="col-md-6" >
+          <h2 class="homefont">Welcome to the Mom App! <br><h4 class="homefont">Ask your mom if you need a username.</h4> </h2>
+         </div>
         </div>
-      </div>
         <div class="row">
           <div class="col-md-4">
-            <input class="btn loginbtn btn-default" type="submit" name="submit" value="Sign In" />
+              <div class="form-group" style="margin-left: 1vw">
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                  <input class="form-control" type="text" placeholder="username" ng-model="lc.user.username"/>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-lock"></i></div>
+                  <input class="form-control" type="password" placeholder="password" ng-model="lc.user.password"/><br>
+                </div>
+              </div>
           </div>
         </div>
+          <div class="row">
+            <div class="col-md-4">
+              <input style="background-color: #0085dc; margin-left: 1vw" class="btn btn-default" type="submit" name="submit" value="Sign In" />
+            </div>
+          </div>
       </form>
       <div class="row">
         <div class="col-md-6">

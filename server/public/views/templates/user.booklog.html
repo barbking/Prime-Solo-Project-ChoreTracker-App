@@ -33,7 +33,7 @@
        <th>Lexile Level</th>
        <th>Summary</th>
        <th>Mom Approved Reward</th>
-       <th>Delete</th>
+       <th></th>
     </tr>
     <tr ng-repeat="book in ubl.userbooks.list">
       <td>{{ book.date | date:'MM-dd-yyyy' }}</td>
@@ -43,7 +43,7 @@
       <td>{{ book.level }}</td>
       <td>{{ book.summary }}</td>
       <td>{{ book.momapproved }}</td>
-      <td><button type="button" class="btn btn-default btn-danger" ng-click="ubl.delete(book._id)">Delete</button></td>
+      <td><span ng-if = "book.momapproved == 'Waiting Approval'"><button type="button" class="btn btn-default btn-danger" ng-click="ubl.delete(book._id)">Delete</button></span></td>
     </tr>
   </table>
 </div>

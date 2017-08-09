@@ -169,9 +169,7 @@ btn {
   font-family: 'Luckiest Guy', cursive;
   font-size: 40px;
 }
-.loginbtn {
-  background-color: #0085dc;
-}
+
 .loginform {
   align-self: center;
   /*margin-top: 0vh;*/
