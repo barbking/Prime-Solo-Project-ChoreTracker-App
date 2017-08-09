@@ -21,8 +21,11 @@ Update post Prime:  I'm very excited to get back to the Mom App post graduation.
 - make allowance deposits and withdrawals
 ![AdminBankPage](screenshots/AdminBankPage.png)
 ###  Admin Bonus Reward Page
-- approve reward when users submit book summaries, approved reward automatically deposits in user bank account
+- approve reward when users submit book summaries
 ![AdminBookReward](screenshots/AdminBookReward.png)
+### Approve modal
+- enter award amount, upon selecting save the amount gets deposited in user's account in the mom bank
+![ApproveBookModal](screenshots/ApproveBookModal.png)
 ###  User Home Page
 - user logs in and sees a pie chart of their completed chores and family calendar
 ![UserHomePage](screenshots/UserHomePage.png)
@@ -32,6 +35,8 @@ Update post Prime:  I'm very excited to get back to the Mom App post graduation.
 ### User Book Log
  - user is able to enter book info and summary which gets submitted for mom approval to earn a rewards
 ![BookLog](screenshots/BookLog.png)
+### Add Book modal
+![AddBookModal](screenshots/AddBookModal.png)
 ### User Mom Bank Account Page
  - user is able to see allwances/rewards and also how much money they withdrew and how they spent their savings
 ![ChildMomBankAccount](screenshots/ChildMomBankAccount.png)
