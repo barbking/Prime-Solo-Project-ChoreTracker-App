@@ -13,6 +13,8 @@ Update post Prime:
 I'm very excited to get back to the Mom App post graduation.  While the app had full functionality and instructor feedback was, "You should be proud of this app, it's great work!", I wanted to improve and add some more features.  Every day I am learning new things and want to implement those features in the Mom App to improve it.  I've revamped the styling with additional Bootstrap UI formats and added a feature for my kids to earn additional rewards for reading books over the summer.  My son replied with a groan that he didn't want to have to read more books, which is exactly why I'm using a reward system to motivate him.  After the book feature is complete, I will be deploying the Mom App for my kids and me to use.  It's really going to be fun to see this app in action!
 - August 9, 2017:  
 All features I currently want to try out when I deploy on Heroku are functioning.  My next step is to implement Grunt and minimize code on a develop branch and then merge into master once I verify I did not break anything in the process.  Ideally, I'd like to implement some testing but that may have to wait until next week.  We touched on testing at Prime but I need to really dive into and educate myself more about the different techniques and best practices.
+- August 10, 2017:
+Grunt installed and scripts minimized, quick and easy process to do.
 
 
 ## Application Features
