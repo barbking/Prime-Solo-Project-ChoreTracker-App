@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },//end uglify
     // watch - watch files for changes and run tasks on them, watch the client file and run uglify
     watch: {
-      files:['client/scripts/*.js'],
+      files:['client/scripts/controllers/*.js', 'client/scripts/services/*.js', 'client/*.js'],
       tasks:['uglify']
     },//end watch
     // copy - copy our vendor files
