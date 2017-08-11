@@ -40,13 +40,13 @@
                 <label>Allowance:  </label>
                 <input class="form-control" type="number" name="input" ng-model="ac.user.allowance" min="0" max="20">
               </div>
-              <div class="col-md-2">
+              <!-- <div class="col-md-2">
                 <label for="transaction"> Admin: </label>
                   <select class="form-control" name="admin" ng-model="ac.user.admin" required>
                     <option value="true">true</option>
                     <option value="false">false</option>
                   </select>
-              </div>
+              </div> -->
             </div>
               <div class="adduserbuttons">
               <!-- <button type="button" class="btn btn-default btn-primary" ng-click="ac.addUser()" >Submit</button> -->
@@ -76,7 +76,7 @@
               <td>{{ user.allowance | currency}}</td>
               <td>{{ user.admin }}</td>
               <td>{{ user.calendar }}</td>
-              <td> <button type="button" class="btn btn-default btn-danger" ng-click="ac.removeUser(user._id)">Delete</button></td>
+              <td> <span ng-if = "user.admin==false" ><button type="button" class="btn btn-default btn-danger" ng-click="ac.removeUser(user._id)">Delete</button></span></td>
               <td> <span ng-if = "user.admin==false" ><button type="button" class="btn btn-default btn-danger" ng-click="ac.resetCheckBoxes(user.username)">Reset</button></span></td>
         </tr>
         </table>
