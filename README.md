@@ -37,7 +37,7 @@ All features I currently want to try out when I deploy on Heroku are functioning
  - users are able to check off chores they complete, progress bar at bottom
 ![ChildCheckList](screenshots/ChildCheckList.png)
 ### User Book Log
- - user is able to enter book info and summary which gets submitted for mom approval to earn a reward
+ - user is able to enter book info and summary which gets submitted for mom approval to earn rewards
 ![BookLog](screenshots/BookLog.png)
 ### Add Book modal
 ![AddBookModal](screenshots/AddBookModal.png)
@@ -51,7 +51,6 @@ All features I currently want to try out when I deploy on Heroku are functioning
 * Express.js
 * AngularJS
 * Node.js
-* Grunt
 * HTML5
 * CSS3
 * Bootstrap/Bootstrap UI

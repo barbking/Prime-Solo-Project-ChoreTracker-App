@@ -91,7 +91,20 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
    });
   };
   //to reset all user checkboxes to false, run resetCheckBoxes func which calls service updateTask http PUT
-  vm.resetCheckBoxes = tasksService.resetTasks;
+  vm.resetCheckBoxes = function (username){
+    swal({
+      title: "Are you sure you want to reset the users checkboxes?",
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, reset!",
+      closeOnConfirm: false
+    },
+    function(){
+      swal("Checkboxes reset!", "success");
+      tasksService.resetTasks(username);
+    });
+  };
   //get usernames from database users collection to populate username selector
   vm.loadUsernames = function() {
     $http.get('/usernames').then(function(response) {
@@ -125,7 +138,6 @@ myApp.controller('AdminController',['$http', '$location', '$filter', 'tasksServi
     }
     return selected.length ? selected[0].text : 'Not set';
   };
-
   vm.checkName = function(data,task_id) {
    if (data === 'empty') {
      return "Enter a task name";
