@@ -70,6 +70,7 @@ if(process.env.MONGODB_URI != undefined) {
 // var mongoURI = "mongodb://localhost:27017/passport";
 var mongoDB = mongoose.connect(mongoURI).connection;
 
+
 mongoDB.on('error', function(err){
    if(err) {
      console.log("MONGO ERROR: ", err);
