@@ -34,13 +34,16 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
   vm.loadUsernames = function() {
     $http.get('/usernames').then(function(response) {
       vm.usernames = response.data;
-      for (i=0; i<=vm.usernames.length-1; i++){
+      console.log('in get user names', vm.usernames);
+      for (i=0; i<=vm.usernames.length; i++){
+        console.log ('admin status', vm.usernames[i].username, vm.usernames[i].admin);
         if (vm.usernames[i].admin) {
-          vm.usernames.splice(vm.usernames[i],1);
+          console.log('in loop', vm.usernames[i].username);
+          vm.usernames.splice(i,1);
+        }
       }
-      console.log('usernames[]',vm.usernames);
+      console.log ('loadUsernames', vm.usernames);
       return vm.usernames;
-      }
     });
   };//end of loadUsernames
   //save bank transaction to db
@@ -114,6 +117,7 @@ myApp.controller('AdminBankController',['$http', '$location', '$filter', 'bankSe
         };//end obj
         vm.balance.push(userBal);
     }//end i for loop
+    console.log('balance[]', vm.balance);
     return vm.balance;
   };//end of calcBalance
   vm.calcBalance();
