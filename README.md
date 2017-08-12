@@ -19,12 +19,15 @@ Grunt installed and scripts minimized, quick and easy process to do.
 Test version of The Mom App has been deployed on Heroku.  This app was intended just as a personal app to be used by myself and family so I do not have it set up for the public to register or use.  I have one person set as an admin who can then set up users and their passwords.  I could refactor code and database setup to allow someone to register and then set up a family/household but not the best use of my time right now.  Maybe a future goal if friends or others express interest in using this app.
 
 Test version:
-- Feel free to play around, this is only a test version and not real data.  I will be deploying a separate version for my children to use.  Use the following link and username/password for initial login as an admin.  You can then set up some users/passwords, task and bank data.  From there you can login as one of the users you created and play around with the user functions.
+- Feel free to play around, this is only a test version and not real data.  I will be deploying a separate version for my children to use.  Use the following link and username/password for initial login as an admin.  You can then set up some users/passwords, task and bank data.  From there you can login as one of the users you created and play around with the user functions.  Or to take a quick look at the user pages, use the test user login below.
 
 http://themomapp-test.herokuapp.com/#/home
+ADMIN LOGIN:
 username: admin
 password: admin
-
+USER login:
+username: cking
+password: test
 
 ## Application Features
 ###  Login
