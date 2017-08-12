@@ -23,12 +23,11 @@ Test version:
 
 http://themomapp-test.herokuapp.com/#/home
 - ADMIN LOGIN:
-* username: admin
-* password: admin
-
+username: admin
+password: admin
 - USER login:
-* username: cking
-* password: test
+username: cking
+password: test
 
 ## Application Features
 ###  Login
