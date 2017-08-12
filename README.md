@@ -22,12 +22,13 @@ Test version:
 - Feel free to play around, this is only a test version and not real data.  I will be deploying a separate version for my children to use.  Use the following link and username/password for initial login as an admin.  You can then set up some users/passwords, task and bank data.  From there you can login as one of the users you created and play around with the user functions.  Or to take a quick look at the user pages, use the test user login below.
 
 http://themomapp-test.herokuapp.com/#/home
-- ADMIN LOGIN:
-username: admin
-password: admin
-- USER login:
-username: cking
-password: test
+ADMIN LOGIN:
+* username: admin
+* password: admin
+
+USER login:
+* username: cking
+* password: test
 
 ## Application Features
 ###  Login
