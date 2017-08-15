@@ -33,30 +33,30 @@ password: test
 ###  Login
 ![Login](screenshots/Login.png)
 ###  Admin Home Page
-- set up users and passwords, allowance, family calendar link, task items for each user
+- Set up users and passwords, allowance, family calendar link, task items for each user
 ![AdminHomePage](screenshots/AdminHomePage.png)
 ###  Admin Bank Page
-- make allowance deposits and withdrawals
+- Make allowance deposits and withdrawals
 ![AdminBankPage](screenshots/AdminBankPage.png)
 ###  Admin Bonus Reward Page
-- approve reward when users submit book summaries
+- Approve reward when users submit book summaries
 ![AdminBookReward](screenshots/AdminBookReward.png)
 ### Approve modal
-- enter award amount, upon selecting save the amount gets deposited in user's account in the mom bank
+- Enter award amount, upon selecting save the amount gets deposited in user's account in the mom bank
 ![ApproveBookModal](screenshots/ApproveBookModal.png)
 ###  User Home Page
-- user logs in and sees a pie chart of their completed chores and family calendar
+- User logs in and sees a pie chart of their completed chores and family calendar
 ![UserHomePage](screenshots/UserHomePage.png)
 ###  User Checklist Page
- - users are able to check off chores they complete, progress bar at bottom
+ - Users are able to check off chores they complete, progress bar at bottom
 ![ChildCheckList](screenshots/ChildCheckList.png)
 ### User Book Log
- - user is able to enter book info and summary which gets submitted for mom approval to earn rewards
+ - User is able to enter book info and summary which gets submitted for mom approval to earn rewards
 ![BookLog](screenshots/BookLog.png)
 ### Add Book modal
 ![AddBookModal](screenshots/AddBookModal.png)
 ### User Mom Bank Account Page
- - user is able to see allwances/rewards and also how much money they withdrew and how they spent their savings
+ - User is able to see allwances/rewards and also how much money they withdrew and how they spent their savings
 ![ChildMomBankAccount](screenshots/ChildMomBankAccount.png)
 
 ## Technologies Used
