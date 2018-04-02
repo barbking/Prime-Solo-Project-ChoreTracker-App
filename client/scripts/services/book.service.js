@@ -10,7 +10,6 @@ myApp.service('bookService', ['$http', function($http){
       url: '/books',
       data: data
     }).then(function(response) {
-      console.log('in service for addSeed with response-->', response );
       self.getUserBooks().then(function(){
         console.log('in service for addBook with response-->', response );
         console.log('self.userbooks from getUserBooks:',self.userbooks);

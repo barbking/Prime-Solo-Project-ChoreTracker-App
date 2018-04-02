@@ -85,10 +85,10 @@ myApp.controller( 'addBookModalInstanceCtrl', [ '$uibModalInstance', '$uibModal'
         pages: vm.pages,
         level: vm.level,
         summary: vm.summary,
-        date: vm.date,
-        // username: vm.userName
+        date: vm.date
       };
       console.log(itemToSend);
+      //use book service
       bookService.addBook(itemToSend);
       swal({
         title: "Book Added!",

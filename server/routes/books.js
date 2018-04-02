@@ -53,11 +53,9 @@ router.post('/', function (req,res){
   res.send(false);
   }
 });
-//delete task using the task db id
+//delete book using the book db id
 router.delete( '/:id', function(req,res){
   console.log("in delete book request", req.params.id);
-  // task.remove({_id:req.params.id}).then(function(){
-  //   res.sendStatus(200);
   book.remove({_id:req.params.id}, function(err){
     if (err) {
       console.log('Error removing task from database', err);
