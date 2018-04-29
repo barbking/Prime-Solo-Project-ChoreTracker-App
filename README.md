@@ -10,9 +10,7 @@ As a very busy parent, I have a hard time keeping track of my children’s activ
 
 Update post Prime:
 - August 7, 2017:  
-I'm very excited to get back to the Mom App post graduation.  While the app had full functionality and instructor feedback was, "You should be proud of this app, it's great work!", I wanted to improve and add some more features.  Every day I am learning new things and want to implement those features in the Mom App to improve it.  I've revamped the styling with additional Bootstrap UI formats and added a feature for my kids to earn additional rewards for reading books over the summer.  My son replied with a groan that he didn't want to have to read more books, which is exactly why I'm using a reward system to motivate him.  After the book feature is complete, I will be deploying the Mom App for my kids and me to use.  It's really going to be fun to see this app in action!
-- August 9, 2017:  
- My next step is to implement Grunt and minimize code on a develop branch and then merge into master once I verify I did not break anything in the process.  Ideally, I'd like to implement some testing but that may have to wait until next week.  We touched on testing at Prime but I need to really dive into and educate myself more about the different techniques and best practices.
+ Revamped the styling with additional Bootstrap UI formats and added a feature for my kids to earn additional rewards for reading books over the summer.  My son replied with a groan that he didn't want to have to read more books, which is exactly why I'm using a reward system to motivate him.
 - August 10, 2017:
 Grunt installed and scripts minimized, quick and easy process to do.
 - August 11, 2017:
