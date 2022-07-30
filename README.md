@@ -72,12 +72,3 @@ password: test
 * Sweetalert
 * Grunt
 * Heroku
-
-## Author
-
-Barbara King
-
-## Acknowledgments
-
-Prime Digital Academy Instructor Kris Szafranski for providing the Passport Code Base.
-Prime Digital Academy Instructors Millie Walsh, Dev Jana, Huck Brock, and Luke Schlangen for their on-going support.
